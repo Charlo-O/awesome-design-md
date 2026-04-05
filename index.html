@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome DESIGN.md Index</title>
+  <meta
+    name="description"
+    content="以 PMFrame 的信息架构为灵感，为本地 awesome-design-md 仓库整理的 DESIGN.md 风格索引站。"
+  >
+  <link rel="stylesheet" href="site-assets/fonts.css">
+  <link rel="stylesheet" href="site-assets/site.css">
+</head>
+<body data-page="home">
+  <header class="hero page-max">
+    <div class="hero-copy">
+      <div class="site-domain"><span class="site-domain-accent">ADI</span>ndex.local</div>
+      <div class="hero-label" id="home-hero-label">Local Design Atlas</div>
+      <h1 id="home-hero-title"><span id="hero-count">54</span> 个<br><em>DESIGN.md 风格索引</em></h1>
+      <p class="hero-desc" id="home-hero-desc">
+        参考 PMFrame 的版式与浏览路径，把本地 <code>awesome-design-md</code> 里的品牌风格、
+        预览页和设计文档整理成一个可搜索、可收藏、可跳转的静态索引站。
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-label" id="stat-designs-label">风格条目</span>
+          <span class="hero-stat-value" id="stat-designs">54</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-label" id="stat-previews-label">预览页面</span>
+          <span class="hero-stat-value" id="stat-previews">108</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-label" id="stat-categories-label">分组类型</span>
+          <span class="hero-stat-value" id="stat-categories">6</span>
+        </div>
+      </div>
+    </div>
+    <aside class="hero-panel" id="hero-panel">
+      <div class="hero-panel-label" id="hero-panel-label">Featured Excerpt</div>
+      <div class="hero-panel-body" id="hero-panel-body"></div>
+    </aside>
+  </header>
+
+  <section class="controls page-max">
+    <div class="filters" id="filters"></div>
+    <div class="controls-right">
+      <div class="lang-switcher-slot" id="home-lang-switcher"></div>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search" placeholder="搜索品牌名、风格描述或关键词…">
+      </div>
+      <div class="count-label" id="count-label"></div>
+    </div>
+  </section>
+
+  <section class="fav-section page-max" id="fav-section" hidden>
+    <div class="section-header">
+      <span class="section-header-label" id="favorites-label">★ 我的常看</span>
+      <span class="section-header-line"></span>
+      <span class="section-header-count" id="fav-count"></span>
+    </div>
+    <div class="grid favorites-grid" id="favorites-grid"></div>
+  </section>
+
+  <main class="grid-wrap page-max">
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <button class="modal-nav modal-nav-prev" id="modal-prev" type="button" aria-label="上一项">‹</button>
+    <section class="modal-shell" id="modal-shell" aria-modal="true" role="dialog"></section>
+    <button class="modal-nav modal-nav-next" id="modal-next" type="button" aria-label="下一项">›</button>
+  </div>
+
+  <footer class="site-footer page-max">
+    <span class="footer-domain"><span class="site-domain-accent">ADI</span>ndex.local</span>
+    <span class="footer-note" id="home-footer-note">Built from local <code>design-md/*</code> assets in <code>awesome-design-md</code>.</span>
+  </footer>
+
+  <script src="site-assets/designs.js"></script>
+  <script src="site-assets/site.js"></script>
+</body>
+</html>
