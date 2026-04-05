@@ -1,15 +1,18 @@
 window.SITE_META = {
-  "generatedAt": "2026-04-05T09:41:16.350Z",
-  "totalDesigns": 54,
-  "totalPreviews": 108,
-  "totalCategories": 6,
+  "generatedAt": "2026-04-05T11:51:06.747Z",
+  "totalDesigns": 112,
+  "totalPreviews": 166,
+  "totalCategories": 9,
   "categoryCounts": {
     "ai": 12,
     "dev": 14,
     "infra": 6,
     "design": 10,
     "finance": 4,
-    "enterprise": 8
+    "enterprise": 8,
+    "styleGeneral": 40,
+    "styleLanding": 8,
+    "styleAnalytics": 10
   }
 };
 window.DESIGNS = [
@@ -59,7 +62,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 2,
@@ -107,7 +111,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 3,
@@ -155,7 +160,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 4,
@@ -187,7 +193,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font-primary)",
       "mono": null
     },
     "sourceSite": {
@@ -203,7 +209,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 5,
@@ -235,7 +242,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font-primary)",
       "mono": null
     },
     "sourceSite": {
@@ -251,7 +258,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 6,
@@ -297,7 +305,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 7,
@@ -345,7 +354,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 8,
@@ -393,7 +403,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 9,
@@ -439,7 +450,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 10,
@@ -487,7 +499,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 11,
@@ -535,7 +548,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 12,
@@ -564,7 +578,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font-body)",
       "mono": null
     },
     "sourceSite": {
@@ -580,7 +594,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 4
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 13,
@@ -628,7 +643,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 14,
@@ -676,7 +692,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 15,
@@ -724,7 +741,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 16,
@@ -756,8 +774,8 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
-      "mono": null
+      "sans": "var(--font-primary)",
+      "mono": "ui-monospace"
     },
     "sourceSite": {
       "name": "lovable",
@@ -772,7 +790,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 17,
@@ -820,7 +839,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 18,
@@ -852,8 +872,8 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
-      "mono": null
+      "sans": "var(--font)",
+      "mono": "var(--mono)"
     },
     "sourceSite": {
       "name": "posthog",
@@ -868,7 +888,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 19,
@@ -916,7 +937,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 20,
@@ -964,7 +986,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 21,
@@ -1012,7 +1035,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 22,
@@ -1060,7 +1084,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 23,
@@ -1092,7 +1117,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "-apple-system",
       "mono": null
     },
     "sourceSite": {
@@ -1108,7 +1133,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 24,
@@ -1156,7 +1182,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 25,
@@ -1204,7 +1231,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 26,
@@ -1251,7 +1279,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 27,
@@ -1283,8 +1312,8 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
-      "mono": null
+      "sans": "var(--font-body)",
+      "mono": "var(--font-code)"
     },
     "sourceSite": {
       "name": "clickhouse",
@@ -1299,7 +1328,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 28,
@@ -1347,7 +1377,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 29,
@@ -1379,8 +1410,8 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
-      "mono": null
+      "sans": "var(--font-system)",
+      "mono": "SF Mono"
     },
     "sourceSite": {
       "name": "hashicorp",
@@ -1395,7 +1426,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 30,
@@ -1443,7 +1475,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 31,
@@ -1491,7 +1524,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 32,
@@ -1539,7 +1573,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 33,
@@ -1570,7 +1605,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -1586,7 +1621,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 34,
@@ -1634,7 +1670,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 35,
@@ -1681,7 +1718,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 36,
@@ -1729,7 +1767,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 37,
@@ -1777,7 +1816,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 38,
@@ -1809,7 +1849,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -1825,7 +1865,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 39,
@@ -1857,7 +1898,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -1873,7 +1914,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 40,
@@ -1921,7 +1963,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 41,
@@ -1953,7 +1996,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -1969,7 +2012,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 42,
@@ -2000,7 +2044,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2016,7 +2060,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 43,
@@ -2048,7 +2093,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2064,7 +2109,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 44,
@@ -2095,7 +2141,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2111,7 +2157,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 45,
@@ -2143,7 +2190,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font-body)",
       "mono": null
     },
     "sourceSite": {
@@ -2159,7 +2206,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 46,
@@ -2191,7 +2239,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2207,7 +2255,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 47,
@@ -2239,7 +2288,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2255,7 +2304,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 48,
@@ -2287,8 +2337,8 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
-      "mono": null
+      "sans": "var(--font-text)",
+      "mono": "ui-monospace"
     },
     "sourceSite": {
       "name": "apple",
@@ -2303,7 +2353,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 49,
@@ -2332,7 +2383,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2348,7 +2399,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 50,
@@ -2396,7 +2448,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 51,
@@ -2428,7 +2481,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font-primary)",
       "mono": null
     },
     "sourceSite": {
@@ -2444,7 +2497,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 52,
@@ -2472,7 +2526,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2488,7 +2542,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 3
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 53,
@@ -2520,7 +2575,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font)",
       "mono": null
     },
     "sourceSite": {
@@ -2536,7 +2591,8 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
   },
   {
     "id": 54,
@@ -2568,7 +2624,7 @@ window.DESIGNS = [
     ],
     "fonts": {
       "serif": null,
-      "sans": null,
+      "sans": "var(--font-body)",
       "mono": null
     },
     "sourceSite": {
@@ -2584,6 +2640,3388 @@ window.DESIGNS = [
     "stats": {
       "previewCount": 2,
       "colorCount": 6
-    }
+    },
+    "searchTerms": []
+  },
+  {
+    "id": 55,
+    "slug": "uiuxpro-01-minimalism",
+    "name": "Minimalism & Swiss Style",
+    "monogram": "MS",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Minimalism & Swiss Style is a UI style reference for general interfaces, focused on Clean, simple, spacious, functional, white space.",
+    "overview": [
+      "Minimalism & Swiss Style is a UI style reference for general interfaces, combining Clean, simple, spacious, functional, white space, high contrast, geometric, sans-serif, grid-based, essential. The visual direction is shaped by Subtle hover (200-250ms), smooth transitions, sharp shadows if any, clear type hierarchy, fast loading.",
+      "Use it for Enterprise apps (企業應用), dashboards (儀表板), documentation sites (網站), SaaS platforms (SaaS), professional tools (工具). Avoid it for Creative portfolios (創意), entertainment (娛樂), playful brands (品牌), artistic experiments."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Monochromatic, Black #000000, White #FFFFFF",
+      "Secondary palette: Neutral (Beige #F5F1E8, Grey #808080, Taupe #B38B6D), Primary accent",
+      "Effects: Subtle hover (200-250ms), smooth transitions, sharp shadows if any, clear type hierarchy, fast loading",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Bootstrap 9/10, MUI 9/10; era: 1950s Swiss.",
+      "Best for: Enterprise apps (企業應用), dashboards (儀表板), documentation sites (網站), SaaS platforms (SaaS), professional tools (工具)"
+    ],
+    "colors": [
+      "#000000",
+      "#ffffff",
+      "#808080",
+      "#f5f1e8",
+      "#b38b6d"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/01-minimalism/README.md",
+      "design": "extra/uiuxskillProMax/generated/01-minimalism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/01-minimalism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "一般",
+      "Minimalism & Swiss Style",
+      "極簡主義 & 瑞士風格",
+      "Clean, simple, spacious, functional, white space, high contrast, geometric, sans-serif, grid-based, essential",
+      "Enterprise apps (企業應用), dashboards (儀表板), documentation sites (網站), SaaS platforms (SaaS), professional tools (工具)",
+      "Creative portfolios (創意), entertainment (娛樂), playful brands (品牌), artistic experiments",
+      "Monochromatic, Black #000000, White #FFFFFF",
+      "Neutral (Beige #F5F1E8, Grey #808080, Taupe #B38B6D), Primary accent",
+      "Tailwind 10/10, Bootstrap 9/10, MUI 9/10",
+      "1950s Swiss"
+    ]
+  },
+  {
+    "id": 56,
+    "slug": "uiuxpro-02-neumorphism",
+    "name": "Neumorphism",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Neumorphism is a UI style reference for general interfaces, focused on Soft UI, embossed, debossed, convex, concave.",
+    "overview": [
+      "Neumorphism is a UI style reference for general interfaces, combining Soft UI, embossed, debossed, convex, concave, light source, subtle depth, rounded (12-16px), monochromatic. The visual direction is shaped by Soft box-shadow (multiple: -5px -5px 15px, 5px 5px 15px), smooth press (150ms), inner subtle shadow.",
+      "Use it for Health/wellness apps (健康), meditation platforms (平台), fitness trackers, minimal interaction UIs. Avoid it for Complex apps (應用程式), critical accessibility (無障礙性), data-heavy dashboards (儀表板), high-contrast required."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Light pastels: Soft Blue #C8E0F4, Soft Pink #F5E0E8, Soft Grey #E8E8E8",
+      "Secondary palette: Tints/shades (±30%), gradient subtlety, color harmony",
+      "Effects: Soft box-shadow (multiple: -5px -5px 15px, 5px 5px 15px), smooth press (150ms), inner subtle shadow",
+      "Accessibility: ⚠ Low contrast; performance: ⚡ Good; dark mode: ◐ Partial; complexity: Medium.",
+      "Framework fit: Tailwind 8/10, CSS-in-JS 9/10; era: 2020s Modern.",
+      "Best for: Health/wellness apps (健康), meditation platforms (平台), fitness trackers, minimal interaction UIs"
+    ],
+    "colors": [
+      "#e8e8e8",
+      "#ffffff",
+      "#d1d1d1",
+      "#fafafa",
+      "#d4d4d4",
+      "#c8e0f4"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/02-neumorphism/README.md",
+      "design": "extra/uiuxskillProMax/generated/02-neumorphism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/02-neumorphism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Neumorphism",
+      "新擬物化",
+      "Soft UI, embossed, debossed, convex, concave, light source, subtle depth, rounded (12-16px), monochromatic",
+      "Health/wellness apps (健康), meditation platforms (平台), fitness trackers, minimal interaction UIs",
+      "Complex apps (應用程式), critical accessibility (無障礙性), data-heavy dashboards (儀表板), high-contrast required",
+      "Light pastels: Soft Blue #C8E0F4, Soft Pink #F5E0E8, Soft Grey #E8E8E8",
+      "Tints/shades (±30%), gradient subtlety, color harmony",
+      "Tailwind 8/10, CSS-in-JS 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 57,
+    "slug": "uiuxpro-03-glassmorphism",
+    "name": "Glassmorphism",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Glassmorphism is a UI style reference for general interfaces, focused on Frosted glass, transparent, blurred background, layered, vibrant background.",
+    "overview": [
+      "Glassmorphism is a UI style reference for general interfaces, combining Frosted glass, transparent, blurred background, layered, vibrant background, light source, depth, multi-layer. The visual direction is shaped by Backdrop blur (10-20px), subtle border (1px solid rgba white 0.2), light reflection, Z-depth.",
+      "Use it for Modern SaaS (SaaS), financial dashboards (儀表板), high-end corporate (企業), lifestyle apps (應用程式), modal overlays, navigation. Avoid it for Low-contrast backgrounds, critical accessibility (無障礙性), performance-limited (效能), dark text on dark."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Translucent white: rgba(255,255,255,0.1-0.3)",
+      "Secondary palette: Vibrant: Electric Blue #0080FF, Neon Purple #8B00FF, Vivid Pink #FF1493, Teal #20B2AA",
+      "Effects: Backdrop blur (10-20px), subtle border (1px solid rgba white 0.2), light reflection, Z-depth",
+      "Accessibility: ⚠ Ensure 4.5:1; performance: ⚠ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 9/10, MUI 8/10, Chakra 8/10; era: 2020s Modern.",
+      "Best for: Modern SaaS (SaaS), financial dashboards (儀表板), high-end corporate (企業), lifestyle apps (應用程式), modal overlays, navigation"
+    ],
+    "colors": [
+      "#667eea",
+      "#764ba2",
+      "#f093fb",
+      "#0080ff",
+      "#8b00ff",
+      "#ff1493"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/03-glassmorphism/README.md",
+      "design": "extra/uiuxskillProMax/generated/03-glassmorphism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/03-glassmorphism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Glassmorphism",
+      "玻璃擬態",
+      "Frosted glass, transparent, blurred background, layered, vibrant background, light source, depth, multi-layer",
+      "Modern SaaS (SaaS), financial dashboards (儀表板), high-end corporate (企業), lifestyle apps (應用程式), modal overlays, navigation",
+      "Low-contrast backgrounds, critical accessibility (無障礙性), performance-limited (效能), dark text on dark",
+      "Translucent white: rgba(255,255,255,0.1-0.3)",
+      "Vibrant: Electric Blue #0080FF, Neon Purple #8B00FF, Vivid Pink #FF1493, Teal #20B2AA",
+      "Tailwind 9/10, MUI 8/10, Chakra 8/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 58,
+    "slug": "uiuxpro-04-brutalism",
+    "name": "Brutalism",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Brutalism is a UI style reference for general interfaces, focused on Raw, unpolished, stark, high contrast, plain text.",
+    "overview": [
+      "Brutalism is a UI style reference for general interfaces, combining Raw, unpolished, stark, high contrast, plain text, default fonts, visible borders, asymmetric, anti-design. The visual direction is shaped by No smooth transitions (instant), sharp corners (0px), bold typography (700+), visible grid, large blocks.",
+      "Use it for Design portfolios (作品集), artistic projects, counter-culture brands (品牌), editorial/media sites (網站), tech blogs. Avoid it for Corporate environments (企業), conservative industries, critical accessibility (無障礙性), customer-facing professional."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Primary: Red #FF0000, Blue #0000FF, Yellow #FFFF00, Black #000000, White #FFFFFF",
+      "Secondary palette: Limited: Neon Green #00FF00, Hot Pink #FF00FF, minimal secondary",
+      "Effects: No smooth transitions (instant), sharp corners (0px), bold typography (700+), visible grid, large blocks",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Bootstrap 7/10; era: 1950s Brutalist.",
+      "Best for: Design portfolios (作品集), artistic projects, counter-culture brands (品牌), editorial/media sites (網站), tech blogs"
+    ],
+    "colors": [
+      "#ff0000",
+      "#0000ff",
+      "#ffff00",
+      "#000000",
+      "#ffffff",
+      "#00ff00"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": "Space Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/04-brutalism/README.md",
+      "design": "extra/uiuxskillProMax/generated/04-brutalism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/04-brutalism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Brutalism",
+      "粗野主義",
+      "Raw, unpolished, stark, high contrast, plain text, default fonts, visible borders, asymmetric, anti-design",
+      "Design portfolios (作品集), artistic projects, counter-culture brands (品牌), editorial/media sites (網站), tech blogs",
+      "Corporate environments (企業), conservative industries, critical accessibility (無障礙性), customer-facing professional",
+      "Primary: Red #FF0000, Blue #0000FF, Yellow #FFFF00, Black #000000, White #FFFFFF",
+      "Limited: Neon Green #00FF00, Hot Pink #FF00FF, minimal secondary",
+      "Tailwind 10/10, Bootstrap 7/10",
+      "1950s Brutalist"
+    ]
+  },
+  {
+    "id": 59,
+    "slug": "uiuxpro-05-3d-hyperrealism",
+    "name": "3D & Hyperrealism",
+    "monogram": "3D",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "3D & Hyperrealism is a UI style reference for general interfaces, focused on Depth, realistic textures, 3D models, spatial navigation, tactile.",
+    "overview": [
+      "3D & Hyperrealism is a UI style reference for general interfaces, combining Depth, realistic textures, 3D models, spatial navigation, tactile, skeuomorphic elements, rich detail, immersive. The visual direction is shaped by WebGL/Three.js 3D, realistic shadows (layers), physics lighting, parallax (3-5 layers), smooth 3D (300-400ms).",
+      "Use it for Gaming (遊戲), product showcase, immersive experiences, high-end e-commerce (電子商務), architectural viz, VR/AR. Avoid it for Low-end mobile (行動), performance-limited (效能), critical accessibility (無障礙性), data tables/forms."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Deep Navy #001F3F, Forest Green #228B22, Burgundy #800020, Gold #FFD700, Silver #C0C0C0",
+      "Secondary palette: Complex gradients (5-10 stops), realistic lighting, shadow variations (20-40% darker)",
+      "Effects: WebGL/Three.js 3D, realistic shadows (layers), physics lighting, parallax (3-5 layers), smooth 3D (300-400ms)",
+      "Accessibility: ⚠ Not accessible; performance: ❌ Poor; dark mode: ◐ Partial; complexity: High.",
+      "Framework fit: Three.js 10/10, R3F 10/10, Babylon.js 10/10; era: 2020s Modern.",
+      "Best for: Gaming (遊戲), product showcase, immersive experiences, high-end e-commerce (電子商務), architectural viz, VR/AR"
+    ],
+    "colors": [
+      "#ffd700",
+      "#ffa500",
+      "#667eea",
+      "#764ba2",
+      "#001f3f",
+      "#228b22"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/05-3d-hyperrealism/README.md",
+      "design": "extra/uiuxskillProMax/generated/05-3d-hyperrealism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/05-3d-hyperrealism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "3D & Hyperrealism",
+      "3D & 超寫實主義",
+      "Depth, realistic textures, 3D models, spatial navigation, tactile, skeuomorphic elements, rich detail, immersive",
+      "Gaming (遊戲), product showcase, immersive experiences, high-end e-commerce (電子商務), architectural viz, VR/AR",
+      "Low-end mobile (行動), performance-limited (效能), critical accessibility (無障礙性), data tables/forms",
+      "Deep Navy #001F3F, Forest Green #228B22, Burgundy #800020, Gold #FFD700, Silver #C0C0C0",
+      "Complex gradients (5-10 stops), realistic lighting, shadow variations (20-40% darker)",
+      "Three.js 10/10, R3F 10/10, Babylon.js 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 60,
+    "slug": "uiuxpro-06-vibrant-block",
+    "name": "Vibrant & Block-based",
+    "monogram": "VB",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Vibrant & Block-based is a UI style reference for general interfaces, focused on Bold, energetic, playful, block layout, geometric shapes.",
+    "overview": [
+      "Vibrant & Block-based is a UI style reference for general interfaces, combining Bold, energetic, playful, block layout, geometric shapes, high color contrast, duotone, modern, energetic. The visual direction is shaped by Large sections (48px+ gaps), animated patterns, bold hover (color shift), scroll-snap, large type (32px+), 200-300ms.",
+      "Use it for Startups, creative agencies (創意), gaming (遊戲), social media (社交), youth-focused, entertainment (娛樂), consumer. Avoid it for Financial institutions, healthcare (健康), formal business, government, conservative, elderly."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neon Green #39FF14, Electric Purple #BF00FF, Vivid Pink #FF1493, Bright Cyan #00FFFF, Sunburst #FFAA00",
+      "Secondary palette: Complementary: Orange #FF7F00, Shocking Pink #FF006E, Lime #CCFF00, triadic schemes",
+      "Effects: Large sections (48px+ gaps), animated patterns, bold hover (color shift), scroll-snap, large type (32px+), 200-300ms",
+      "Accessibility: ◐ Ensure WCAG; performance: ⚡ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 10/10, Chakra 9/10, Styled 9/10; era: 2020s Modern.",
+      "Best for: Startups, creative agencies (創意), gaming (遊戲), social media (社交), youth-focused, entertainment (娛樂), consumer"
+    ],
+    "colors": [
+      "#39ff14",
+      "#bf00ff",
+      "#ff1493",
+      "#00ffff",
+      "#ffaa00",
+      "#ff006e"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Space Grotesk",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/06-vibrant-block/README.md",
+      "design": "extra/uiuxskillProMax/generated/06-vibrant-block/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/06-vibrant-block.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Vibrant & Block-based",
+      "活力 & 色塊風格",
+      "Bold, energetic, playful, block layout, geometric shapes, high color contrast, duotone, modern, energetic",
+      "Startups, creative agencies (創意), gaming (遊戲), social media (社交), youth-focused, entertainment (娛樂), consumer",
+      "Financial institutions, healthcare (健康), formal business, government, conservative, elderly",
+      "Neon Green #39FF14, Electric Purple #BF00FF, Vivid Pink #FF1493, Bright Cyan #00FFFF, Sunburst #FFAA00",
+      "Complementary: Orange #FF7F00, Shocking Pink #FF006E, Lime #CCFF00, triadic schemes",
+      "Tailwind 10/10, Chakra 9/10, Styled 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 61,
+    "slug": "uiuxpro-07-dark-mode-oled",
+    "name": "Dark Mode (OLED)",
+    "monogram": "DM",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Dark Mode (OLED) is a UI style reference for general interfaces, focused on Dark theme, low light, high contrast, deep black, midnight blue.",
+    "overview": [
+      "Dark Mode (OLED) is a UI style reference for general interfaces, combining Dark theme, low light, high contrast, deep black, midnight blue, eye-friendly, OLED, night mode, power efficient. The visual direction is shaped by Minimal glow (text-shadow: 0 0 10px), dark-to-light transitions, low white emission, high readability, visible focus.",
+      "Use it for Night-mode apps (應用程式), coding platforms (平台), entertainment (娛樂), eye-strain prevention, OLED devices, low-light. Avoid it for Print-first content, high-brightness outdoor, color-accuracy-critical."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Deep Black #000000, Dark Grey #121212, Midnight Blue #0A0E27",
+      "Secondary palette: Vibrant accents: Neon Green #39FF14, Electric Blue #0080FF, Gold #FFD700, Plasma Purple #BF00FF",
+      "Effects: Minimal glow (text-shadow: 0 0 10px), dark-to-light transitions, low white emission, high readability, visible focus",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Only; complexity: Low.",
+      "Framework fit: Tailwind 10/10, MUI 10/10, Chakra 10/10; era: 2020s Modern.",
+      "Best for: Night-mode apps (應用程式), coding platforms (平台), entertainment (娛樂), eye-strain prevention, OLED devices, low-light"
+    ],
+    "colors": [
+      "#000000",
+      "#121212",
+      "#39ff14",
+      "#0080ff",
+      "#ffd700",
+      "#bf00ff"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/07-dark-mode-oled/README.md",
+      "design": "extra/uiuxskillProMax/generated/07-dark-mode-oled/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/07-dark-mode-oled.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Dark Mode (OLED)",
+      "深色模式 (OLED)",
+      "Dark theme, low light, high contrast, deep black, midnight blue, eye-friendly, OLED, night mode, power efficient",
+      "Night-mode apps (應用程式), coding platforms (平台), entertainment (娛樂), eye-strain prevention, OLED devices, low-light",
+      "Print-first content, high-brightness outdoor, color-accuracy-critical",
+      "Deep Black #000000, Dark Grey #121212, Midnight Blue #0A0E27",
+      "Vibrant accents: Neon Green #39FF14, Electric Blue #0080FF, Gold #FFD700, Plasma Purple #BF00FF",
+      "Tailwind 10/10, MUI 10/10, Chakra 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 62,
+    "slug": "uiuxpro-08-accessible",
+    "name": "Accessible & Ethical",
+    "monogram": "AE",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Accessible & Ethical is a UI style reference for general interfaces, focused on High contrast, large text (16px+), keyboard navigation, screen reader friendly, WCAG compliant.",
+    "overview": [
+      "Accessible & Ethical is a UI style reference for general interfaces, combining High contrast, large text (16px+), keyboard navigation, screen reader friendly, WCAG compliant, focus state, semantic. The visual direction is shaped by Clear focus rings (3-4px), ARIA labels, skip links, responsive design, reduced motion, 44x44px touch targets.",
+      "Use it for Government, healthcare (健康), education, inclusive products (產品), large audience, legal compliance, public. Avoid it for None - accessibility universal (無障礙性)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: WCAG AA/AAA (4.5:1 min), simple primary, clear secondary, high luminosity (7:1+)",
+      "Secondary palette: Symbol-based colors (not color-only), supporting patterns, inclusive combinations",
+      "Effects: Clear focus rings (3-4px), ARIA labels, skip links, responsive design, reduced motion, 44x44px touch targets",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: All frameworks 10/10; era: Universal.",
+      "Best for: Government, healthcare (健康), education, inclusive products (產品), large audience, legal compliance, public"
+    ],
+    "colors": [
+      "#0066cc",
+      "#000000",
+      "#ffffff",
+      "#d32f2f",
+      "#0052a3"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/08-accessible/README.md",
+      "design": "extra/uiuxskillProMax/generated/08-accessible/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/08-accessible.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "一般",
+      "Accessible & Ethical",
+      "無障礙 & 道德設計",
+      "High contrast, large text (16px+), keyboard navigation, screen reader friendly, WCAG compliant, focus state, semantic",
+      "Government, healthcare (健康), education, inclusive products (產品), large audience, legal compliance, public",
+      "None - accessibility universal (無障礙性)",
+      "WCAG AA/AAA (4.5:1 min), simple primary, clear secondary, high luminosity (7:1+)",
+      "Symbol-based colors (not color-only), supporting patterns, inclusive combinations",
+      "All frameworks 10/10",
+      "Universal"
+    ]
+  },
+  {
+    "id": 63,
+    "slug": "uiuxpro-09-claymorphism",
+    "name": "Claymorphism",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Claymorphism is a UI style reference for general interfaces, focused on Soft 3D, chunky, playful, toy-like, bubbly.",
+    "overview": [
+      "Claymorphism is a UI style reference for general interfaces, combining Soft 3D, chunky, playful, toy-like, bubbly, thick borders (3-4px), double shadows, rounded (16-24px). The visual direction is shaped by Inner+outer shadows (subtle, no hard lines), soft press (200ms ease-out), fluffy elements, smooth transitions.",
+      "Use it for Educational apps (應用程式), children's apps (應用程式), SaaS platforms (SaaS), creative tools (創意), fun-focused, onboarding, casual games. Avoid it for Formal corporate (企業), professional services, data-critical, serious/medical, legal apps (應用程式), finance (金融)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Pastel: Soft Peach #FDBCB4, Baby Blue #ADD8E6, Mint #98FF98, Lilac #E6E6FA, light BG",
+      "Secondary palette: Soft gradients (pastel-to-pastel), light/dark variations (20-30%), gradient subtle",
+      "Effects: Inner+outer shadows (subtle, no hard lines), soft press (200ms ease-out), fluffy elements, smooth transitions",
+      "Accessibility: ⚠ Ensure 4.5:1; performance: ⚡ Good; dark mode: ◐ Partial; complexity: Medium.",
+      "Framework fit: Tailwind 9/10, CSS-in-JS 9/10; era: 2020s Modern.",
+      "Best for: Educational apps (應用程式), children's apps (應用程式), SaaS platforms (SaaS), creative tools (創意), fun-focused, onboarding, casual games"
+    ],
+    "colors": [
+      "#fef3f2",
+      "#f0f9ff",
+      "#ffffff",
+      "#e6e6e6",
+      "#fdbcb4",
+      "#f5a69c"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Nunito",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/09-claymorphism/README.md",
+      "design": "extra/uiuxskillProMax/generated/09-claymorphism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/09-claymorphism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Claymorphism",
+      "黏土擬態",
+      "Soft 3D, chunky, playful, toy-like, bubbly, thick borders (3-4px), double shadows, rounded (16-24px)",
+      "Educational apps (應用程式), children's apps (應用程式), SaaS platforms (SaaS), creative tools (創意), fun-focused, onboarding, casual games",
+      "Formal corporate (企業), professional services, data-critical, serious/medical, legal apps (應用程式), finance (金融)",
+      "Pastel: Soft Peach #FDBCB4, Baby Blue #ADD8E6, Mint #98FF98, Lilac #E6E6FA, light BG",
+      "Soft gradients (pastel-to-pastel), light/dark variations (20-30%), gradient subtle",
+      "Tailwind 9/10, CSS-in-JS 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 64,
+    "slug": "uiuxpro-10-aurora-ui",
+    "name": "Aurora UI",
+    "monogram": "AU",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Aurora UI is a UI style reference for general interfaces, focused on Vibrant gradients, smooth blend, Northern Lights effect, mesh gradient, luminous.",
+    "overview": [
+      "Aurora UI is a UI style reference for general interfaces, combining Vibrant gradients, smooth blend, Northern Lights effect, mesh gradient, luminous, atmospheric, abstract. The visual direction is shaped by Large flowing CSS/SVG gradients, subtle 8-12s animations, depth via color layering, smooth morph.",
+      "Use it for Modern SaaS (SaaS), creative agencies (創意), branding, music platforms (平台), lifestyle, premium products (產品), hero sections. Avoid it for Data-heavy dashboards (儀表板), critical accessibility (無障礙性), content-heavy where distraction issues."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Complementary: Blue-Orange, Purple-Yellow, Electric Blue #0080FF, Magenta #FF1493, Cyan #00FFFF",
+      "Secondary palette: Smooth transitions (Blue→Purple→Pink→Teal), iridescent effects, blend modes (screen, multiply)",
+      "Effects: Large flowing CSS/SVG gradients, subtle 8-12s animations, depth via color layering, smooth morph",
+      "Accessibility: ⚠ Text contrast; performance: ⚠ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 9/10, CSS-in-JS 10/10; era: 2020s Modern.",
+      "Best for: Modern SaaS (SaaS), creative agencies (創意), branding, music platforms (平台), lifestyle, premium products (產品), hero sections"
+    ],
+    "colors": [
+      "#667eea",
+      "#764ba2",
+      "#f093fb",
+      "#f5576c",
+      "#4facfe",
+      "#0080ff"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/10-aurora-ui/README.md",
+      "design": "extra/uiuxskillProMax/generated/10-aurora-ui/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/10-aurora-ui.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Aurora UI",
+      "極光 UI",
+      "Vibrant gradients, smooth blend, Northern Lights effect, mesh gradient, luminous, atmospheric, abstract",
+      "Modern SaaS (SaaS), creative agencies (創意), branding, music platforms (平台), lifestyle, premium products (產品), hero sections",
+      "Data-heavy dashboards (儀表板), critical accessibility (無障礙性), content-heavy where distraction issues",
+      "Complementary: Blue-Orange, Purple-Yellow, Electric Blue #0080FF, Magenta #FF1493, Cyan #00FFFF",
+      "Smooth transitions (Blue→Purple→Pink→Teal), iridescent effects, blend modes (screen, multiply)",
+      "Tailwind 9/10, CSS-in-JS 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 65,
+    "slug": "uiuxpro-11-retro-futurism",
+    "name": "Retro-Futurism",
+    "monogram": "RF",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Retro-Futurism is a UI style reference for general interfaces, focused on Vintage sci-fi, 80s aesthetic, neon glow, geometric patterns, CRT scanlines.",
+    "overview": [
+      "Retro-Futurism is a UI style reference for general interfaces, combining Vintage sci-fi, 80s aesthetic, neon glow, geometric patterns, CRT scanlines, pixel art, cyberpunk, synthwave. The visual direction is shaped by CRT scanlines (::before overlay), neon glow (text-shadow+box-shadow), glitch effects (skew/offset keyframes).",
+      "Use it for Gaming (遊戲), entertainment (娛樂), music platforms (平台), tech brands (品牌), artistic projects, nostalgic, cyberpunk. Avoid it for Conservative industries, critical accessibility (無障礙性), professional/corporate (企業), elderly, legal/finance (金融)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neon Blue #0080FF, Hot Pink #FF006E, Cyan #00FFFF, Deep Black #1A1A2E, Purple #5D34D0",
+      "Secondary palette: Metallic Silver #C0C0C0, Gold #FFD700, duotone, 80s Pink #FF10F0, neon accents",
+      "Effects: CRT scanlines (::before overlay), neon glow (text-shadow+box-shadow), glitch effects (skew/offset keyframes)",
+      "Accessibility: ⚠ High contrast/strain; performance: ⚠ Moderate; dark mode: ✓ Dark focused; complexity: Medium.",
+      "Framework fit: Tailwind 8/10, CSS-in-JS 9/10; era: 1980s Retro.",
+      "Best for: Gaming (遊戲), entertainment (娛樂), music platforms (平台), tech brands (品牌), artistic projects, nostalgic, cyberpunk"
+    ],
+    "colors": [
+      "#1a1a2e",
+      "#0080ff",
+      "#ff006e",
+      "#00ffff",
+      "#5d34d0",
+      "#c0c0c0"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Orbitron",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/11-retro-futurism/README.md",
+      "design": "extra/uiuxskillProMax/generated/11-retro-futurism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/11-retro-futurism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Retro-Futurism",
+      "復古未來主義",
+      "Vintage sci-fi, 80s aesthetic, neon glow, geometric patterns, CRT scanlines, pixel art, cyberpunk, synthwave",
+      "Gaming (遊戲), entertainment (娛樂), music platforms (平台), tech brands (品牌), artistic projects, nostalgic, cyberpunk",
+      "Conservative industries, critical accessibility (無障礙性), professional/corporate (企業), elderly, legal/finance (金融)",
+      "Neon Blue #0080FF, Hot Pink #FF006E, Cyan #00FFFF, Deep Black #1A1A2E, Purple #5D34D0",
+      "Metallic Silver #C0C0C0, Gold #FFD700, duotone, 80s Pink #FF10F0, neon accents",
+      "Tailwind 8/10, CSS-in-JS 9/10",
+      "1980s Retro"
+    ]
+  },
+  {
+    "id": 66,
+    "slug": "uiuxpro-12-flat-design",
+    "name": "Flat Design",
+    "monogram": "FD",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Flat Design is a UI style reference for general interfaces, focused on 2D, minimalist, bold colors, no shadows, clean lines.",
+    "overview": [
+      "Flat Design is a UI style reference for general interfaces, combining 2D, minimalist, bold colors, no shadows, clean lines, simple shapes, typography-focused, modern, icon-heavy. The visual direction is shaped by No gradients/shadows, simple hover (color/opacity shift), fast loading, clean transitions (150-200ms ease), minimal icons.",
+      "Use it for Web apps (網頁), mobile apps (行動), cross-platform, startup MVPs, user-friendly, SaaS, dashboards (儀表板), corporate (企業). Avoid it for Complex 3D, premium/luxury, artistic portfolios (作品集), immersive experiences, high-detail."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Solid bright: Red, Orange, Blue, Green, limited palette (4-6 max)",
+      "Secondary palette: Complementary colors, muted secondaries, high saturation, clean accents",
+      "Effects: No gradients/shadows, simple hover (color/opacity shift), fast loading, clean transitions (150-200ms ease), minimal icons",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Bootstrap 10/10, MUI 9/10; era: 2010s Modern.",
+      "Best for: Web apps (網頁), mobile apps (行動), cross-platform, startup MVPs, user-friendly, SaaS, dashboards (儀表板), corporate (企業)"
+    ],
+    "colors": [
+      "#3498db",
+      "#e74c3c",
+      "#f39c12",
+      "#27ae60",
+      "#9b59b6",
+      "#f1c40f"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Open Sans",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/12-flat-design/README.md",
+      "design": "extra/uiuxskillProMax/generated/12-flat-design/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/12-flat-design.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Flat Design",
+      "扁平化設計",
+      "2D, minimalist, bold colors, no shadows, clean lines, simple shapes, typography-focused, modern, icon-heavy",
+      "Web apps (網頁), mobile apps (行動), cross-platform, startup MVPs, user-friendly, SaaS, dashboards (儀表板), corporate (企業)",
+      "Complex 3D, premium/luxury, artistic portfolios (作品集), immersive experiences, high-detail",
+      "Solid bright: Red, Orange, Blue, Green, limited palette (4-6 max)",
+      "Complementary colors, muted secondaries, high saturation, clean accents",
+      "Tailwind 10/10, Bootstrap 10/10, MUI 9/10",
+      "2010s Modern"
+    ]
+  },
+  {
+    "id": 67,
+    "slug": "uiuxpro-13-skeuomorphism",
+    "name": "Skeuomorphism",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Skeuomorphism is a UI style reference for general interfaces, focused on Realistic, texture, depth, 3D appearance, real-world metaphors.",
+    "overview": [
+      "Skeuomorphism is a UI style reference for general interfaces, combining Realistic, texture, depth, 3D appearance, real-world metaphors, shadows, gradients, tactile, detailed, material. The visual direction is shaped by Realistic shadows (layers), depth (perspective), texture details (noise, grain), realistic animations (300-500ms).",
+      "Use it for Legacy apps (應用程式), gaming (遊戲), immersive storytelling, premium products (產品), luxury, realistic simulations, education. Avoid it for Modern enterprise, critical accessibility (無障礙性), low-performance (效能), web (use Flat/Modern) (網頁)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Rich realistic: wood, leather, metal colors, detailed gradients (8-12 stops), metallic effects",
+      "Secondary palette: Realistic lighting gradients, shadow variations (30-50% darker), texture overlays, material colors",
+      "Effects: Realistic shadows (layers), depth (perspective), texture details (noise, grain), realistic animations (300-500ms)",
+      "Accessibility: ⚠ Textures reduce readability; performance: ❌ Poor; dark mode: ◐ Partial; complexity: High.",
+      "Framework fit: CSS-in-JS 7/10, Custom 8/10; era: 2007-2012 iOS.",
+      "Best for: Legacy apps (應用程式), gaming (遊戲), immersive storytelling, premium products (產品), luxury, realistic simulations, education"
+    ],
+    "colors": [
+      "#c8c8c8",
+      "#a0a0a0",
+      "#f5f5f5",
+      "#d8d8d8",
+      "#b8b8b8",
+      "#e8e8e8"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Helvetica Neue",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/13-skeuomorphism/README.md",
+      "design": "extra/uiuxskillProMax/generated/13-skeuomorphism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/13-skeuomorphism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Skeuomorphism",
+      "擬物化設計",
+      "Realistic, texture, depth, 3D appearance, real-world metaphors, shadows, gradients, tactile, detailed, material",
+      "Legacy apps (應用程式), gaming (遊戲), immersive storytelling, premium products (產品), luxury, realistic simulations, education",
+      "Modern enterprise, critical accessibility (無障礙性), low-performance (效能), web (use Flat/Modern) (網頁)",
+      "Rich realistic: wood, leather, metal colors, detailed gradients (8-12 stops), metallic effects",
+      "Realistic lighting gradients, shadow variations (30-50% darker), texture overlays, material colors",
+      "CSS-in-JS 7/10, Custom 8/10",
+      "2007-2012 iOS"
+    ]
+  },
+  {
+    "id": 68,
+    "slug": "uiuxpro-14-liquid-glass",
+    "name": "Liquid Glass",
+    "monogram": "LG",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Liquid Glass is a UI style reference for general interfaces, focused on Flowing glass, morphing, smooth transitions, fluid effects, translucent.",
+    "overview": [
+      "Liquid Glass is a UI style reference for general interfaces, combining Flowing glass, morphing, smooth transitions, fluid effects, translucent, animated blur, iridescent, chromatic aberration. The visual direction is shaped by Morphing elements (SVG/CSS), fluid animations (400-600ms curves), dynamic blur (backdrop-filter), color transitions.",
+      "Use it for Premium SaaS (SaaS), high-end e-commerce (電子商務), creative platforms (創意), branding experiences, luxury portfolios (作品集). Avoid it for Performance-limited (效能), critical accessibility (無障礙性), complex data, budget projects."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Vibrant iridescent (rainbow spectrum), translucent base with opacity shifts, gradient fluidity",
+      "Secondary palette: Chromatic aberration (Red-Cyan), iridescent oil-spill, fluid gradient blends, holographic effects",
+      "Effects: Morphing elements (SVG/CSS), fluid animations (400-600ms curves), dynamic blur (backdrop-filter), color transitions",
+      "Accessibility: ⚠ Text contrast; performance: ⚠ Moderate-Poor; dark mode: ✓ Full; complexity: High.",
+      "Framework fit: Framer Motion 10/10, GSAP 10/10; era: 2020s Modern.",
+      "Best for: Premium SaaS (SaaS), high-end e-commerce (電子商務), creative platforms (創意), branding experiences, luxury portfolios (作品集)"
+    ],
+    "colors": [
+      "#667eea",
+      "#764ba2",
+      "#f093fb"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/14-liquid-glass/README.md",
+      "design": "extra/uiuxskillProMax/generated/14-liquid-glass/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/14-liquid-glass.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 3
+    },
+    "searchTerms": [
+      "一般",
+      "Liquid Glass",
+      "液態玻璃",
+      "Flowing glass, morphing, smooth transitions, fluid effects, translucent, animated blur, iridescent, chromatic aberration",
+      "Premium SaaS (SaaS), high-end e-commerce (電子商務), creative platforms (創意), branding experiences, luxury portfolios (作品集)",
+      "Performance-limited (效能), critical accessibility (無障礙性), complex data, budget projects",
+      "Vibrant iridescent (rainbow spectrum), translucent base with opacity shifts, gradient fluidity",
+      "Chromatic aberration (Red-Cyan), iridescent oil-spill, fluid gradient blends, holographic effects",
+      "Framer Motion 10/10, GSAP 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 69,
+    "slug": "uiuxpro-15-motion-driven",
+    "name": "Motion-Driven",
+    "monogram": "MD",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Motion-Driven is a UI style reference for general interfaces, focused on Animation-heavy, microinteractions, smooth transitions, scroll effects, parallax.",
+    "overview": [
+      "Motion-Driven is a UI style reference for general interfaces, combining Animation-heavy, microinteractions, smooth transitions, scroll effects, parallax, entrance anim, page transitions. The visual direction is shaped by Scroll anim (Intersection Observer), hover (300-400ms), entrance, parallax (3-5 layers), page transitions.",
+      "Use it for Portfolio sites (網站), storytelling platforms (平台), interactive experiences, entertainment apps (娛樂), creative (創意), SaaS. Avoid it for Data dashboards (儀表板), critical accessibility (無障礙性), low-power devices, content-heavy, motion-sensitive."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Bold colors emphasize movement, high contrast animated, dynamic gradients, accent action colors",
+      "Secondary palette: Transitional states, success (Green #22C55E), error (Red #EF4444), neutral feedback",
+      "Effects: Scroll anim (Intersection Observer), hover (300-400ms), entrance, parallax (3-5 layers), page transitions",
+      "Accessibility: ⚠ Prefers-reduced-motion; performance: ⚠ Good; dark mode: ✓ Full; complexity: High.",
+      "Framework fit: GSAP 10/10, Framer Motion 10/10; era: 2020s Modern.",
+      "Best for: Portfolio sites (網站), storytelling platforms (平台), interactive experiences, entertainment apps (娛樂), creative (創意), SaaS"
+    ],
+    "colors": [
+      "#22c55e",
+      "#ef4444"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/15-motion-driven/README.md",
+      "design": "extra/uiuxskillProMax/generated/15-motion-driven/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/15-motion-driven.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 2
+    },
+    "searchTerms": [
+      "一般",
+      "Motion-Driven",
+      "動態驅動",
+      "Animation-heavy, microinteractions, smooth transitions, scroll effects, parallax, entrance anim, page transitions",
+      "Portfolio sites (網站), storytelling platforms (平台), interactive experiences, entertainment apps (娛樂), creative (創意), SaaS",
+      "Data dashboards (儀表板), critical accessibility (無障礙性), low-power devices, content-heavy, motion-sensitive",
+      "Bold colors emphasize movement, high contrast animated, dynamic gradients, accent action colors",
+      "Transitional states, success (Green #22C55E), error (Red #EF4444), neutral feedback",
+      "GSAP 10/10, Framer Motion 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 70,
+    "slug": "uiuxpro-16-micro-interactions",
+    "name": "Micro-interactions",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Micro-interactions is a UI style reference for general interfaces, focused on Small animations, gesture-based, tactile feedback, subtle animations, contextual interactions.",
+    "overview": [
+      "Micro-interactions is a UI style reference for general interfaces, combining Small animations, gesture-based, tactile feedback, subtle animations, contextual interactions, responsive. The visual direction is shaped by Small hover (50-100ms), loading spinners, success/error state anim, gesture-triggered (swipe/pinch), haptic.",
+      "Use it for Mobile apps (行動), touchscreen UIs, productivity tools (工具), user-friendly, consumer apps (應用程式), interactive components. Avoid it for Desktop-only, critical performance (效能), accessibility-first (alternatives needed) (無障礙性)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Subtle color shifts (10-20%), feedback: Green #22C55E, Red #EF4444, Amber #F59E0B",
+      "Secondary palette: Accent feedback, neutral supporting, clear action indicators",
+      "Effects: Small hover (50-100ms), loading spinners, success/error state anim, gesture-triggered (swipe/pinch), haptic",
+      "Accessibility: ✓ Good; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Framer Motion 10/10, React Spring 9/10; era: 2020s Modern.",
+      "Best for: Mobile apps (行動), touchscreen UIs, productivity tools (工具), user-friendly, consumer apps (應用程式), interactive components"
+    ],
+    "colors": [
+      "#3b82f6",
+      "#22c55e",
+      "#ef4444",
+      "#f59e0b"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/16-micro-interactions/README.md",
+      "design": "extra/uiuxskillProMax/generated/16-micro-interactions/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/16-micro-interactions.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 4
+    },
+    "searchTerms": [
+      "一般",
+      "Micro-interactions",
+      "微互動",
+      "Small animations, gesture-based, tactile feedback, subtle animations, contextual interactions, responsive",
+      "Mobile apps (行動), touchscreen UIs, productivity tools (工具), user-friendly, consumer apps (應用程式), interactive components",
+      "Desktop-only, critical performance (效能), accessibility-first (alternatives needed) (無障礙性)",
+      "Subtle color shifts (10-20%), feedback: Green #22C55E, Red #EF4444, Amber #F59E0B",
+      "Accent feedback, neutral supporting, clear action indicators",
+      "Framer Motion 10/10, React Spring 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 71,
+    "slug": "uiuxpro-17-inclusive-design",
+    "name": "Inclusive Design",
+    "monogram": "ID",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Inclusive Design is a UI style reference for general interfaces, focused on Accessible, color-blind friendly, high contrast, haptic feedback, voice interaction.",
+    "overview": [
+      "Inclusive Design is a UI style reference for general interfaces, combining Accessible, color-blind friendly, high contrast, haptic feedback, voice interaction, screen reader, WCAG AAA, universal. The visual direction is shaped by Haptic feedback (vibration), voice guidance, focus indicators (4px+ ring), motion options, alt content, semantic.",
+      "Use it for Public services, education, healthcare (健康), finance (金融), government, accessible consumer, inclusive. Avoid it for None - accessibility universal (無障礙性)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: WCAG AAA (7:1+ contrast), avoid red-green only, symbol-based indicators, high contrast primary",
+      "Secondary palette: Supporting patterns (stripes, dots, hatch), symbols, combinations, clear non-color indicators",
+      "Effects: Haptic feedback (vibration), voice guidance, focus indicators (4px+ ring), motion options, alt content, semantic",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: All frameworks 10/10; era: Universal.",
+      "Best for: Public services, education, healthcare (健康), finance (金融), government, accessible consumer, inclusive"
+    ],
+    "colors": [
+      "#0066cc",
+      "#003366",
+      "#2563eb",
+      "#f97316",
+      "#b91c1c",
+      "#006644"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Atkinson Hyperlegible",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/17-inclusive-design/README.md",
+      "design": "extra/uiuxskillProMax/generated/17-inclusive-design/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/17-inclusive-design.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Inclusive Design",
+      "包容性設計",
+      "Accessible, color-blind friendly, high contrast, haptic feedback, voice interaction, screen reader, WCAG AAA, universal",
+      "Public services, education, healthcare (健康), finance (金融), government, accessible consumer, inclusive",
+      "None - accessibility universal (無障礙性)",
+      "WCAG AAA (7:1+ contrast), avoid red-green only, symbol-based indicators, high contrast primary",
+      "Supporting patterns (stripes, dots, hatch), symbols, combinations, clear non-color indicators",
+      "All frameworks 10/10",
+      "Universal"
+    ]
+  },
+  {
+    "id": 72,
+    "slug": "uiuxpro-18-zero-interface",
+    "name": "Zero Interface",
+    "monogram": "ZI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Zero Interface is a UI style reference for general interfaces, focused on Minimal visible UI, voice-first, gesture-based, AI-driven, invisible controls.",
+    "overview": [
+      "Zero Interface is a UI style reference for general interfaces, combining Minimal visible UI, voice-first, gesture-based, AI-driven, invisible controls, predictive, context-aware, ambient. The visual direction is shaped by Voice recognition UI, gesture detection, AI predictions (smooth reveal), progressive disclosure, smart suggestions.",
+      "Use it for Voice assistants, AI platforms (平台), future-forward UX, smart home, contextual computing, ambient experiences. Avoid it for Complex workflows, data-entry heavy, traditional systems, legacy support, explicit control."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neutral backgrounds: Soft white #FAFAFA, light grey #F0F0F0, warm off-white #F5F1E8",
+      "Secondary palette: Subtle feedback: light green, light red, minimal UI elements, soft accents",
+      "Effects: Voice recognition UI, gesture detection, AI predictions (smooth reveal), progressive disclosure, smart suggestions",
+      "Accessibility: ✓ Excellent; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Custom 10/10; era: 2020s AI-Era.",
+      "Best for: Voice assistants, AI platforms (平台), future-forward UX, smart home, contextual computing, ambient experiences"
+    ],
+    "colors": [
+      "#fafafa",
+      "#e5e5e5",
+      "#f5f1e8",
+      "#f0f0f0"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/18-zero-interface/README.md",
+      "design": "extra/uiuxskillProMax/generated/18-zero-interface/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/18-zero-interface.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 4
+    },
+    "searchTerms": [
+      "一般",
+      "Zero Interface",
+      "零介面",
+      "Minimal visible UI, voice-first, gesture-based, AI-driven, invisible controls, predictive, context-aware, ambient",
+      "Voice assistants, AI platforms (平台), future-forward UX, smart home, contextual computing, ambient experiences",
+      "Complex workflows, data-entry heavy, traditional systems, legacy support, explicit control",
+      "Neutral backgrounds: Soft white #FAFAFA, light grey #F0F0F0, warm off-white #F5F1E8",
+      "Subtle feedback: light green, light red, minimal UI elements, soft accents",
+      "Tailwind 10/10, Custom 10/10",
+      "2020s AI-Era"
+    ]
+  },
+  {
+    "id": 73,
+    "slug": "uiuxpro-19-soft-ui-evolution",
+    "name": "Soft UI Evolution",
+    "monogram": "SU",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Soft UI Evolution is a UI style reference for general interfaces, focused on Evolved soft UI, better contrast, modern aesthetics, subtle depth, accessibility-focused.",
+    "overview": [
+      "Soft UI Evolution is a UI style reference for general interfaces, combining Evolved soft UI, better contrast, modern aesthetics, subtle depth, accessibility-focused, improved shadows, hybrid. The visual direction is shaped by Improved shadows (softer than flat, clearer than neumorphism), modern (200-300ms), focus visible, WCAG AA/AAA.",
+      "Use it for Modern enterprise apps (企業應用), SaaS platforms (SaaS), health/wellness (健康), modern business tools (工具), professional, hybrid. Avoid it for Extreme minimalism, critical performance (效能), systems without modern OS."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Improved contrast pastels: Soft Blue #87CEEB, Soft Pink #FFB6C1, Soft Green #90EE90, better hierarchy",
+      "Secondary palette: Better combinations, accessible secondary, supporting with improved contrast, modern accents",
+      "Effects: Improved shadows (softer than flat, clearer than neumorphism), modern (200-300ms), focus visible, WCAG AA/AAA",
+      "Accessibility: ✓ WCAG AA+; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 9/10, MUI 9/10, Chakra 9/10; era: 2020s Modern.",
+      "Best for: Modern enterprise apps (企業應用), SaaS platforms (SaaS), health/wellness (健康), modern business tools (工具), professional, hybrid"
+    ],
+    "colors": [
+      "#e0f2fe",
+      "#f0f9ff",
+      "#ecfeff",
+      "#ffffff",
+      "#f0f0f0",
+      "#60a5fa"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/19-soft-ui-evolution/README.md",
+      "design": "extra/uiuxskillProMax/generated/19-soft-ui-evolution/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/19-soft-ui-evolution.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Soft UI Evolution",
+      "柔和 UI 進化版",
+      "Evolved soft UI, better contrast, modern aesthetics, subtle depth, accessibility-focused, improved shadows, hybrid",
+      "Modern enterprise apps (企業應用), SaaS platforms (SaaS), health/wellness (健康), modern business tools (工具), professional, hybrid",
+      "Extreme minimalism, critical performance (效能), systems without modern OS",
+      "Improved contrast pastels: Soft Blue #87CEEB, Soft Pink #FFB6C1, Soft Green #90EE90, better hierarchy",
+      "Better combinations, accessible secondary, supporting with improved contrast, modern accents",
+      "Tailwind 9/10, MUI 9/10, Chakra 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 74,
+    "slug": "uiuxpro-20-hero-centric",
+    "name": "Hero-Centric Design",
+    "monogram": "HC",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Hero-Centric Design is a UI style reference for landing pages, focused on Large hero section, compelling headline, high-contrast CTA, product showcase, value proposition.",
+    "overview": [
+      "Hero-Centric Design is a UI style reference for landing pages, combining Large hero section, compelling headline, high-contrast CTA, product showcase, value proposition, hero image/video, dramatic visual. The visual direction is shaped by Smooth scroll reveal, fade-in animations on hero, subtle background parallax, CTA glow/pulse effect.",
+      "Use it for SaaS landing pages (登陸頁面), product launches, service landing pages (登陸頁面), B2B platforms (平台), tech companies. Avoid it for Complex navigation, multi-page experiences, data-heavy applications."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Brand primary color, white/light backgrounds for contrast, accent color for CTA",
+      "Secondary palette: Supporting colors for secondary CTAs, accent highlights, trust elements (testimonials, logos)",
+      "Effects: Smooth scroll reveal, fade-in animations on hero, subtle background parallax, CTA glow/pulse effect",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 10/10, Bootstrap 9/10; era: 2020s Modern.",
+      "Best for: SaaS landing pages (登陸頁面), product launches, service landing pages (登陸頁面), B2B platforms (平台), tech companies"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/20-hero-centric/README.md",
+      "design": "extra/uiuxskillProMax/generated/20-hero-centric/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/20-hero-centric.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Hero-Centric Design",
+      "主視覺導向設計",
+      "Large hero section, compelling headline, high-contrast CTA, product showcase, value proposition, hero image/video, dramatic visual",
+      "SaaS landing pages (登陸頁面), product launches, service landing pages (登陸頁面), B2B platforms (平台), tech companies",
+      "Complex navigation, multi-page experiences, data-heavy applications",
+      "Brand primary color, white/light backgrounds for contrast, accent color for CTA",
+      "Supporting colors for secondary CTAs, accent highlights, trust elements (testimonials, logos)",
+      "Tailwind 10/10, Bootstrap 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 75,
+    "slug": "uiuxpro-21-conversion-optimized",
+    "name": "Conversion-Optimized",
+    "monogram": "CO",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Conversion-Optimized is a UI style reference for landing pages, focused on Form-focused, minimalist design, single CTA focus, high contrast, urgency elements.",
+    "overview": [
+      "Conversion-Optimized is a UI style reference for landing pages, combining Form-focused, minimalist design, single CTA focus, high contrast, urgency elements, trust signals, social proof, clear value. The visual direction is shaped by Hover states on CTA (color shift, slight scale), form field focus animations, loading spinner, success feedback.",
+      "Use it for E-commerce product pages (電子商務), free trial signups, lead generation, SaaS pricing pages (SaaS), limited-time offers. Avoid it for Complex feature explanations, multi-product showcases, technical documentation."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Primary brand color, high-contrast white/light backgrounds, warning/urgency colors for time-limited offers",
+      "Secondary palette: Secondary CTA color (muted), trust element colors (testimonial highlights), accent for key benefits",
+      "Effects: Hover states on CTA (color shift, slight scale), form field focus animations, loading spinner, success feedback",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 10/10, Bootstrap 9/10; era: 2020s Modern.",
+      "Best for: E-commerce product pages (電子商務), free trial signups, lead generation, SaaS pricing pages (SaaS), limited-time offers"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/21-conversion-optimized/README.md",
+      "design": "extra/uiuxskillProMax/generated/21-conversion-optimized/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/21-conversion-optimized.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Conversion-Optimized",
+      "轉換最佳化",
+      "Form-focused, minimalist design, single CTA focus, high contrast, urgency elements, trust signals, social proof, clear value",
+      "E-commerce product pages (電子商務), free trial signups, lead generation, SaaS pricing pages (SaaS), limited-time offers",
+      "Complex feature explanations, multi-product showcases, technical documentation",
+      "Primary brand color, high-contrast white/light backgrounds, warning/urgency colors for time-limited offers",
+      "Secondary CTA color (muted), trust element colors (testimonial highlights), accent for key benefits",
+      "Tailwind 10/10, Bootstrap 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 76,
+    "slug": "uiuxpro-22-feature-rich",
+    "name": "Feature-Rich Showcase",
+    "monogram": "FR",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Feature-Rich Showcase is a UI style reference for landing pages, focused on Multiple feature sections, grid layout, benefit cards, visual feature demonstrations, interactive elements.",
+    "overview": [
+      "Feature-Rich Showcase is a UI style reference for landing pages, combining Multiple feature sections, grid layout, benefit cards, visual feature demonstrations, interactive elements, problem-solution pairs. The visual direction is shaped by Card hover effects (lift/scale), icon animations on scroll, feature toggle animations, smooth section transitions.",
+      "Use it for Enterprise SaaS (SaaS), software tools landing pages (登陸頁面), platform services, complex product explanations, B2B products (產品). Avoid it for Simple product pages, early-stage startups with few features, entertainment landing pages (登陸頁面)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Primary brand, bright secondary colors for feature cards, contrasting accent for CTAs",
+      "Secondary palette: Supporting colors for: benefits (green), problems (red/orange), features (blue/purple), social proof (neutral)",
+      "Effects: Card hover effects (lift/scale), icon animations on scroll, feature toggle animations, smooth section transitions",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 10/10, Bootstrap 9/10; era: 2020s Modern.",
+      "Best for: Enterprise SaaS (SaaS), software tools landing pages (登陸頁面), platform services, complex product explanations, B2B products (產品)"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/22-feature-rich/README.md",
+      "design": "extra/uiuxskillProMax/generated/22-feature-rich/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/22-feature-rich.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Feature-Rich Showcase",
+      "功能豐富展示",
+      "Multiple feature sections, grid layout, benefit cards, visual feature demonstrations, interactive elements, problem-solution pairs",
+      "Enterprise SaaS (SaaS), software tools landing pages (登陸頁面), platform services, complex product explanations, B2B products (產品)",
+      "Simple product pages, early-stage startups with few features, entertainment landing pages (登陸頁面)",
+      "Primary brand, bright secondary colors for feature cards, contrasting accent for CTAs",
+      "Supporting colors for: benefits (green), problems (red/orange), features (blue/purple), social proof (neutral)",
+      "Tailwind 10/10, Bootstrap 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 77,
+    "slug": "uiuxpro-23-minimal-direct",
+    "name": "Minimal & Direct",
+    "monogram": "MD",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Minimal & Direct is a UI style reference for landing pages, focused on Minimal text, white space heavy, single column layout, direct messaging, clean typography.",
+    "overview": [
+      "Minimal & Direct is a UI style reference for landing pages, combining Minimal text, white space heavy, single column layout, direct messaging, clean typography, visual-centric, fast-loading. The visual direction is shaped by Very subtle hover effects, minimal animations, fast page load (no heavy animations), smooth scroll.",
+      "Use it for Simple service landing pages (登陸頁面), indie products (產品), consulting services, micro SaaS (SaaS), freelancer portfolios (作品集). Avoid it for Feature-heavy products (產品), complex explanations, multi-product showcases."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Monochromatic primary, white background, single accent color for CTA, black/dark grey text",
+      "Secondary palette: Minimal secondary colors, reserved for critical CTAs only, neutral supporting elements",
+      "Effects: Very subtle hover effects, minimal animations, fast page load (no heavy animations), smooth scroll",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Bootstrap 10/10; era: 2020s Modern.",
+      "Best for: Simple service landing pages (登陸頁面), indie products (產品), consulting services, micro SaaS (SaaS), freelancer portfolios (作品集)"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/23-minimal-direct/README.md",
+      "design": "extra/uiuxskillProMax/generated/23-minimal-direct/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/23-minimal-direct.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Minimal & Direct",
+      "極簡直觀",
+      "Minimal text, white space heavy, single column layout, direct messaging, clean typography, visual-centric, fast-loading",
+      "Simple service landing pages (登陸頁面), indie products (產品), consulting services, micro SaaS (SaaS), freelancer portfolios (作品集)",
+      "Feature-heavy products (產品), complex explanations, multi-product showcases",
+      "Monochromatic primary, white background, single accent color for CTA, black/dark grey text",
+      "Minimal secondary colors, reserved for critical CTAs only, neutral supporting elements",
+      "Tailwind 10/10, Bootstrap 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 78,
+    "slug": "uiuxpro-24-social-proof",
+    "name": "Social Proof-Focused",
+    "monogram": "SP",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Social Proof-Focused is a UI style reference for landing pages, focused on Testimonials prominent, client logos displayed, case studies sections, reviews/ratings, user avatars.",
+    "overview": [
+      "Social Proof-Focused is a UI style reference for landing pages, combining Testimonials prominent, client logos displayed, case studies sections, reviews/ratings, user avatars, success metrics, credibility markers. The visual direction is shaped by Testimonial carousel animations, logo grid fade-in, stat counter animations (number count-up), review star ratings.",
+      "Use it for B2B SaaS (SaaS), professional services, premium products (產品), e-commerce conversion pages (電子商務), established brands (品牌). Avoid it for Startup MVPs, products without users (產品), niche/experimental products (產品)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Primary brand, trust colors (blue), success/growth colors (green), neutral backgrounds",
+      "Secondary palette: Testimonial highlight colors, logo grid backgrounds (light grey), badge/achievement colors",
+      "Effects: Testimonial carousel animations, logo grid fade-in, stat counter animations (number count-up), review star ratings",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 10/10, Bootstrap 9/10; era: 2020s Modern.",
+      "Best for: B2B SaaS (SaaS), professional services, premium products (產品), e-commerce conversion pages (電子商務), established brands (品牌)"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/24-social-proof/README.md",
+      "design": "extra/uiuxskillProMax/generated/24-social-proof/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/24-social-proof.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Social Proof-Focused",
+      "社會證明導向",
+      "Testimonials prominent, client logos displayed, case studies sections, reviews/ratings, user avatars, success metrics, credibility markers",
+      "B2B SaaS (SaaS), professional services, premium products (產品), e-commerce conversion pages (電子商務), established brands (品牌)",
+      "Startup MVPs, products without users (產品), niche/experimental products (產品)",
+      "Primary brand, trust colors (blue), success/growth colors (green), neutral backgrounds",
+      "Testimonial highlight colors, logo grid backgrounds (light grey), badge/achievement colors",
+      "Tailwind 10/10, Bootstrap 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 79,
+    "slug": "uiuxpro-25-interactive-demo",
+    "name": "Interactive Product Demo",
+    "monogram": "IP",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Interactive Product Demo is a UI style reference for landing pages, focused on Embedded product mockup/video, interactive elements, product walkthrough, step-by-step guides, hover-to-reveal features.",
+    "overview": [
+      "Interactive Product Demo is a UI style reference for landing pages, combining Embedded product mockup/video, interactive elements, product walkthrough, step-by-step guides, hover-to-reveal features, embedded demos. The visual direction is shaped by Product animation playback, step progression animations, hover reveal effects, smooth zoom on interaction.",
+      "Use it for SaaS platforms (SaaS), tool/software products (產品), productivity apps landing pages (登陸頁面), developer tools (工具), productivity software. Avoid it for Simple services, consulting, non-digital products (產品), complexity-averse audiences (複雜度)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Primary brand, interface colors matching product, demo highlight colors for interactive elements",
+      "Secondary palette: Product UI colors, tutorial step colors (numbered progression), hover state indicators",
+      "Effects: Product animation playback, step progression animations, hover reveal effects, smooth zoom on interaction",
+      "Accessibility: ✓ WCAG AA; performance: ⚠ Good (video/interactive); dark mode: ✓ Full; complexity: High.",
+      "Framework fit: Tailwind 9/10, React 10/10, Framer Motion 9/10; era: 2020s Modern.",
+      "Best for: SaaS platforms (SaaS), tool/software products (產品), productivity apps landing pages (登陸頁面), developer tools (工具), productivity software"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/25-interactive-demo/README.md",
+      "design": "extra/uiuxskillProMax/generated/25-interactive-demo/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/25-interactive-demo.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Interactive Product Demo",
+      "互動產品演示",
+      "Embedded product mockup/video, interactive elements, product walkthrough, step-by-step guides, hover-to-reveal features, embedded demos",
+      "SaaS platforms (SaaS), tool/software products (產品), productivity apps landing pages (登陸頁面), developer tools (工具), productivity software",
+      "Simple services, consulting, non-digital products (產品), complexity-averse audiences (複雜度)",
+      "Primary brand, interface colors matching product, demo highlight colors for interactive elements",
+      "Product UI colors, tutorial step colors (numbered progression), hover state indicators",
+      "Tailwind 9/10, React 10/10, Framer Motion 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 80,
+    "slug": "uiuxpro-26-trust-authority",
+    "name": "Trust & Authority",
+    "monogram": "TA",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Trust & Authority is a UI style reference for landing pages, focused on Certificates/badges displayed, expert credentials, case studies with metrics, before/after comparisons, industry recognition.",
+    "overview": [
+      "Trust & Authority is a UI style reference for landing pages, combining Certificates/badges displayed, expert credentials, case studies with metrics, before/after comparisons, industry recognition, security badges. The visual direction is shaped by Badge hover effects, metric pulse animations, certificate carousel, smooth stat reveal.",
+      "Use it for Healthcare/medical landing pages (登陸頁面), financial services, enterprise software, premium/luxury products (產品), legal services. Avoid it for Casual products (產品), entertainment (娛樂), viral/social-first products (社交)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Professional colors (blue/grey), trust colors, certification badge colors (gold/silver accents)",
+      "Secondary palette: Certificate highlight colors, metric showcase colors, comparison highlight (success green)",
+      "Effects: Badge hover effects, metric pulse animations, certificate carousel, smooth stat reveal",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Bootstrap 9/10; era: 2020s Modern.",
+      "Best for: Healthcare/medical landing pages (登陸頁面), financial services, enterprise software, premium/luxury products (產品), legal services"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Playfair Display",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/26-trust-authority/README.md",
+      "design": "extra/uiuxskillProMax/generated/26-trust-authority/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/26-trust-authority.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Trust & Authority",
+      "信任與權威",
+      "Certificates/badges displayed, expert credentials, case studies with metrics, before/after comparisons, industry recognition, security badges",
+      "Healthcare/medical landing pages (登陸頁面), financial services, enterprise software, premium/luxury products (產品), legal services",
+      "Casual products (產品), entertainment (娛樂), viral/social-first products (社交)",
+      "Professional colors (blue/grey), trust colors, certification badge colors (gold/silver accents)",
+      "Certificate highlight colors, metric showcase colors, comparison highlight (success green)",
+      "Tailwind 10/10, Bootstrap 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 81,
+    "slug": "uiuxpro-27-storytelling",
+    "name": "Storytelling-Driven",
+    "monogram": "SD",
+    "categoryKey": "styleLanding",
+    "categoryLabelZh": "落地页风格模板",
+    "categoryLabelEn": "Landing Page Templates",
+    "summary": "Storytelling-Driven is a UI style reference for landing pages, focused on Narrative flow, visual story progression, section transitions, consistent character/brand voice, emotional messaging.",
+    "overview": [
+      "Storytelling-Driven is a UI style reference for landing pages, combining Narrative flow, visual story progression, section transitions, consistent character/brand voice, emotional messaging, journey visualization. The visual direction is shaped by Section-to-section animations, scroll-triggered reveals, character/icon animations, morphing transitions, parallax narrative.",
+      "Use it for Brand/startup stories, mission-driven products (產品), premium/lifestyle brands (品牌), documentary-style products (產品), educational. Avoid it for Technical/complex products (unless narrative-driven) (產品), traditional enterprise software."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Brand primary, warm/emotional colors, varied accent colors per story section, high visual variety",
+      "Secondary palette: Story section color coding, emotional state colors (calm, excitement, success), transitional gradients",
+      "Effects: Section-to-section animations, scroll-triggered reveals, character/icon animations, morphing transitions, parallax narrative",
+      "Accessibility: ✓ WCAG AA; performance: ⚠ Moderate (animations); dark mode: ✓ Full; complexity: High.",
+      "Framework fit: GSAP 10/10, Framer Motion 9/10, Tailwind 8/10; era: 2020s Modern.",
+      "Best for: Brand/startup stories, mission-driven products (產品), premium/lifestyle brands (品牌), documentary-style products (產品), educational"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": "Merriweather",
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/27-storytelling/README.md",
+      "design": "extra/uiuxskillProMax/generated/27-storytelling/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/27-storytelling.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "登陸頁面",
+      "Storytelling-Driven",
+      "故事驅動",
+      "Narrative flow, visual story progression, section transitions, consistent character/brand voice, emotional messaging, journey visualization",
+      "Brand/startup stories, mission-driven products (產品), premium/lifestyle brands (品牌), documentary-style products (產品), educational",
+      "Technical/complex products (unless narrative-driven) (產品), traditional enterprise software",
+      "Brand primary, warm/emotional colors, varied accent colors per story section, high visual variety",
+      "Story section color coding, emotional state colors (calm, excitement, success), transitional gradients",
+      "GSAP 10/10, Framer Motion 9/10, Tailwind 8/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 82,
+    "slug": "uiuxpro-28-data-dense-dashboard",
+    "name": "Data-Dense Dashboard",
+    "monogram": "DD",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Data-Dense Dashboard is a UI style reference for analytics and BI dashboards, focused on Multiple charts/widgets, data tables, KPI cards, minimal padding, grid layout.",
+    "overview": [
+      "Data-Dense Dashboard is a UI style reference for analytics and BI dashboards, combining Multiple charts/widgets, data tables, KPI cards, minimal padding, grid layout, space-efficient, maximum data visibility. The visual direction is shaped by Hover tooltips, chart zoom on click, row highlighting on hover, smooth filter animations, data loading spinners.",
+      "Use it for Business intelligence dashboards (儀表板), financial analytics (分析), enterprise reporting, operational dashboards (儀表板), data warehousing. Avoid it for Marketing dashboards (儀表板), consumer-facing analytics (分析), simple reporting."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neutral primary (light grey/white #F5F5F5), data colors (blue/green/red), dark text #333333",
+      "Secondary palette: Chart colors: success (green #22C55E), warning (amber #F59E0B), alert (red #EF4444), neutral (grey)",
+      "Effects: Hover tooltips, chart zoom on click, row highlighting on hover, smooth filter animations, data loading spinners",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Recharts 9/10, Chart.js 9/10, D3.js 10/10; era: 2020s Modern.",
+      "Best for: Business intelligence dashboards (儀表板), financial analytics (分析), enterprise reporting, operational dashboards (儀表板), data warehousing"
+    ],
+    "colors": [
+      "#f5f5f5",
+      "#333333",
+      "#22c55e",
+      "#f59e0b",
+      "#ef4444"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": "JetBrains Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/28-data-dense-dashboard/README.md",
+      "design": "extra/uiuxskillProMax/generated/28-data-dense-dashboard/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/28-data-dense-dashboard.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Data-Dense Dashboard",
+      "資料密集儀表板",
+      "Multiple charts/widgets, data tables, KPI cards, minimal padding, grid layout, space-efficient, maximum data visibility",
+      "Business intelligence dashboards (儀表板), financial analytics (分析), enterprise reporting, operational dashboards (儀表板), data warehousing",
+      "Marketing dashboards (儀表板), consumer-facing analytics (分析), simple reporting",
+      "Neutral primary (light grey/white #F5F5F5), data colors (blue/green/red), dark text #333333",
+      "Chart colors: success (green #22C55E), warning (amber #F59E0B), alert (red #EF4444), neutral (grey)",
+      "Recharts 9/10, Chart.js 9/10, D3.js 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 83,
+    "slug": "uiuxpro-29-heatmap-density",
+    "name": "Heat Map & Heatmap Style",
+    "monogram": "HM",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Heat Map & Heatmap Style is a UI style reference for analytics and BI dashboards, focused on Color-coded grid/matrix, data intensity visualization, geographical heat maps, correlation matrices, cell-based representation.",
+    "overview": [
+      "Heat Map & Heatmap Style is a UI style reference for analytics and BI dashboards, combining Color-coded grid/matrix, data intensity visualization, geographical heat maps, correlation matrices, cell-based representation, gradient coloring. The visual direction is shaped by Color gradient transitions on data change, cell highlighting on hover, tooltip reveal on click, smooth color animation.",
+      "Use it for Geographical analysis, performance matrices (效能), correlation analysis, user behavior heatmaps, temperature/intensity data. Avoid it for Linear data representation, categorical comparisons (use bar charts), small datasets."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Gradient scale: Cool (blue #0080FF) to hot (red #FF0000), neutral middle (white/yellow)",
+      "Secondary palette: Support gradients: Light (cool blue) to dark (warm red), divergent for positive/negative data, monochromatic options",
+      "Effects: Color gradient transitions on data change, cell highlighting on hover, tooltip reveal on click, smooth color animation",
+      "Accessibility: ⚠ Colorblind considerations; performance: ⚡ Excellent; dark mode: ✓ Full (with adjustments); complexity: Medium.",
+      "Framework fit: D3.js 10/10, Recharts 8/10, Chart.js 8/10; era: 2020s Modern.",
+      "Best for: Geographical analysis, performance matrices (效能), correlation analysis, user behavior heatmaps, temperature/intensity data"
+    ],
+    "colors": [
+      "#1e293b",
+      "#1e3a5f",
+      "#0369a1",
+      "#0284c7",
+      "#38bdf8",
+      "#7dd3fc"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/29-heatmap-density/README.md",
+      "design": "extra/uiuxskillProMax/generated/29-heatmap-density/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/29-heatmap-density.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Heat Map & Heatmap Style",
+      "熱圖風格",
+      "Color-coded grid/matrix, data intensity visualization, geographical heat maps, correlation matrices, cell-based representation, gradient coloring",
+      "Geographical analysis, performance matrices (效能), correlation analysis, user behavior heatmaps, temperature/intensity data",
+      "Linear data representation, categorical comparisons (use bar charts), small datasets",
+      "Gradient scale: Cool (blue #0080FF) to hot (red #FF0000), neutral middle (white/yellow)",
+      "Support gradients: Light (cool blue) to dark (warm red), divergent for positive/negative data, monochromatic options",
+      "D3.js 10/10, Recharts 8/10, Chart.js 8/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 84,
+    "slug": "uiuxpro-30-executive-summary",
+    "name": "Executive Dashboard",
+    "monogram": "ED",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Executive Dashboard is a UI style reference for analytics and BI dashboards, focused on High-level KPIs, large key metrics, minimal detail, summary view, trend indicators.",
+    "overview": [
+      "Executive Dashboard is a UI style reference for analytics and BI dashboards, combining High-level KPIs, large key metrics, minimal detail, summary view, trend indicators, at-a-glance insights, executive summary. The visual direction is shaped by KPI value animations (count-up), trend arrow direction animations, metric card hover lift, alert pulse effect.",
+      "Use it for C-suite dashboards (儀表板), business summary reports, decision-maker dashboards (儀表板), strategic planning views. Avoid it for Detailed analyst dashboards (儀表板), technical deep-dives, operational monitoring (監控)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Brand colors, professional palette (blue/grey/white), accent for KPIs, red for alerts/concerns",
+      "Secondary palette: KPI highlight colors: positive (green), negative (red), neutral (grey), trend arrow colors",
+      "Effects: KPI value animations (count-up), trend arrow direction animations, metric card hover lift, alert pulse effect",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Recharts 9/10, Chart.js 9/10, MUI 9/10; era: 2020s Modern.",
+      "Best for: C-suite dashboards (儀表板), business summary reports, decision-maker dashboards (儀表板), strategic planning views"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/30-executive-summary/README.md",
+      "design": "extra/uiuxskillProMax/generated/30-executive-summary/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/30-executive-summary.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Executive Dashboard",
+      "高管儀表板",
+      "High-level KPIs, large key metrics, minimal detail, summary view, trend indicators, at-a-glance insights, executive summary",
+      "C-suite dashboards (儀表板), business summary reports, decision-maker dashboards (儀表板), strategic planning views",
+      "Detailed analyst dashboards (儀表板), technical deep-dives, operational monitoring (監控)",
+      "Brand colors, professional palette (blue/grey/white), accent for KPIs, red for alerts/concerns",
+      "KPI highlight colors: positive (green), negative (red), neutral (grey), trend arrow colors",
+      "Recharts 9/10, Chart.js 9/10, MUI 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 85,
+    "slug": "uiuxpro-31-real-time-monitoring",
+    "name": "Real-Time Monitoring",
+    "monogram": "RT",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Real-Time Monitoring is a UI style reference for analytics and BI dashboards, focused on Live data updates, status indicators, alert notifications, streaming data visualization, active monitoring.",
+    "overview": [
+      "Real-Time Monitoring is a UI style reference for analytics and BI dashboards, combining Live data updates, status indicators, alert notifications, streaming data visualization, active monitoring, streaming charts. The visual direction is shaped by Real-time chart animations, alert pulse/glow, status indicator blink animation, smooth data stream updates, loading effect.",
+      "Use it for System monitoring dashboards (儀表板), DevOps dashboards (儀表板), real-time analytics (分析), stock market dashboards (儀表板), live event tracking. Avoid it for Historical analysis, long-term trend reports, archived data dashboards (儀表板)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Alert colors: critical (red #FF0000), warning (orange #FFA500), normal (green #22C55E), updating (blue animation)",
+      "Secondary palette: Status indicator colors, chart line colors varying by metric, streaming data highlight colors",
+      "Effects: Real-time chart animations, alert pulse/glow, status indicator blink animation, smooth data stream updates, loading effect",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Good (real-time load); dark mode: ✓ Full; complexity: High.",
+      "Framework fit: Recharts 9/10, D3.js 10/10, Socket.io 10/10; era: 2020s Modern.",
+      "Best for: System monitoring dashboards (儀表板), DevOps dashboards (儀表板), real-time analytics (分析), stock market dashboards (儀表板), live event tracking"
+    ],
+    "colors": [
+      "#ff0000",
+      "#ffa500",
+      "#22c55e"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": "JetBrains Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/31-real-time-monitoring/README.md",
+      "design": "extra/uiuxskillProMax/generated/31-real-time-monitoring/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/31-real-time-monitoring.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 3
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Real-Time Monitoring",
+      "即時監控",
+      "Live data updates, status indicators, alert notifications, streaming data visualization, active monitoring, streaming charts",
+      "System monitoring dashboards (儀表板), DevOps dashboards (儀表板), real-time analytics (分析), stock market dashboards (儀表板), live event tracking",
+      "Historical analysis, long-term trend reports, archived data dashboards (儀表板)",
+      "Alert colors: critical (red #FF0000), warning (orange #FFA500), normal (green #22C55E), updating (blue animation)",
+      "Status indicator colors, chart line colors varying by metric, streaming data highlight colors",
+      "Recharts 9/10, D3.js 10/10, Socket.io 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 86,
+    "slug": "uiuxpro-32-drill-down-analytics",
+    "name": "Drill-Down Analytics",
+    "monogram": "DA",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Drill-Down Analytics is a UI style reference for analytics and BI dashboards, focused on Hierarchical data exploration, expandable sections, interactive drill-down paths, summary-to-detail flow, context preservation.",
+    "overview": [
+      "Drill-Down Analytics is a UI style reference for analytics and BI dashboards, combining Hierarchical data exploration, expandable sections, interactive drill-down paths, summary-to-detail flow, context preservation. The visual direction is shaped by Drill-down expand animations, breadcrumb click transitions, smooth detail reveal, level change smooth, data reload animation.",
+      "Use it for Sales analytics (分析), product analytics (分析), funnel analysis, multi-dimensional data exploration, business intelligence. Avoid it for Simple linear data, single-metric dashboards (儀表板), streaming real-time dashboards (儀表板)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Primary brand, breadcrumb colors, drill-level indicator colors, hierarchy depth colors",
+      "Secondary palette: Drill-down path indicator colors, level-specific colors, highlight colors for selected level, transition colors",
+      "Effects: Drill-down expand animations, breadcrumb click transitions, smooth detail reveal, level change smooth, data reload animation",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Good; dark mode: ✓ Full; complexity: High.",
+      "Framework fit: D3.js 10/10, Recharts 8/10, AG Grid 9/10; era: 2020s Modern.",
+      "Best for: Sales analytics (分析), product analytics (分析), funnel analysis, multi-dimensional data exploration, business intelligence"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/32-drill-down-analytics/README.md",
+      "design": "extra/uiuxskillProMax/generated/32-drill-down-analytics/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/32-drill-down-analytics.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Drill-Down Analytics",
+      "深入分析",
+      "Hierarchical data exploration, expandable sections, interactive drill-down paths, summary-to-detail flow, context preservation",
+      "Sales analytics (分析), product analytics (分析), funnel analysis, multi-dimensional data exploration, business intelligence",
+      "Simple linear data, single-metric dashboards (儀表板), streaming real-time dashboards (儀表板)",
+      "Primary brand, breadcrumb colors, drill-level indicator colors, hierarchy depth colors",
+      "Drill-down path indicator colors, level-specific colors, highlight colors for selected level, transition colors",
+      "D3.js 10/10, Recharts 8/10, AG Grid 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 87,
+    "slug": "uiuxpro-33-comparative-analytics",
+    "name": "Comparative Analysis Dashboard",
+    "monogram": "CA",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Comparative Analysis Dashboard is a UI style reference for analytics and BI dashboards, focused on Side-by-side comparisons, period-over-period metrics, A/B test results, regional comparisons, performance benchmarks.",
+    "overview": [
+      "Comparative Analysis Dashboard is a UI style reference for analytics and BI dashboards, combining Side-by-side comparisons, period-over-period metrics, A/B test results, regional comparisons, performance benchmarks. The visual direction is shaped by Comparison bar animations (grow to value), delta indicator animations (direction arrows), highlight on compare.",
+      "Use it for Period-over-period reporting, A/B test dashboards (儀表板), market comparison, competitive analysis, regional performance (效能). Avoid it for Single metric dashboards (儀表板), future projections (use forecasting), real-time only (no historical)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Comparison colors: primary (blue), comparison (orange/purple), delta indicator (green/red)",
+      "Secondary palette: Winning metric color (green), losing metric color (red), neutral comparison (grey), benchmark colors",
+      "Effects: Comparison bar animations (grow to value), delta indicator animations (direction arrows), highlight on compare",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Recharts 9/10, Chart.js 9/10, D3.js 9/10; era: 2020s Modern.",
+      "Best for: Period-over-period reporting, A/B test dashboards (儀表板), market comparison, competitive analysis, regional performance (效能)"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/33-comparative-analytics/README.md",
+      "design": "extra/uiuxskillProMax/generated/33-comparative-analytics/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/33-comparative-analytics.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Comparative Analysis Dashboard",
+      "比較分析儀表板",
+      "Side-by-side comparisons, period-over-period metrics, A/B test results, regional comparisons, performance benchmarks",
+      "Period-over-period reporting, A/B test dashboards (儀表板), market comparison, competitive analysis, regional performance (效能)",
+      "Single metric dashboards (儀表板), future projections (use forecasting), real-time only (no historical)",
+      "Comparison colors: primary (blue), comparison (orange/purple), delta indicator (green/red)",
+      "Winning metric color (green), losing metric color (red), neutral comparison (grey), benchmark colors",
+      "Recharts 9/10, Chart.js 9/10, D3.js 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 88,
+    "slug": "uiuxpro-34-predictive-analytics",
+    "name": "Predictive Analytics",
+    "monogram": "PA",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Predictive Analytics is a UI style reference for analytics and BI dashboards, focused on Forecast lines, confidence intervals, trend projections, scenario modeling, AI-driven insights.",
+    "overview": [
+      "Predictive Analytics is a UI style reference for analytics and BI dashboards, combining Forecast lines, confidence intervals, trend projections, scenario modeling, AI-driven insights, anomaly detection visualization. The visual direction is shaped by Forecast line animation on draw, confidence band fade-in, anomaly pulse alert, smoothing function animations.",
+      "Use it for Forecasting dashboards (儀表板), anomaly detection systems, trend prediction dashboards (儀表板), AI-powered analytics (分析), budget planning. Avoid it for Historical-only dashboards (儀表板), simple reporting, real-time operational dashboards (儀表板)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Forecast line color (distinct from actual), confidence interval shading, anomaly highlight (red alert), trend colors",
+      "Secondary palette: High confidence (dark color), low confidence (light color), anomaly colors (red/orange), normal trend (green/blue)",
+      "Effects: Forecast line animation on draw, confidence band fade-in, anomaly pulse alert, smoothing function animations",
+      "Accessibility: ✓ WCAG AA; performance: ⚠ Good (computation); dark mode: ✓ Full; complexity: High.",
+      "Framework fit: D3.js 10/10, Recharts 8/10, TensorFlow.js 8/10; era: 2020s Modern.",
+      "Best for: Forecasting dashboards (儀表板), anomaly detection systems, trend prediction dashboards (儀表板), AI-powered analytics (分析), budget planning"
+    ],
+    "colors": [
+      "#3b82f6",
+      "#a855f7"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/34-predictive-analytics/README.md",
+      "design": "extra/uiuxskillProMax/generated/34-predictive-analytics/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/34-predictive-analytics.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 2
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Predictive Analytics",
+      "預測分析",
+      "Forecast lines, confidence intervals, trend projections, scenario modeling, AI-driven insights, anomaly detection visualization",
+      "Forecasting dashboards (儀表板), anomaly detection systems, trend prediction dashboards (儀表板), AI-powered analytics (分析), budget planning",
+      "Historical-only dashboards (儀表板), simple reporting, real-time operational dashboards (儀表板)",
+      "Forecast line color (distinct from actual), confidence interval shading, anomaly highlight (red alert), trend colors",
+      "High confidence (dark color), low confidence (light color), anomaly colors (red/orange), normal trend (green/blue)",
+      "D3.js 10/10, Recharts 8/10, TensorFlow.js 8/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 89,
+    "slug": "uiuxpro-35-user-behavior-analytics",
+    "name": "User Behavior Analytics",
+    "monogram": "UB",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "User Behavior Analytics is a UI style reference for analytics and BI dashboards, focused on Funnel visualization, user flow diagrams, conversion tracking, engagement metrics, user journey mapping.",
+    "overview": [
+      "User Behavior Analytics is a UI style reference for analytics and BI dashboards, combining Funnel visualization, user flow diagrams, conversion tracking, engagement metrics, user journey mapping, cohort analysis. The visual direction is shaped by Funnel animation (fill-down), flow diagram animations (connection draw), conversion pulse, engagement bar fill.",
+      "Use it for Conversion funnel analysis, user journey tracking, engagement analytics (分析), cohort analysis, retention tracking. Avoid it for Real-time operational metrics, technical system monitoring (監控), financial transactions."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Funnel stage colors: high engagement (green), drop-off (red), conversion (blue), user flow arrows (grey)",
+      "Secondary palette: Stage completion colors (success), abandonment colors (warning), engagement levels (gradient), cohort colors",
+      "Effects: Funnel animation (fill-down), flow diagram animations (connection draw), conversion pulse, engagement bar fill",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Recharts 9/10, Chart.js 9/10, D3.js 9/10; era: 2020s Modern.",
+      "Best for: Conversion funnel analysis, user journey tracking, engagement analytics (分析), cohort analysis, retention tracking"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/35-user-behavior-analytics/README.md",
+      "design": "extra/uiuxskillProMax/generated/35-user-behavior-analytics/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/35-user-behavior-analytics.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "User Behavior Analytics",
+      "使用者行為分析",
+      "Funnel visualization, user flow diagrams, conversion tracking, engagement metrics, user journey mapping, cohort analysis",
+      "Conversion funnel analysis, user journey tracking, engagement analytics (分析), cohort analysis, retention tracking",
+      "Real-time operational metrics, technical system monitoring (監控), financial transactions",
+      "Funnel stage colors: high engagement (green), drop-off (red), conversion (blue), user flow arrows (grey)",
+      "Stage completion colors (success), abandonment colors (warning), engagement levels (gradient), cohort colors",
+      "Recharts 9/10, Chart.js 9/10, D3.js 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 90,
+    "slug": "uiuxpro-36-financial-analytics",
+    "name": "Financial Dashboard",
+    "monogram": "FD",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Financial Dashboard is a UI style reference for analytics and BI dashboards, focused on Revenue metrics, profit/loss visualization, budget tracking, financial ratios, portfolio performance.",
+    "overview": [
+      "Financial Dashboard is a UI style reference for analytics and BI dashboards, combining Revenue metrics, profit/loss visualization, budget tracking, financial ratios, portfolio performance, cash flow, audit trail. The visual direction is shaped by Number animations (count-up), trend direction indicators, percentage change animations, profit/loss color transitions.",
+      "Use it for Financial reporting, accounting dashboards (儀表板), portfolio tracking, budget monitoring (監控), banking analytics (分析). Avoid it for Simple business dashboards (儀表板), entertainment/social metrics (娛樂), non-financial data."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Financial colors: profit (green #22C55E), loss (red #EF4444), neutral (grey), trust (dark blue #003366)",
+      "Secondary palette: Revenue highlight (green), expenses (red), budget variance (orange/red), balance (grey), accuracy (blue)",
+      "Effects: Number animations (count-up), trend direction indicators, percentage change animations, profit/loss color transitions",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Recharts 9/10, Chart.js 9/10, AG Grid 10/10; era: 2020s Modern.",
+      "Best for: Financial reporting, accounting dashboards (儀表板), portfolio tracking, budget monitoring (監控), banking analytics (分析)"
+    ],
+    "colors": [
+      "#334155",
+      "#10b981",
+      "#22c55e",
+      "#ef4444",
+      "#003366"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": "JetBrains Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/36-financial-analytics/README.md",
+      "design": "extra/uiuxskillProMax/generated/36-financial-analytics/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/36-financial-analytics.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Financial Dashboard",
+      "財務儀表板",
+      "Revenue metrics, profit/loss visualization, budget tracking, financial ratios, portfolio performance, cash flow, audit trail",
+      "Financial reporting, accounting dashboards (儀表板), portfolio tracking, budget monitoring (監控), banking analytics (分析)",
+      "Simple business dashboards (儀表板), entertainment/social metrics (娛樂), non-financial data",
+      "Financial colors: profit (green #22C55E), loss (red #EF4444), neutral (grey), trust (dark blue #003366)",
+      "Revenue highlight (green), expenses (red), budget variance (orange/red), balance (grey), accuracy (blue)",
+      "Recharts 9/10, Chart.js 9/10, AG Grid 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 91,
+    "slug": "uiuxpro-37-sales-intelligence",
+    "name": "Sales Intelligence Dashboard",
+    "monogram": "SI",
+    "categoryKey": "styleAnalytics",
+    "categoryLabelZh": "分析仪表板模板",
+    "categoryLabelEn": "Analytics Dashboard Templates",
+    "summary": "Sales Intelligence Dashboard is a UI style reference for analytics and BI dashboards, focused on Deal pipeline, sales metrics, territory performance, sales rep leaderboard, win-loss analysis.",
+    "overview": [
+      "Sales Intelligence Dashboard is a UI style reference for analytics and BI dashboards, combining Deal pipeline, sales metrics, territory performance, sales rep leaderboard, win-loss analysis, quota tracking, forecast accuracy. The visual direction is shaped by Deal movement animations, metric updates, leaderboard ranking changes, gauge needle movements, status change highlights.",
+      "Use it for CRM dashboards (儀表板), sales management, opportunity tracking, performance management (效能), quota planning. Avoid it for Marketing analytics (分析), customer support metrics, HR dashboards (儀表板)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Sales colors: won (green), lost (red), in-progress (blue), blocked (orange), quota met (gold), quota missed (grey)",
+      "Secondary palette: Pipeline stage colors, rep performance colors, quota achievement colors, forecast accuracy colors",
+      "Effects: Deal movement animations, metric updates, leaderboard ranking changes, gauge needle movements, status change highlights",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Recharts 9/10, Chart.js 9/10; era: 2020s Modern.",
+      "Best for: CRM dashboards (儀表板), sales management, opportunity tracking, performance management (效能), quota planning"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/37-sales-intelligence/README.md",
+      "design": "extra/uiuxskillProMax/generated/37-sales-intelligence/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/37-sales-intelligence.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "商業智慧/分析",
+      "Sales Intelligence Dashboard",
+      "銷售智慧儀表板",
+      "Deal pipeline, sales metrics, territory performance, sales rep leaderboard, win-loss analysis, quota tracking, forecast accuracy",
+      "CRM dashboards (儀表板), sales management, opportunity tracking, performance management (效能), quota planning",
+      "Marketing analytics (分析), customer support metrics, HR dashboards (儀表板)",
+      "Sales colors: won (green), lost (red), in-progress (blue), blocked (orange), quota met (gold), quota missed (grey)",
+      "Pipeline stage colors, rep performance colors, quota achievement colors, forecast accuracy colors",
+      "Recharts 9/10, Chart.js 9/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 92,
+    "slug": "uiuxpro-38-neubrutalism",
+    "name": "Neubrutalism",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Neubrutalism is a UI style reference for general interfaces, focused on Bold borders, black outlines, primary colors, thick shadows, no gradients.",
+    "overview": [
+      "Neubrutalism is a UI style reference for general interfaces, combining Bold borders, black outlines, primary colors, thick shadows, no gradients, flat colors, 45° shadows, playful, Gen Z. The visual direction is shaped by box-shadow: 4px 4px 0 #000, border: 3px solid #000, no gradients, sharp corners (0px), bold typography.",
+      "Use it for Gen Z brands (品牌), startups, creative agencies (創意), Figma-style apps (應用程式), Notion-style interfaces, tech blogs. Avoid it for Luxury brands (品牌), finance (金融), healthcare (健康), conservative industries (too playful)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #FFEB3B (Yellow), #FF5252 (Red), #2196F3 (Blue), #000000 (Black borders)",
+      "Secondary palette: Limited accent colors, high contrast combinations, no gradients allowed",
+      "Effects: box-shadow: 4px 4px 0 #000, border: 3px solid #000, no gradients, sharp corners (0px), bold typography",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Bootstrap 8/10; era: 2020s Modern.",
+      "Best for: Gen Z brands (品牌), startups, creative agencies (創意), Figma-style apps (應用程式), Notion-style interfaces, tech blogs"
+    ],
+    "colors": [
+      "#fff8e7",
+      "#ff6b6b",
+      "#4ecdc4",
+      "#ffe66d",
+      "#a8e6cf",
+      "#e8e8e8"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Space Grotesk",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/38-neubrutalism/README.md",
+      "design": "extra/uiuxskillProMax/generated/38-neubrutalism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/38-neubrutalism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Neubrutalism",
+      "新粗野主義",
+      "Bold borders, black outlines, primary colors, thick shadows, no gradients, flat colors, 45° shadows, playful, Gen Z",
+      "Gen Z brands (品牌), startups, creative agencies (創意), Figma-style apps (應用程式), Notion-style interfaces, tech blogs",
+      "Luxury brands (品牌), finance (金融), healthcare (健康), conservative industries (too playful)",
+      "#FFEB3B (Yellow), #FF5252 (Red), #2196F3 (Blue), #000000 (Black borders)",
+      "Limited accent colors, high contrast combinations, no gradients allowed",
+      "Tailwind 10/10, Bootstrap 8/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 93,
+    "slug": "uiuxpro-39-bento-box",
+    "name": "Bento Box Grid",
+    "monogram": "BG",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Bento Box Grid is a UI style reference for general interfaces, focused on Modular cards, asymmetric grid, varied sizes, Apple-style, dashboard tiles.",
+    "overview": [
+      "Bento Box Grid is a UI style reference for general interfaces, combining Modular cards, asymmetric grid, varied sizes, Apple-style, dashboard tiles, negative space, clean hierarchy, cards. The visual direction is shaped by grid-template with varied spans, rounded-xl (16px), subtle shadows, hover scale (1.02), smooth transitions.",
+      "Use it for Dashboards (儀表板), product pages, portfolios (作品集), Apple-style marketing (行銷), feature showcases, SaaS. Avoid it for Dense data tables, text-heavy content, real-time monitoring (監控)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neutral base + brand accent, #FFFFFF, #F5F5F5, brand primary",
+      "Secondary palette: Subtle gradients, shadow variations, accent highlights for interactive cards",
+      "Effects: grid-template with varied spans, rounded-xl (16px), subtle shadows, hover scale (1.02), smooth transitions",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, CSS Grid 10/10; era: 2020s Apple.",
+      "Best for: Dashboards (儀表板), product pages, portfolios (作品集), Apple-style marketing (行銷), feature showcases, SaaS"
+    ],
+    "colors": [
+      "#ffffff",
+      "#f5f5f5"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/39-bento-box/README.md",
+      "design": "extra/uiuxskillProMax/generated/39-bento-box/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/39-bento-box.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 2
+    },
+    "searchTerms": [
+      "一般",
+      "Bento Box Grid",
+      "便當盒網格",
+      "Modular cards, asymmetric grid, varied sizes, Apple-style, dashboard tiles, negative space, clean hierarchy, cards",
+      "Dashboards (儀表板), product pages, portfolios (作品集), Apple-style marketing (行銷), feature showcases, SaaS",
+      "Dense data tables, text-heavy content, real-time monitoring (監控)",
+      "Neutral base + brand accent, #FFFFFF, #F5F5F5, brand primary",
+      "Subtle gradients, shadow variations, accent highlights for interactive cards",
+      "Tailwind 10/10, CSS Grid 10/10",
+      "2020s Apple"
+    ]
+  },
+  {
+    "id": 94,
+    "slug": "uiuxpro-40-y2k-revival",
+    "name": "Y2K Aesthetic",
+    "monogram": "Y2",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Y2K Aesthetic is a UI style reference for general interfaces, focused on Neon pink, chrome, metallic, bubblegum, iridescent.",
+    "overview": [
+      "Y2K Aesthetic is a UI style reference for general interfaces, combining Neon pink, chrome, metallic, bubblegum, iridescent, glossy, retro-futurism, 2000s, futuristic nostalgia. The visual direction is shaped by linear-gradient metallic, glossy buttons, 3D chrome effects, glow animations, bubble shapes.",
+      "Use it for Fashion brands (品牌), music platforms (平台), Gen Z brands (品牌), nostalgia marketing (行銷), entertainment (娛樂), youth-focused. Avoid it for B2B enterprise, healthcare (健康), finance (金融), conservative industries, elderly users."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #FF69B4 (Hot Pink), #00FFFF (Cyan), #C0C0C0 (Silver), #9400D3 (Purple)",
+      "Secondary palette: Metallic gradients, glossy overlays, iridescent effects, chrome textures",
+      "Effects: linear-gradient metallic, glossy buttons, 3D chrome effects, glow animations, bubble shapes",
+      "Accessibility: ⚠ Check contrast; performance: ⚠ Good; dark mode: ◐ Partial; complexity: Medium.",
+      "Framework fit: Tailwind 8/10, CSS-in-JS 9/10; era: Y2K 2000s.",
+      "Best for: Fashion brands (品牌), music platforms (平台), Gen Z brands (品牌), nostalgia marketing (行銷), entertainment (娛樂), youth-focused"
+    ],
+    "colors": [
+      "#ff00ff",
+      "#00ffff",
+      "#ffff00",
+      "#ff69b4",
+      "#c0c0c0",
+      "#9400d3"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Orbitron",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/40-y2k-revival/README.md",
+      "design": "extra/uiuxskillProMax/generated/40-y2k-revival/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/40-y2k-revival.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Y2K Aesthetic",
+      "Y2K 美學",
+      "Neon pink, chrome, metallic, bubblegum, iridescent, glossy, retro-futurism, 2000s, futuristic nostalgia",
+      "Fashion brands (品牌), music platforms (平台), Gen Z brands (品牌), nostalgia marketing (行銷), entertainment (娛樂), youth-focused",
+      "B2B enterprise, healthcare (健康), finance (金融), conservative industries, elderly users",
+      "#FF69B4 (Hot Pink), #00FFFF (Cyan), #C0C0C0 (Silver), #9400D3 (Purple)",
+      "Metallic gradients, glossy overlays, iridescent effects, chrome textures",
+      "Tailwind 8/10, CSS-in-JS 9/10",
+      "Y2K 2000s"
+    ]
+  },
+  {
+    "id": 95,
+    "slug": "uiuxpro-41-cyberpunk",
+    "name": "Cyberpunk UI",
+    "monogram": "CU",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Cyberpunk UI is a UI style reference for general interfaces, focused on Neon, dark mode, terminal, HUD, sci-fi.",
+    "overview": [
+      "Cyberpunk UI is a UI style reference for general interfaces, combining Neon, dark mode, terminal, HUD, sci-fi, glitch, dystopian, futuristic, matrix, tech noir. The visual direction is shaped by Neon glow (text-shadow), glitch animations (skew/offset), scanlines (::before overlay), terminal fonts.",
+      "Use it for Gaming platforms (遊戲), tech products (產品), crypto apps (應用程式), sci-fi applications, developer tools (工具), entertainment (娛樂). Avoid it for Corporate enterprise (企業), healthcare (健康), family apps (應用程式), conservative brands (品牌), elderly users."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #00FF00 (Matrix Green), #FF00FF (Magenta), #00FFFF (Cyan), #0D0D0D (Dark)",
+      "Secondary palette: Neon gradients, scanline overlays, glitch colors, terminal green accents",
+      "Effects: Neon glow (text-shadow), glitch animations (skew/offset), scanlines (::before overlay), terminal fonts",
+      "Accessibility: ⚠ Limited (dark+neon); performance: ⚠ Moderate; dark mode: ✓ Only; complexity: Medium.",
+      "Framework fit: Tailwind 8/10, Custom CSS 10/10; era: 2020s Cyberpunk.",
+      "Best for: Gaming platforms (遊戲), tech products (產品), crypto apps (應用程式), sci-fi applications, developer tools (工具), entertainment (娛樂)"
+    ],
+    "colors": [
+      "#ff00ff",
+      "#00ffff",
+      "#ffff00",
+      "#00ff00",
+      "#0d0d0d"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Orbitron",
+      "mono": "Share Tech Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/41-cyberpunk/README.md",
+      "design": "extra/uiuxskillProMax/generated/41-cyberpunk/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/41-cyberpunk.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "一般",
+      "Cyberpunk UI",
+      "賽博龐克 UI",
+      "Neon, dark mode, terminal, HUD, sci-fi, glitch, dystopian, futuristic, matrix, tech noir",
+      "Gaming platforms (遊戲), tech products (產品), crypto apps (應用程式), sci-fi applications, developer tools (工具), entertainment (娛樂)",
+      "Corporate enterprise (企業), healthcare (健康), family apps (應用程式), conservative brands (品牌), elderly users",
+      "#00FF00 (Matrix Green), #FF00FF (Magenta), #00FFFF (Cyan), #0D0D0D (Dark)",
+      "Neon gradients, scanline overlays, glitch colors, terminal green accents",
+      "Tailwind 8/10, Custom CSS 10/10",
+      "2020s Cyberpunk"
+    ]
+  },
+  {
+    "id": 96,
+    "slug": "uiuxpro-42-organic-biophilic",
+    "name": "Organic Biophilic",
+    "monogram": "OB",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Organic Biophilic is a UI style reference for general interfaces, focused on Nature, organic shapes, green, sustainable, rounded.",
+    "overview": [
+      "Organic Biophilic is a UI style reference for general interfaces, combining Nature, organic shapes, green, sustainable, rounded, flowing, wellness, earthy, natural textures. The visual direction is shaped by Rounded corners (16-24px), organic curves (border-radius variations), natural shadows, flowing SVG shapes.",
+      "Use it for Wellness apps (應用程式), sustainability brands (品牌), eco products (產品), health apps (健康), meditation, organic food brands (品牌). Avoid it for Tech-focused products (產品), gaming (遊戲), industrial, urban brands (品牌)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #228B22 (Forest Green), #8B4513 (Earth Brown), #87CEEB (Sky Blue), #F5F5DC (Beige)",
+      "Secondary palette: Natural gradients, earth tones, sky blues, organic textures, wood/stone colors",
+      "Effects: Rounded corners (16-24px), organic curves (border-radius variations), natural shadows, flowing SVG shapes",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, CSS 10/10; era: 2020s Sustainable.",
+      "Best for: Wellness apps (應用程式), sustainability brands (品牌), eco products (產品), health apps (健康), meditation, organic food brands (品牌)"
+    ],
+    "colors": [
+      "#f5f1e8",
+      "#e0d8c8",
+      "#5d6b4d",
+      "#3e4a32",
+      "#8a9a7b",
+      "#d4e4c1"
+    ],
+    "fonts": {
+      "serif": "Cormorant Garamond",
+      "sans": "Nunito",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/42-organic-biophilic/README.md",
+      "design": "extra/uiuxskillProMax/generated/42-organic-biophilic/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/42-organic-biophilic.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Organic Biophilic",
+      "有機親生命設計",
+      "Nature, organic shapes, green, sustainable, rounded, flowing, wellness, earthy, natural textures",
+      "Wellness apps (應用程式), sustainability brands (品牌), eco products (產品), health apps (健康), meditation, organic food brands (品牌)",
+      "Tech-focused products (產品), gaming (遊戲), industrial, urban brands (品牌)",
+      "#228B22 (Forest Green), #8B4513 (Earth Brown), #87CEEB (Sky Blue), #F5F5DC (Beige)",
+      "Natural gradients, earth tones, sky blues, organic textures, wood/stone colors",
+      "Tailwind 10/10, CSS 10/10",
+      "2020s Sustainable"
+    ]
+  },
+  {
+    "id": 97,
+    "slug": "uiuxpro-43-ai-native",
+    "name": "AI-Native UI",
+    "monogram": "AI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "AI-Native UI is a UI style reference for general interfaces, focused on Chatbot, conversational, voice, assistant, agentic.",
+    "overview": [
+      "AI-Native UI is a UI style reference for general interfaces, combining Chatbot, conversational, voice, assistant, agentic, ambient, minimal chrome, streaming text, AI interactions. The visual direction is shaped by Typing indicators (3-dot pulse), streaming text animations, pulse animations, context cards, smooth reveals.",
+      "Use it for AI products (產品), chatbots, voice assistants, copilots, AI-powered tools (工具), conversational interfaces. Avoid it for Traditional forms, data-heavy dashboards (儀表板), print-first content."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neutral + single accent, #6366F1 (AI Purple), #10B981 (Success), #F5F5F5 (Background)",
+      "Secondary palette: Status indicators, streaming highlights, context card colors, subtle accent variations",
+      "Effects: Typing indicators (3-dot pulse), streaming text animations, pulse animations, context cards, smooth reveals",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, React 10/10; era: 2020s AI-Era.",
+      "Best for: AI products (產品), chatbots, voice assistants, copilots, AI-powered tools (工具), conversational interfaces"
+    ],
+    "colors": [
+      "#667eea",
+      "#764ba2",
+      "#6366f1",
+      "#10b981",
+      "#f5f5f5"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/43-ai-native/README.md",
+      "design": "extra/uiuxskillProMax/generated/43-ai-native/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/43-ai-native.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "一般",
+      "AI-Native UI",
+      "AI 原生 UI",
+      "Chatbot, conversational, voice, assistant, agentic, ambient, minimal chrome, streaming text, AI interactions",
+      "AI products (產品), chatbots, voice assistants, copilots, AI-powered tools (工具), conversational interfaces",
+      "Traditional forms, data-heavy dashboards (儀表板), print-first content",
+      "Neutral + single accent, #6366F1 (AI Purple), #10B981 (Success), #F5F5F5 (Background)",
+      "Status indicators, streaming highlights, context card colors, subtle accent variations",
+      "Tailwind 10/10, React 10/10",
+      "2020s AI-Era"
+    ]
+  },
+  {
+    "id": 98,
+    "slug": "uiuxpro-44-memphis-revival",
+    "name": "Memphis Design",
+    "monogram": "MD",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Memphis Design is a UI style reference for general interfaces, focused on 80s, geometric, playful, postmodern, shapes.",
+    "overview": [
+      "Memphis Design is a UI style reference for general interfaces, combining 80s, geometric, playful, postmodern, shapes, patterns, squiggles, triangles, neon, abstract, bold. The visual direction is shaped by transform: rotate(), clip-path: polygon(), mix-blend-mode, repeating patterns, bold shapes.",
+      "Use it for Creative agencies (創意), music sites (網站), youth brands (品牌), event promotion, artistic portfolios (作品集), entertainment (娛樂). Avoid it for Corporate finance (金融), healthcare (健康), legal, elderly users, conservative brands (品牌)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #FF71CE (Hot Pink), #FFCE5C (Yellow), #86CCCA (Teal), #6A7BB4 (Blue Purple)",
+      "Secondary palette: Complementary geometric colors, pattern fills, contrasting accent shapes",
+      "Effects: transform: rotate(), clip-path: polygon(), mix-blend-mode, repeating patterns, bold shapes",
+      "Accessibility: ⚠ Check contrast; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 9/10, CSS 10/10; era: 1980s Postmodern.",
+      "Best for: Creative agencies (創意), music sites (網站), youth brands (品牌), event promotion, artistic portfolios (作品集), entertainment (娛樂)"
+    ],
+    "colors": [
+      "#fff5e6",
+      "#ffe66d",
+      "#ff6b6b",
+      "#4ecdc4",
+      "#a8e6cf",
+      "#dda0dd"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Archivo Black",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/44-memphis-revival/README.md",
+      "design": "extra/uiuxskillProMax/generated/44-memphis-revival/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/44-memphis-revival.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Memphis Design",
+      "孟菲斯設計",
+      "80s, geometric, playful, postmodern, shapes, patterns, squiggles, triangles, neon, abstract, bold",
+      "Creative agencies (創意), music sites (網站), youth brands (品牌), event promotion, artistic portfolios (作品集), entertainment (娛樂)",
+      "Corporate finance (金融), healthcare (健康), legal, elderly users, conservative brands (品牌)",
+      "#FF71CE (Hot Pink), #FFCE5C (Yellow), #86CCCA (Teal), #6A7BB4 (Blue Purple)",
+      "Complementary geometric colors, pattern fills, contrasting accent shapes",
+      "Tailwind 9/10, CSS 10/10",
+      "1980s Postmodern"
+    ]
+  },
+  {
+    "id": 99,
+    "slug": "uiuxpro-45-vaporwave",
+    "name": "Vaporwave",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Vaporwave is a UI style reference for general interfaces, focused on Synthwave, retro-futuristic, 80s-90s, neon, glitch.",
+    "overview": [
+      "Vaporwave is a UI style reference for general interfaces, combining Synthwave, retro-futuristic, 80s-90s, neon, glitch, nostalgic, sunset gradient, dreamy, aesthetic. The visual direction is shaped by text-shadow glow, linear-gradient, filter: hue-rotate(), glitch animations, retro scan lines.",
+      "Use it for Music platforms (平台), gaming (遊戲), creative portfolios (創意), tech startups, entertainment (娛樂), artistic projects. Avoid it for Business apps (應用程式), e-commerce (電子商務), education, healthcare (健康), enterprise software."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #FF71CE (Pink), #01CDFE (Cyan), #05FFA1 (Mint), #B967FF (Purple)",
+      "Secondary palette: Sunset gradients, glitch overlays, VHS effects, neon accents, pastel variations",
+      "Effects: text-shadow glow, linear-gradient, filter: hue-rotate(), glitch animations, retro scan lines",
+      "Accessibility: ⚠ Poor (motion); performance: ⚠ Moderate; dark mode: ✓ Dark focused; complexity: Medium.",
+      "Framework fit: Tailwind 8/10, CSS-in-JS 9/10; era: 1980s-90s Retro.",
+      "Best for: Music platforms (平台), gaming (遊戲), creative portfolios (創意), tech startups, entertainment (娛樂), artistic projects"
+    ],
+    "colors": [
+      "#ff71ce",
+      "#c0c0c0",
+      "#01cdfe",
+      "#05ffa1",
+      "#b967ff"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Press Start 2P",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/45-vaporwave/README.md",
+      "design": "extra/uiuxskillProMax/generated/45-vaporwave/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/45-vaporwave.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "一般",
+      "Vaporwave",
+      "蒸氣波",
+      "Synthwave, retro-futuristic, 80s-90s, neon, glitch, nostalgic, sunset gradient, dreamy, aesthetic",
+      "Music platforms (平台), gaming (遊戲), creative portfolios (創意), tech startups, entertainment (娛樂), artistic projects",
+      "Business apps (應用程式), e-commerce (電子商務), education, healthcare (健康), enterprise software",
+      "#FF71CE (Pink), #01CDFE (Cyan), #05FFA1 (Mint), #B967FF (Purple)",
+      "Sunset gradients, glitch overlays, VHS effects, neon accents, pastel variations",
+      "Tailwind 8/10, CSS-in-JS 9/10",
+      "1980s-90s Retro"
+    ]
+  },
+  {
+    "id": 100,
+    "slug": "uiuxpro-46-dimensional-layering",
+    "name": "Dimensional Layering",
+    "monogram": "DL",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Dimensional Layering is a UI style reference for general interfaces, focused on Depth, overlapping, z-index, layers, 3D.",
+    "overview": [
+      "Dimensional Layering is a UI style reference for general interfaces, combining Depth, overlapping, z-index, layers, 3D, shadows, elevation, floating, cards, spatial hierarchy. The visual direction is shaped by z-index stacking, box-shadow elevation (4 levels), transform: translateZ(), backdrop-filter, parallax.",
+      "Use it for Dashboards (儀表板), card layouts, modals, navigation, product showcases, SaaS interfaces (SaaS). Avoid it for Print-style layouts, simple blogs, low-end devices, flat design requirements."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neutral base (#FFFFFF, #F5F5F5, #E0E0E0) + brand accent for elevated elements",
+      "Secondary palette: Shadow variations (sm/md/lg/xl), elevation colors, highlight colors for top layers",
+      "Effects: z-index stacking, box-shadow elevation (4 levels), transform: translateZ(), backdrop-filter, parallax",
+      "Accessibility: ⚠ Moderate (SR issues); performance: ⚠ Good; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: Tailwind 10/10, MUI 10/10, Chakra 10/10; era: 2020s Modern.",
+      "Best for: Dashboards (儀表板), card layouts, modals, navigation, product showcases, SaaS interfaces (SaaS)"
+    ],
+    "colors": [
+      "#ffffff",
+      "#f5f5f5",
+      "#e0e0e0"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/46-dimensional-layering/README.md",
+      "design": "extra/uiuxskillProMax/generated/46-dimensional-layering/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/46-dimensional-layering.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 3
+    },
+    "searchTerms": [
+      "一般",
+      "Dimensional Layering",
+      "多維層次",
+      "Depth, overlapping, z-index, layers, 3D, shadows, elevation, floating, cards, spatial hierarchy",
+      "Dashboards (儀表板), card layouts, modals, navigation, product showcases, SaaS interfaces (SaaS)",
+      "Print-style layouts, simple blogs, low-end devices, flat design requirements",
+      "Neutral base (#FFFFFF, #F5F5F5, #E0E0E0) + brand accent for elevated elements",
+      "Shadow variations (sm/md/lg/xl), elevation colors, highlight colors for top layers",
+      "Tailwind 10/10, MUI 10/10, Chakra 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 101,
+    "slug": "uiuxpro-47-exaggerated-minimalism",
+    "name": "Exaggerated Minimalism",
+    "monogram": "EM",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Exaggerated Minimalism is a UI style reference for general interfaces, focused on Bold minimalism, oversized typography, high contrast, negative space, loud minimal.",
+    "overview": [
+      "Exaggerated Minimalism is a UI style reference for general interfaces, combining Bold minimalism, oversized typography, high contrast, negative space, loud minimal, statement design. The visual direction is shaped by font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace.",
+      "Use it for Fashion, architecture, portfolios (作品集), agency landing pages (登陸頁面), luxury brands (品牌), editorial. Avoid it for E-commerce catalogs (電子商務), dashboards (儀表板), forms, data-heavy, elderly users, complex apps (應用程式)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #000000 (Black), #FFFFFF (White), single vibrant accent only",
+      "Secondary palette: Minimal - single accent color, no secondary colors, extreme restraint",
+      "Effects: font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Typography.js 10/10; era: 2020s Modern.",
+      "Best for: Fashion, architecture, portfolios (作品集), agency landing pages (登陸頁面), luxury brands (品牌), editorial"
+    ],
+    "colors": [
+      "#000000",
+      "#ffffff"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Space Grotesk",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/47-exaggerated-minimalism/README.md",
+      "design": "extra/uiuxskillProMax/generated/47-exaggerated-minimalism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/47-exaggerated-minimalism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 2
+    },
+    "searchTerms": [
+      "一般",
+      "Exaggerated Minimalism",
+      "誇張極簡主義",
+      "Bold minimalism, oversized typography, high contrast, negative space, loud minimal, statement design",
+      "Fashion, architecture, portfolios (作品集), agency landing pages (登陸頁面), luxury brands (品牌), editorial",
+      "E-commerce catalogs (電子商務), dashboards (儀表板), forms, data-heavy, elderly users, complex apps (應用程式)",
+      "#000000 (Black), #FFFFFF (White), single vibrant accent only",
+      "Minimal - single accent color, no secondary colors, extreme restraint",
+      "Tailwind 10/10, Typography.js 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 102,
+    "slug": "uiuxpro-48-kinetic-typography",
+    "name": "Kinetic Typography",
+    "monogram": "KT",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Kinetic Typography is a UI style reference for general interfaces, focused on Motion text, animated type, moving letters, dynamic, typing effect.",
+    "overview": [
+      "Kinetic Typography is a UI style reference for general interfaces, combining Motion text, animated type, moving letters, dynamic, typing effect, morphing, scroll-triggered text. The visual direction is shaped by @keyframes text animation, typing effect, background-clip: text, GSAP ScrollTrigger, split text.",
+      "Use it for Hero sections, marketing sites (行銷), video platforms (平台), storytelling, creative portfolios (創意), landing pages (登陸頁面). Avoid it for Long-form content, accessibility-critical (無障礙性), data interfaces, forms, elderly users."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Flexible - high contrast recommended, bold colors for emphasis, animation-friendly palette",
+      "Secondary palette: Accent colors for emphasis, transition colors, gradient text fills",
+      "Effects: @keyframes text animation, typing effect, background-clip: text, GSAP ScrollTrigger, split text",
+      "Accessibility: ❌ Poor (motion); performance: ⚠ Moderate; dark mode: ✓ Full; complexity: High.",
+      "Framework fit: GSAP 10/10, Framer Motion 10/10; era: 2020s Modern.",
+      "Best for: Hero sections, marketing sites (行銷), video platforms (平台), storytelling, creative portfolios (創意), landing pages (登陸頁面)"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Bebas Neue",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/48-kinetic-typography/README.md",
+      "design": "extra/uiuxskillProMax/generated/48-kinetic-typography/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/48-kinetic-typography.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "一般",
+      "Kinetic Typography",
+      "動態排版",
+      "Motion text, animated type, moving letters, dynamic, typing effect, morphing, scroll-triggered text",
+      "Hero sections, marketing sites (行銷), video platforms (平台), storytelling, creative portfolios (創意), landing pages (登陸頁面)",
+      "Long-form content, accessibility-critical (無障礙性), data interfaces, forms, elderly users",
+      "Flexible - high contrast recommended, bold colors for emphasis, animation-friendly palette",
+      "Accent colors for emphasis, transition colors, gradient text fills",
+      "GSAP 10/10, Framer Motion 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 103,
+    "slug": "uiuxpro-49-parallax-storytelling",
+    "name": "Parallax Storytelling",
+    "monogram": "PS",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Parallax Storytelling is a UI style reference for general interfaces, focused on Scroll-driven, narrative, layered scrolling, immersive, progressive disclosure.",
+    "overview": [
+      "Parallax Storytelling is a UI style reference for general interfaces, combining Scroll-driven, narrative, layered scrolling, immersive, progressive disclosure, cinematic, scroll-triggered. The visual direction is shaped by transform: translateY(scroll), position: fixed/sticky, perspective: 1px, scroll-triggered animations.",
+      "Use it for Brand storytelling, product launches, case studies, portfolios (作品集), annual reports, marketing campaigns (行銷). Avoid it for E-commerce (電子商務), dashboards (儀表板), mobile-first (行動), SEO-critical, accessibility-required (無障礙性)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Story-dependent, often gradients and natural colors, section-specific palettes",
+      "Secondary palette: Section transition colors, depth layer colors, narrative mood colors",
+      "Effects: transform: translateY(scroll), position: fixed/sticky, perspective: 1px, scroll-triggered animations",
+      "Accessibility: ❌ Poor (motion); performance: ❌ Poor; dark mode: ✓ Full; complexity: High.",
+      "Framework fit: GSAP ScrollTrigger 10/10, Locomotive Scroll 10/10; era: 2020s Modern.",
+      "Best for: Brand storytelling, product launches, case studies, portfolios (作品集), annual reports, marketing campaigns (行銷)"
+    ],
+    "colors": [],
+    "fonts": {
+      "serif": null,
+      "sans": "Playfair Display",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/49-parallax-storytelling/README.md",
+      "design": "extra/uiuxskillProMax/generated/49-parallax-storytelling/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/49-parallax-storytelling.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 0
+    },
+    "searchTerms": [
+      "一般",
+      "Parallax Storytelling",
+      "視差滾動故事",
+      "Scroll-driven, narrative, layered scrolling, immersive, progressive disclosure, cinematic, scroll-triggered",
+      "Brand storytelling, product launches, case studies, portfolios (作品集), annual reports, marketing campaigns (行銷)",
+      "E-commerce (電子商務), dashboards (儀表板), mobile-first (行動), SEO-critical, accessibility-required (無障礙性)",
+      "Story-dependent, often gradients and natural colors, section-specific palettes",
+      "Section transition colors, depth layer colors, narrative mood colors",
+      "GSAP ScrollTrigger 10/10, Locomotive Scroll 10/10",
+      "2020s Modern"
+    ]
+  },
+  {
+    "id": 104,
+    "slug": "uiuxpro-50-swiss-modernism",
+    "name": "Swiss Modernism 2.0",
+    "monogram": "SM",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Swiss Modernism 2.0 is a UI style reference for general interfaces, focused on Grid system, Helvetica, modular, asymmetric, international style.",
+    "overview": [
+      "Swiss Modernism 2.0 is a UI style reference for general interfaces, combining Grid system, Helvetica, modular, asymmetric, international style, rational, clean, mathematical spacing. The visual direction is shaped by display: grid, grid-template-columns: repeat(12 1fr), gap: 1rem, mathematical ratios, clear hierarchy.",
+      "Use it for Corporate sites (企業), architecture, editorial, SaaS, museums, professional services, documentation. Avoid it for Playful brands (品牌), children's sites (網站), entertainment (娛樂), gaming (遊戲), emotional storytelling."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: #000000, #FFFFFF, #F5F5F5, single vibrant accent only",
+      "Secondary palette: Minimal secondary, accent for emphasis only, no gradients",
+      "Effects: display: grid, grid-template-columns: repeat(12 1fr), gap: 1rem, mathematical ratios, clear hierarchy",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Bootstrap 9/10, Foundation 10/10; era: 1950s Swiss + 2020s.",
+      "Best for: Corporate sites (企業), architecture, editorial, SaaS, museums, professional services, documentation"
+    ],
+    "colors": [
+      "#000000",
+      "#ffffff",
+      "#f5f5f5"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/50-swiss-modernism/README.md",
+      "design": "extra/uiuxskillProMax/generated/50-swiss-modernism/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/50-swiss-modernism.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 3
+    },
+    "searchTerms": [
+      "一般",
+      "Swiss Modernism 2.0",
+      "瑞士現代主義 2.0",
+      "Grid system, Helvetica, modular, asymmetric, international style, rational, clean, mathematical spacing",
+      "Corporate sites (企業), architecture, editorial, SaaS, museums, professional services, documentation",
+      "Playful brands (品牌), children's sites (網站), entertainment (娛樂), gaming (遊戲), emotional storytelling",
+      "#000000, #FFFFFF, #F5F5F5, single vibrant accent only",
+      "Minimal secondary, accent for emphasis only, no gradients",
+      "Tailwind 10/10, Bootstrap 9/10, Foundation 10/10",
+      "1950s Swiss + 2020s"
+    ]
+  },
+  {
+    "id": 105,
+    "slug": "uiuxpro-51-hud-scifi",
+    "name": "HUD / Sci-Fi FUI",
+    "monogram": "HU",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "HUD / Sci-Fi FUI is a UI style reference for general interfaces, focused on Futuristic, technical, wireframe, neon, data.",
+    "overview": [
+      "HUD / Sci-Fi FUI is a UI style reference for general interfaces, combining Futuristic, technical, wireframe, neon, data, transparency, iron man, sci-fi, interface. The visual direction is shaped by Glow effects, scanning animations, ticker text, blinking markers, fine line drawing.",
+      "Use it for Sci-fi games, space tech, cybersecurity, movie props, immersive dashboards (儀表板). Avoid it for Standard corporate (企業), reading heavy content, accessible public services."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Neon Cyan #00FFFF, Holographic Blue #0080FF, Alert Red #FF0000",
+      "Secondary palette: Transparent Black, Grid Lines #333333",
+      "Effects: Glow effects, scanning animations, ticker text, blinking markers, fine line drawing",
+      "Accessibility: ⚠ Poor (thin lines); performance: ⚠ Moderate (renders); dark mode: ✓ Full; complexity: High.",
+      "Framework fit: React 9/10, Canvas 10/10; era: 2010s Sci-Fi.",
+      "Best for: Sci-fi games, space tech, cybersecurity, movie props, immersive dashboards (儀表板)"
+    ],
+    "colors": [
+      "#00ffff",
+      "#0080ff",
+      "#ff0000",
+      "#333333"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Orbitron",
+      "mono": "Share Tech Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/51-hud-scifi/README.md",
+      "design": "extra/uiuxskillProMax/generated/51-hud-scifi/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/51-hud-scifi.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 4
+    },
+    "searchTerms": [
+      "一般",
+      "HUD / Sci-Fi FUI",
+      "科幻 HUD / FUI",
+      "Futuristic, technical, wireframe, neon, data, transparency, iron man, sci-fi, interface",
+      "Sci-fi games, space tech, cybersecurity, movie props, immersive dashboards (儀表板)",
+      "Standard corporate (企業), reading heavy content, accessible public services",
+      "Neon Cyan #00FFFF, Holographic Blue #0080FF, Alert Red #FF0000",
+      "Transparent Black, Grid Lines #333333",
+      "React 9/10, Canvas 10/10",
+      "2010s Sci-Fi"
+    ]
+  },
+  {
+    "id": 106,
+    "slug": "uiuxpro-52-pixel-art",
+    "name": "Pixel Art",
+    "monogram": "PA",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Pixel Art is a UI style reference for general interfaces, focused on Retro, 8-bit, 16-bit, gaming, blocky.",
+    "overview": [
+      "Pixel Art is a UI style reference for general interfaces, combining Retro, 8-bit, 16-bit, gaming, blocky, nostalgic, pixelated, arcade. The visual direction is shaped by Frame-by-frame sprite animation, blinking cursor, instant transitions, marquee text.",
+      "Use it for Indie games, retro tools (工具), creative portfolios (創意), nostalgia marketing (行銷), Web3/NFT (網頁). Avoid it for Professional corporate (企業), modern SaaS (SaaS), high-res photography sites (網站)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Primary colors (NES Palette), brights, limited palette",
+      "Secondary palette: Black outlines, shading via dithering or block colors",
+      "Effects: Frame-by-frame sprite animation, blinking cursor, instant transitions, marquee text",
+      "Accessibility: ✓ Good (if contrast ok); performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Medium.",
+      "Framework fit: CSS (box-shadow) 8/10, Canvas 10/10; era: 1980s Arcade.",
+      "Best for: Indie games, retro tools (工具), creative portfolios (創意), nostalgia marketing (行銷), Web3/NFT (網頁)"
+    ],
+    "colors": [
+      "#0f380f",
+      "#9bbc0f",
+      "#306230",
+      "#8bac0f"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Press Start 2P",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/52-pixel-art/README.md",
+      "design": "extra/uiuxskillProMax/generated/52-pixel-art/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/52-pixel-art.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 4
+    },
+    "searchTerms": [
+      "一般",
+      "Pixel Art",
+      "像素藝術",
+      "Retro, 8-bit, 16-bit, gaming, blocky, nostalgic, pixelated, arcade",
+      "Indie games, retro tools (工具), creative portfolios (創意), nostalgia marketing (行銷), Web3/NFT (網頁)",
+      "Professional corporate (企業), modern SaaS (SaaS), high-res photography sites (網站)",
+      "Primary colors (NES Palette), brights, limited palette",
+      "Black outlines, shading via dithering or block colors",
+      "CSS (box-shadow) 8/10, Canvas 10/10",
+      "1980s Arcade"
+    ]
+  },
+  {
+    "id": 107,
+    "slug": "uiuxpro-53-bento-grids",
+    "name": "Bento Grids",
+    "monogram": "BG",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Bento Grids is a UI style reference for general interfaces, focused on Apple-style, modular, cards, organized, clean.",
+    "overview": [
+      "Bento Grids is a UI style reference for general interfaces, combining Apple-style, modular, cards, organized, clean, hierarchy, grid, rounded, soft. The visual direction is shaped by Hover scale (1.02), soft shadow expansion, smooth layout shifts, content reveal.",
+      "Use it for Product features, dashboards (儀表板), personal sites (網站), marketing summaries (行銷), galleries. Avoid it for Long-form reading, data tables, complex forms."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Off-white #F5F5F7, Clean White #FFFFFF, Text #1D1D1F",
+      "Secondary palette: Subtle accents, soft shadows, blurred backdrops",
+      "Effects: Hover scale (1.02), soft shadow expansion, smooth layout shifts, content reveal",
+      "Accessibility: ✓ WCAG AA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: CSS Grid 10/10, Tailwind 10/10; era: 2020s Apple/Linear.",
+      "Best for: Product features, dashboards (儀表板), personal sites (網站), marketing summaries (行銷), galleries"
+    ],
+    "colors": [
+      "#f5f5f7",
+      "#ffffff",
+      "#1d1d1f"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/53-bento-grids/README.md",
+      "design": "extra/uiuxskillProMax/generated/53-bento-grids/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/53-bento-grids.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 3
+    },
+    "searchTerms": [
+      "一般",
+      "Bento Grids",
+      "便當盒網格",
+      "Apple-style, modular, cards, organized, clean, hierarchy, grid, rounded, soft",
+      "Product features, dashboards (儀表板), personal sites (網站), marketing summaries (行銷), galleries",
+      "Long-form reading, data tables, complex forms",
+      "Off-white #F5F5F7, Clean White #FFFFFF, Text #1D1D1F",
+      "Subtle accents, soft shadows, blurred backdrops",
+      "CSS Grid 10/10, Tailwind 10/10",
+      "2020s Apple/Linear"
+    ]
+  },
+  {
+    "id": 108,
+    "slug": "uiuxpro-54-neubrutalism-v2",
+    "name": "Neubrutalism",
+    "monogram": "UI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Neubrutalism is a UI style reference for general interfaces, focused on Bold, ugly-cute, raw, high contrast, flat.",
+    "overview": [
+      "Neubrutalism is a UI style reference for general interfaces, combining Bold, ugly-cute, raw, high contrast, flat, hard shadows, distinct, playful, loud. The visual direction is shaped by Hard hover shifts (4px), marquee scrolling, jitter animations, bold borders.",
+      "Use it for Design tools (工具), creative agencies (創意), Gen Z brands (品牌), personal blogs, gumroad-style. Avoid it for Banking, legal, healthcare (健康), serious enterprise, elderly users."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Pop Yellow #FFDE59, Bright Red #FF5757, Black #000000",
+      "Secondary palette: Lavender #CBA6F7, Mint #76E0C2",
+      "Effects: Hard hover shifts (4px), marquee scrolling, jitter animations, bold borders",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✓ Full; complexity: Low.",
+      "Framework fit: Tailwind 10/10, Plain CSS 10/10; era: 2020s Modern Retro.",
+      "Best for: Design tools (工具), creative agencies (創意), Gen Z brands (品牌), personal blogs, gumroad-style"
+    ],
+    "colors": [
+      "#fffbf0",
+      "#ff6b6b",
+      "#a388ee",
+      "#ffe156",
+      "#4ecdc4",
+      "#baffc9"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Space Grotesk",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/54-neubrutalism-v2/README.md",
+      "design": "extra/uiuxskillProMax/generated/54-neubrutalism-v2/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/54-neubrutalism-v2.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Neubrutalism",
+      "新粗野主義",
+      "Bold, ugly-cute, raw, high contrast, flat, hard shadows, distinct, playful, loud",
+      "Design tools (工具), creative agencies (創意), Gen Z brands (品牌), personal blogs, gumroad-style",
+      "Banking, legal, healthcare (健康), serious enterprise, elderly users",
+      "Pop Yellow #FFDE59, Bright Red #FF5757, Black #000000",
+      "Lavender #CBA6F7, Mint #76E0C2",
+      "Tailwind 10/10, Plain CSS 10/10",
+      "2020s Modern Retro"
+    ]
+  },
+  {
+    "id": 109,
+    "slug": "uiuxpro-55-spatial-ui",
+    "name": "Spatial UI (VisionOS)",
+    "monogram": "SU",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Spatial UI (VisionOS) is a UI style reference for general interfaces, focused on Glass, depth, immersion, spatial, translucent.",
+    "overview": [
+      "Spatial UI (VisionOS) is a UI style reference for general interfaces, combining Glass, depth, immersion, spatial, translucent, gaze, gesture, apple, vision-pro. The visual direction is shaped by Parallax depth, dynamic lighting response, gaze-hover effects, smooth scale on focus.",
+      "Use it for Spatial computing apps (應用程式), VR/AR interfaces, immersive media, futuristic dashboards (儀表板). Avoid it for Text-heavy documents, high-contrast requirements, non-3D capable devices."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Frosted Glass #FFFFFF (15-30% opacity), System White",
+      "Secondary palette: Vibrant system colors for active states, deep shadows for depth",
+      "Effects: Parallax depth, dynamic lighting response, gaze-hover effects, smooth scale on focus",
+      "Accessibility: ⚠ Contrast risks; performance: ⚠ Moderate (blur cost); dark mode: ✓ Full; complexity: High.",
+      "Framework fit: SwiftUI, React (Three.js/Fiber); era: 2024 Spatial Era.",
+      "Best for: Spatial computing apps (應用程式), VR/AR interfaces, immersive media, futuristic dashboards (儀表板)"
+    ],
+    "colors": [
+      "#ffffff"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Inter",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/55-spatial-ui/README.md",
+      "design": "extra/uiuxskillProMax/generated/55-spatial-ui/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/55-spatial-ui.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 1
+    },
+    "searchTerms": [
+      "一般",
+      "Spatial UI (VisionOS)",
+      "空間 UI (VisionOS)",
+      "Glass, depth, immersion, spatial, translucent, gaze, gesture, apple, vision-pro",
+      "Spatial computing apps (應用程式), VR/AR interfaces, immersive media, futuristic dashboards (儀表板)",
+      "Text-heavy documents, high-contrast requirements, non-3D capable devices",
+      "Frosted Glass #FFFFFF (15-30% opacity), System White",
+      "Vibrant system colors for active states, deep shadows for depth",
+      "SwiftUI, React (Three.js/Fiber)",
+      "2024 Spatial Era"
+    ]
+  },
+  {
+    "id": 110,
+    "slug": "uiuxpro-56-e-ink-paper",
+    "name": "E-Ink / Paper",
+    "monogram": "EI",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "E-Ink / Paper is a UI style reference for general interfaces, focused on Paper-like, matte, high contrast, texture, reading.",
+    "overview": [
+      "E-Ink / Paper is a UI style reference for general interfaces, combining Paper-like, matte, high contrast, texture, reading, calm, slow tech, monochrome. The visual direction is shaped by No motion blur, distinct page turns, grain/noise texture, sharp transitions (no fade).",
+      "Use it for Reading apps (應用程式), digital newspapers, minimal journals, distraction-free writing, slow-living brands (品牌). Avoid it for Gaming (遊戲), video platforms (平台), high-energy marketing (行銷), dark mode dependent apps (應用程式)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Off-White #FDFBF7, Paper White #F5F5F5, Ink Black #1A1A1A",
+      "Secondary palette: Pencil Grey #4A4A4A, Highlighter Yellow #FFFF00 (accent)",
+      "Effects: No motion blur, distinct page turns, grain/noise texture, sharp transitions (no fade)",
+      "Accessibility: ✓ WCAG AAA; performance: ⚡ Excellent; dark mode: ✗ Low (inverted only); complexity: Low.",
+      "Framework fit: Tailwind 10/10, CSS 10/10; era: 2020s Digital Well-being.",
+      "Best for: Reading apps (應用程式), digital newspapers, minimal journals, distraction-free writing, slow-living brands (品牌)"
+    ],
+    "colors": [
+      "#1a1a1a",
+      "#f5f1eb",
+      "#fdfbf7",
+      "#f5f5f5",
+      "#4a4a4a",
+      "#ffff00"
+    ],
+    "fonts": {
+      "serif": "Georgia",
+      "sans": "Newsreader",
+      "mono": "JetBrains Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/56-e-ink-paper/README.md",
+      "design": "extra/uiuxskillProMax/generated/56-e-ink-paper/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/56-e-ink-paper.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "E-Ink / Paper",
+      "電子墨水 / 紙質",
+      "Paper-like, matte, high contrast, texture, reading, calm, slow tech, monochrome",
+      "Reading apps (應用程式), digital newspapers, minimal journals, distraction-free writing, slow-living brands (品牌)",
+      "Gaming (遊戲), video platforms (平台), high-energy marketing (行銷), dark mode dependent apps (應用程式)",
+      "Off-White #FDFBF7, Paper White #F5F5F5, Ink Black #1A1A1A",
+      "Pencil Grey #4A4A4A, Highlighter Yellow #FFFF00 (accent)",
+      "Tailwind 10/10, CSS 10/10",
+      "2020s Digital Well-being"
+    ]
+  },
+  {
+    "id": 111,
+    "slug": "uiuxpro-57-gen-z-chaos",
+    "name": "Gen Z Chaos / Maximalism",
+    "monogram": "GZ",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Gen Z Chaos / Maximalism is a UI style reference for general interfaces, focused on Chaos, clutter, stickers, raw, collage.",
+    "overview": [
+      "Gen Z Chaos / Maximalism is a UI style reference for general interfaces, combining Chaos, clutter, stickers, raw, collage, mixed media, loud, internet culture, ironic. The visual direction is shaped by Marquee scrolls, jitter, sticker layering, GIF overload, random placement, drag-and-drop.",
+      "Use it for Gen Z lifestyle brands (品牌), music artists, creative portfolios (創意), viral marketing (行銷), fashion. Avoid it for Corporate (企業), government, healthcare (健康), banking, serious tools (工具)."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Clashing Brights: #FF00FF, #00FF00, #FFFF00, #0000FF",
+      "Secondary palette: Gradients, rainbow, glitch, noise, heavily saturated mix",
+      "Effects: Marquee scrolls, jitter, sticker layering, GIF overload, random placement, drag-and-drop",
+      "Accessibility: ❌ Poor; performance: ⚠ Poor (heavy assets); dark mode: ✓ Full; complexity: High.",
+      "Framework fit: CSS-in-JS 8/10; era: 2023+ Internet Core.",
+      "Best for: Gen Z lifestyle brands (品牌), music artists, creative portfolios (創意), viral marketing (行銷), fashion"
+    ],
+    "colors": [
+      "#ff6b6b",
+      "#4ecdc4",
+      "#ffe66d",
+      "#95e1d3",
+      "#1a1a2e",
+      "#a388ee"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Clash Display",
+      "mono": "Space Mono"
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/57-gen-z-chaos/README.md",
+      "design": "extra/uiuxskillProMax/generated/57-gen-z-chaos/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/57-gen-z-chaos.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 6
+    },
+    "searchTerms": [
+      "一般",
+      "Gen Z Chaos / Maximalism",
+      "Z 世代混亂 / 極繁主義",
+      "Chaos, clutter, stickers, raw, collage, mixed media, loud, internet culture, ironic",
+      "Gen Z lifestyle brands (品牌), music artists, creative portfolios (創意), viral marketing (行銷), fashion",
+      "Corporate (企業), government, healthcare (健康), banking, serious tools (工具)",
+      "Clashing Brights: #FF00FF, #00FF00, #FFFF00, #0000FF",
+      "Gradients, rainbow, glitch, noise, heavily saturated mix",
+      "CSS-in-JS 8/10",
+      "2023+ Internet Core"
+    ]
+  },
+  {
+    "id": 112,
+    "slug": "uiuxpro-58-biomimetic-organic",
+    "name": "Biomimetic / Organic 2.0",
+    "monogram": "BO",
+    "categoryKey": "styleGeneral",
+    "categoryLabelZh": "通用风格模板",
+    "categoryLabelEn": "General Style Templates",
+    "summary": "Biomimetic / Organic 2.0 is a UI style reference for general interfaces, focused on Nature-inspired, cellular, fluid, breathing, generative.",
+    "overview": [
+      "Biomimetic / Organic 2.0 is a UI style reference for general interfaces, combining Nature-inspired, cellular, fluid, breathing, generative, algorithms, life-like. The visual direction is shaped by Breathing animations, fluid morphing, generative growth, physics-based movement.",
+      "Use it for Sustainability tech, biotech, advanced health (健康), meditation, generative art platforms (平台). Avoid it for Standard SaaS (SaaS), data grids, strict corporate (企業), accounting."
+    ],
+    "keyCharacteristics": [
+      "Primary palette: Cellular Pink #FF9999, Chlorophyll Green #00FF41, Bioluminescent Blue",
+      "Secondary palette: Deep Ocean #001E3C, Coral #FF7F50, Organic gradients",
+      "Effects: Breathing animations, fluid morphing, generative growth, physics-based movement",
+      "Accessibility: ✓ Good; performance: ⚠ Moderate; dark mode: ✓ Full; complexity: High.",
+      "Framework fit: Canvas 10/10, WebGL 10/10; era: 2024+ Generative.",
+      "Best for: Sustainability tech, biotech, advanced health (健康), meditation, generative art platforms (平台)"
+    ],
+    "colors": [
+      "#001e3c",
+      "#00ff41",
+      "#ff9999",
+      "#4d94ff",
+      "#ff7f50"
+    ],
+    "fonts": {
+      "serif": null,
+      "sans": "Outfit",
+      "mono": null
+    },
+    "sourceSite": {
+      "name": "UI/UX Pro Max",
+      "url": "extra/uiuxskillProMax/index.html"
+    },
+    "files": {
+      "readme": "extra/uiuxskillProMax/generated/58-biomimetic-organic/README.md",
+      "design": "extra/uiuxskillProMax/generated/58-biomimetic-organic/DESIGN.md",
+      "preview": "extra/uiuxskillProMax/refstyles/58-biomimetic-organic.html",
+      "previewDark": null
+    },
+    "stats": {
+      "previewCount": 1,
+      "colorCount": 5
+    },
+    "searchTerms": [
+      "一般",
+      "Biomimetic / Organic 2.0",
+      "仿生 / 有機 2.0",
+      "Nature-inspired, cellular, fluid, breathing, generative, algorithms, life-like",
+      "Sustainability tech, biotech, advanced health (健康), meditation, generative art platforms (平台)",
+      "Standard SaaS (SaaS), data grids, strict corporate (企業), accounting",
+      "Cellular Pink #FF9999, Chlorophyll Green #00FF41, Bioluminescent Blue",
+      "Deep Ocean #001E3C, Coral #FF7F50, Organic gradients",
+      "Canvas 10/10, WebGL 10/10",
+      "2024+ Generative"
+    ]
   }
 ];

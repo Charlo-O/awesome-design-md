@@ -9,7 +9,6 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const designsPath = path.join(rootDir, "site-assets", "designs.js");
-const designRoot = path.join(rootDir, "design-md");
 const outputPath = path.join(rootDir, "site-assets", "translations.js");
 const commonProtectedTerms = [
   "DESIGN.md",
@@ -102,15 +101,17 @@ function collectDesignStrings(designs) {
   return items;
 }
 
-function collectPreviewStrings() {
+function collectPreviewStrings(designs) {
   const found = [];
-  const files = fs
-    .readdirSync(designRoot)
-    .flatMap((slug) =>
-      ["preview.html", "preview-dark.html"]
-        .map((name) => path.join(designRoot, slug, name))
-        .filter((file) => fs.existsSync(file))
-    );
+  const files = unique(
+    designs.flatMap((design) => [
+      design.files?.preview,
+      design.files?.previewDark,
+    ])
+  )
+    .filter(Boolean)
+    .map((relativePath) => path.join(rootDir, relativePath))
+    .filter((file) => fs.existsSync(file));
 
   for (const file of files) {
     const html = fs.readFileSync(file, "utf8");
@@ -146,7 +147,7 @@ function loadExistingMap() {
   vm.runInContext(source, ctx);
   return Object.fromEntries(
     Object.entries(ctx.window.ZH_TRANSLATIONS || {}).filter(
-      ([, value]) => !String(value).includes("[[[")
+      ([, value]) => !/(?:\[\[\[|\]\]\]|\b(?:TERM|AUTO)_\d+\b)/.test(String(value))
     )
   );
 }
@@ -188,14 +189,14 @@ function protectTerms(text, protectedTerms) {
       continue;
     }
 
-    const token = `[[[TERM_${index}]]]`;
+    const token = `ZXTERM${index}XZ`;
     current = current.split(term).join(token);
     placeholders.push([token, term]);
     index += 1;
   }
 
   current = current.replace(/\b([A-Z]{2,}(?:[./+-][A-Z0-9]+)*)\b/g, (match) => {
-    const token = `[[[AUTO_${index}]]]`;
+    const token = `ZXAUTO${index}XZ`;
     placeholders.push([token, match]);
     index += 1;
     return token;
@@ -274,7 +275,7 @@ async function main() {
   const protectedTerms = buildProtectedTerms(designs);
   const strings = unique([
     ...collectDesignStrings(designs),
-    ...collectPreviewStrings(),
+    ...collectPreviewStrings(designs),
   ]).filter(shouldTranslate);
 
   const pending = strings.filter((item) => !existing[item]);

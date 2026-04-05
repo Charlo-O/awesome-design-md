@@ -44,7 +44,7 @@
       palette: "调色板",
       fileAccess: "文件入口",
       homeFooterNote:
-        '基于本地 <code>design-md/*</code> 资产构建的 <code>awesome-design-md</code> 索引站。',
+        '基于本地 <code>design-md/*</code> 与 <code>extra/uiuxskillProMax</code> 资产构建的索引站。',
       detailBack: "← 返回索引站",
       detailKicker: "设计详情",
       originalSite: "原站",
@@ -76,7 +76,7 @@
       detailNotFoundBody:
         "请从索引站重新进入，或检查地址栏里的 slug 参数。",
       detailFooterNote:
-        "当前 <code>DESIGN.md</code> 条目的本地详情页。",
+        "当前本地风格条目的详情页。",
       favoritesCount: (count) => `${count} 个`,
       prevItem: "上一项",
       nextItem: "下一项",
@@ -121,7 +121,7 @@
       palette: "Palette",
       fileAccess: "File Access",
       homeFooterNote:
-        'Built from local <code>design-md/*</code> assets inside <code>awesome-design-md</code>.',
+        'Built from local <code>design-md/*</code> and <code>extra/uiuxskillProMax</code> assets.',
       detailBack: "← Back to Index",
       detailKicker: "Design Detail",
       originalSite: "Original Site",
@@ -153,7 +153,7 @@
       detailNotFoundBody:
         "Open it again from the index, or check the slug parameter in the URL.",
       detailFooterNote:
-        'Local detail page for the current <code>DESIGN.md</code> entry.',
+        "Local detail page for the current style entry.",
       favoritesCount: (count) => `${count} saved`,
       prevItem: "Previous item",
       nextItem: "Next item",
@@ -205,6 +205,27 @@
       bg: "#f8ebef",
       text: "#7f3551",
       border: "#e6c7d3",
+    },
+    styleGeneral: {
+      labelZh: "通用风格模板",
+      labelEn: "General Style Templates",
+      bg: "#edf5eb",
+      text: "#315d2d",
+      border: "#cfe0ca",
+    },
+    styleLanding: {
+      labelZh: "落地页风格模板",
+      labelEn: "Landing Page Templates",
+      bg: "#fff0e5",
+      text: "#8a4d19",
+      border: "#f0cfb3",
+    },
+    styleAnalytics: {
+      labelZh: "分析仪表板模板",
+      labelEn: "Analytics Dashboard Templates",
+      bg: "#e9f1ff",
+      text: "#2d4f85",
+      border: "#c9d6ef",
     },
   };
 
@@ -382,6 +403,8 @@
       ...translateList(design.overview || []),
       ...(design.keyCharacteristics || []),
       ...translateList(design.keyCharacteristics || []),
+      ...(design.searchTerms || []),
+      ...translateList(design.searchTerms || []),
       design.sourceSite?.name,
       design.sourceSite?.url,
     ]
