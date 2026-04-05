@@ -71,11 +71,8 @@ code {
 
 .hero {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 420px);
-  gap: 48px;
-  align-items: end;
-  padding: 72px 0 44px;
+  display: block;
+  padding: 48px 0 28px;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
@@ -104,11 +101,21 @@ code {
 }
 
 .site-domain {
-  margin-bottom: 24px;
   color: var(--text-secondary);
   font-family: "JetBrains Mono", monospace;
   font-size: 13px;
   letter-spacing: 0.06em;
+}
+
+.hero-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.hero-copy {
+  max-width: 980px;
 }
 
 .hero-label,
@@ -135,8 +142,8 @@ h1,
 }
 
 h1 {
-  font-size: clamp(40px, 5.8vw, 72px);
-  line-height: 1.04;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.02;
   letter-spacing: -0.03em;
 }
 
@@ -146,18 +153,18 @@ h1 em {
 }
 
 .hero-desc {
-  max-width: 700px;
-  margin: 18px 0 0;
+  max-width: 760px;
+  margin: 14px 0 0;
   color: var(--text-secondary);
-  font-size: 17px;
-  line-height: 1.78;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .hero-stats {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  margin-top: 20px;
 }
 
 .hero-stat {
@@ -184,39 +191,6 @@ h1 em {
   color: var(--text);
   font-size: 22px;
   line-height: 1.1;
-}
-
-.hero-panel {
-  position: relative;
-  align-self: stretch;
-  min-height: 260px;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(249, 243, 235, 0.82)),
-    linear-gradient(135deg, rgba(29, 91, 72, 0.08), rgba(214, 122, 74, 0.08));
-  box-shadow: var(--shadow-soft), var(--shadow-line);
-}
-
-.hero-panel::after {
-  content: "";
-  position: absolute;
-  inset: auto 24px 20px auto;
-  width: 120px;
-  height: 120px;
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)),
-    radial-gradient(circle at top, rgba(29, 91, 72, 0.18), transparent 70%);
-  transform: rotate(14deg);
-  opacity: 0.7;
-}
-
-.hero-panel-body {
-  display: grid;
-  gap: 16px;
-  align-content: start;
 }
 
 .hero-panel-quote {
@@ -333,7 +307,7 @@ h1 em {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -341,11 +315,18 @@ h1 em {
   display: flex;
 }
 
+.hero-corner-lang {
+  position: absolute;
+  top: 34px;
+  right: 0;
+  z-index: 2;
+}
+
 .lang-switcher {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px;
+  gap: 2px;
+  padding: 2px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.8);
@@ -358,10 +339,10 @@ h1 em {
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
-  min-width: 42px;
-  padding: 7px 11px;
+  min-width: 30px;
+  padding: 5px 7px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.05em;
   transition:
@@ -382,7 +363,7 @@ h1 em {
 
 .search-wrap {
   position: relative;
-  width: min(320px, 100%);
+  width: min(210px, 100%);
 }
 
 .search-icon {
@@ -412,13 +393,6 @@ h1 em {
 
 #search::placeholder {
   color: var(--text-muted);
-}
-
-.count-label {
-  color: var(--text-muted);
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.05em;
 }
 
 .fav-section {
@@ -1070,7 +1044,17 @@ h1 em {
 
   .hero {
     padding-top: 56px;
-    gap: 28px;
+  }
+
+  .hero-corner-lang {
+    top: 18px;
+    right: 0;
+  }
+
+  .hero-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 24px;
   }
 
   .controls {
@@ -1081,10 +1065,6 @@ h1 em {
     width: 100%;
     margin-left: 0;
     justify-content: space-between;
-  }
-
-  .lang-switcher-slot {
-    order: 2;
   }
 
   .search-wrap {
@@ -1140,8 +1120,7 @@ h1 em {
 
   .detail-card,
   .meta-card,
-  .detail-sidecard,
-  .hero-panel {
+  .detail-sidecard {
     padding: 18px;
     border-radius: 20px;
   }

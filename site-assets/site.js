@@ -1,6 +1,7 @@
 (function () {
   const designs = window.DESIGNS || [];
   const siteMeta = window.SITE_META || {};
+  const zhTranslations = window.ZH_TRANSLATIONS || {};
   const favoritesKey = "adm_index_favorites_v1";
   const previewModeKey = "adm_index_preview_mode_v1";
   const languageKey = "adm_index_lang_v1";
@@ -10,7 +11,7 @@
       htmlLang: "zh-CN",
       homeDocumentTitle: "Awesome DESIGN.md 索引站",
       homeMetaDescription:
-        "以 PMFrame 的信息架构为灵感，为本地 awesome-design-md 仓库整理的 DESIGN.md 风格索引站。",
+        "从品牌风格、预览页和设计文档。点击任意框架查看详细UI风格。",
       detailDocumentTitle: (name) => `${name} · Awesome DESIGN.md 索引站`,
       detailMetaDescription: (name) =>
         `${name} 的本地风格详情页，包含设计摘要、调色板、本地预览与文件入口。`,
@@ -18,12 +19,10 @@
       homeHeroTitle: (count) =>
         `<span class="hero-count-inline">${count}</span> 个<br><em>DESIGN.md 风格索引</em>`,
       homeHeroDesc:
-        '参考 PMFrame 的版式与浏览路径，把本地 <code>awesome-design-md</code> 里的品牌风格、预览页和设计文档整理成一个可搜索、可收藏、可跳转的静态索引站。',
+        "从品牌风格、预览页和设计文档。点击任意框架查看详细UI风格。",
       statDesigns: "风格条目",
       statPreviews: "预览页面",
       statCategories: "分组类型",
-      featuredExcerpt: "本期摘录",
-      featuredLink: "进入详情页 →",
       searchPlaceholder: "搜索品牌名、风格描述或关键词...",
       favoritesSection: "★ 我的常看",
       filterAll: (count) => `全部 (${count})`,
@@ -89,7 +88,7 @@
       htmlLang: "en",
       homeDocumentTitle: "Awesome DESIGN.md Index",
       homeMetaDescription:
-        "A local static index for awesome-design-md, inspired by PMFrame's information architecture.",
+        "Browse brand styles, preview pages, and design documents. Open any item to inspect the detailed UI style.",
       detailDocumentTitle: (name) => `${name} · Awesome DESIGN.md Index`,
       detailMetaDescription: (name) =>
         `Local detail page for ${name}, with summaries, palettes, local previews, and file links.`,
@@ -97,12 +96,10 @@
       homeHeroTitle: (count) =>
         `<span class="hero-count-inline">${count}</span><br><em>DESIGN.md Style Index</em>`,
       homeHeroDesc:
-        'Inspired by PMFrame&apos;s browsing model, this local index organizes the brand styles, preview pages, and design documents inside <code>awesome-design-md</code> into a searchable, saveable, jumpable static catalog.',
+        "Browse brand styles, preview pages, and design documents. Open any item to inspect the detailed UI style.",
       statDesigns: "Design Entries",
       statPreviews: "Preview Pages",
       statCategories: "Categories",
-      featuredExcerpt: "Featured Excerpt",
-      featuredLink: "Open Detail Page →",
       searchPlaceholder: "Search brand names, style notes, or keywords...",
       favoritesSection: "★ Saved Picks",
       filterAll: (count) => `All (${count})`,
@@ -238,6 +235,35 @@
     return typeof entry === "function" ? entry(...args) : entry;
   }
 
+  function normalizeText(value) {
+    return String(value ?? "").replace(/\s+/g, " ").trim();
+  }
+
+  function translateContent(value) {
+    if (getLanguage() !== "zh") {
+      return String(value ?? "");
+    }
+
+    const raw = String(value ?? "");
+    const normalized = normalizeText(raw);
+    if (!normalized) {
+      return raw;
+    }
+
+    const translated = zhTranslations[normalized];
+    if (!translated) {
+      return raw;
+    }
+
+    const prefix = raw.match(/^\s*/)?.[0] || "";
+    const suffix = raw.match(/\s*$/)?.[0] || "";
+    return `${prefix}${translated}${suffix}`;
+  }
+
+  function translateList(items) {
+    return (items || []).map((item) => translateContent(item));
+  }
+
   function escapeHTML(value) {
     return String(value ?? "")
       .replaceAll("&", "&amp;")
@@ -349,10 +375,13 @@
     return [
       design.name,
       design.summary,
+      translateContent(design.summary),
       design.categoryLabelZh,
       design.categoryLabelEn,
       ...(design.overview || []),
+      ...translateList(design.overview || []),
       ...(design.keyCharacteristics || []),
+      ...translateList(design.keyCharacteristics || []),
       design.sourceSite?.name,
       design.sourceSite?.url,
     ]
@@ -437,28 +466,10 @@
             ${escapeHTML(category.label)}
           </span>
         </div>
-        <div class="card-desc">${escapeHTML(design.summary)}</div>
+        <div class="card-desc">${escapeHTML(translateContent(design.summary))}</div>
         <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
         <div class="card-files">${renderFilePills(design)}</div>
       </article>
-    `;
-  }
-
-  function renderHeroPanel(target) {
-    if (!target || designs.length === 0) {
-      return;
-    }
-
-    const featured = designs[Math.floor(Math.random() * designs.length)];
-    const category = getCategory(featured.categoryKey);
-    const excerpt = featured.overview?.[0] || featured.summary;
-    target.innerHTML = `
-      <div class="hero-panel-feature"># ${String(featured.id).padStart(2, "0")} · ${escapeHTML(category.label)}</div>
-      <h2 class="hero-panel-title">${escapeHTML(featured.name)}</h2>
-      <p class="hero-panel-quote">${escapeHTML(excerpt)}</p>
-      <a class="hero-panel-link" href="${detailHref(featured.slug)}">${escapeHTML(
-        t("featuredLink")
-      )}</a>
     `;
   }
 
@@ -466,7 +477,6 @@
     const refs = {
       filters: document.getElementById("filters"),
       search: document.getElementById("search"),
-      countLabel: document.getElementById("count-label"),
       grid: document.getElementById("grid"),
       favoritesGrid: document.getElementById("favorites-grid"),
       favoritesSection: document.getElementById("fav-section"),
@@ -475,8 +485,6 @@
       modalShell: document.getElementById("modal-shell"),
       modalPrev: document.getElementById("modal-prev"),
       modalNext: document.getElementById("modal-next"),
-      heroPanelBody: document.getElementById("hero-panel-body"),
-      heroPanelLabel: document.getElementById("hero-panel-label"),
       homeHeroLabel: document.getElementById("home-hero-label"),
       homeHeroTitle: document.getElementById("home-hero-title"),
       homeHeroDesc: document.getElementById("home-hero-desc"),
@@ -524,14 +532,12 @@
       refs.statDesignsLabel.textContent = t("statDesigns");
       refs.statPreviewsLabel.textContent = t("statPreviews");
       refs.statCategoriesLabel.textContent = t("statCategories");
-      refs.heroPanelLabel.textContent = t("featuredExcerpt");
       refs.search.placeholder = t("searchPlaceholder");
       refs.favoritesLabel.textContent = t("favoritesSection");
       refs.homeFooterNote.innerHTML = t("homeFooterNote");
       refs.homeLangSwitcher.innerHTML = renderLanguageSwitcher();
       refs.modalPrev.setAttribute("aria-label", t("prevItem"));
       refs.modalNext.setAttribute("aria-label", t("nextItem"));
-      renderHeroPanel(refs.heroPanelBody);
     }
 
     function getFilteredDesigns() {
@@ -606,11 +612,6 @@
 
     function renderGrid() {
       state.visibleDesigns = getFilteredDesigns();
-      refs.countLabel.textContent = t(
-        "resultsCount",
-        state.visibleDesigns.length,
-        designs.length
-      );
 
       if (state.visibleDesigns.length === 0) {
         refs.grid.innerHTML = `
@@ -642,8 +643,8 @@
       `;
       const favorite = isFavorite(design.slug);
       const overview = design.overview?.length
-        ? design.overview.join("\n\n")
-        : design.summary;
+        ? translateList(design.overview).join("\n\n")
+        : translateContent(design.summary);
 
       refs.modalShell.innerHTML = `
         <div class="modal-frame">
@@ -669,7 +670,9 @@
               </button>
             </div>
             <h2 class="modal-title">${escapeHTML(design.name)}</h2>
-            <p class="modal-summary">${escapeHTML(design.summary)}</p>
+            <p class="modal-summary">${escapeHTML(
+              translateContent(design.summary)
+            )}</p>
             <div class="modal-actions">
               <a class="modal-action" href="${detailHref(design.slug)}">${escapeHTML(
                 t("detailPage")
@@ -702,7 +705,7 @@
                   t("traitsSection")
                 )}</h3>
                 <ul class="modal-list">
-                  ${(design.keyCharacteristics || [])
+                  ${translateList(design.keyCharacteristics || [])
                     .map((item) => `<li>${escapeHTML(item)}</li>`)
                     .join("")}
                 </ul>
@@ -904,7 +907,9 @@
               (item) => `
                 <a class="related-card" href="${detailHref(item.slug)}">
                   <div class="related-card-name">${escapeHTML(item.name)}</div>
-                  <div class="related-card-desc">${escapeHTML(item.summary)}</div>
+                  <div class="related-card-desc">${escapeHTML(
+                    translateContent(item.summary)
+                  )}</div>
                 </a>
               `
             )
@@ -966,6 +971,51 @@
       return;
     }
 
+    function localizePreviewFrame(frame) {
+      if (getLanguage() !== "zh" || !frame?.contentDocument?.body) {
+        return;
+      }
+
+      const doc = frame.contentDocument;
+      const walker = doc.createTreeWalker(doc.body, doc.defaultView.NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        const translated = translateContent(node.textContent);
+        if (translated !== node.textContent) {
+          node.textContent = translated;
+        }
+      }
+
+      doc.querySelectorAll("[placeholder]").forEach((element) => {
+        const translated = translateContent(element.getAttribute("placeholder"));
+        if (translated !== element.getAttribute("placeholder")) {
+          element.setAttribute("placeholder", translated);
+        }
+      });
+
+      doc.querySelectorAll("[title]").forEach((element) => {
+        const translated = translateContent(element.getAttribute("title"));
+        if (translated !== element.getAttribute("title")) {
+          element.setAttribute("title", translated);
+        }
+      });
+    }
+
+    function bindPreviewFrameTranslation() {
+      const frame = document.getElementById("detail-preview-frame");
+      if (!frame) {
+        return;
+      }
+
+      frame.addEventListener("load", () => {
+        localizePreviewFrame(frame);
+      });
+
+      if (frame.contentDocument?.readyState === "complete") {
+        localizePreviewFrame(frame);
+      }
+    }
+
     function renderPage() {
       const index = designs.findIndex((item) => item.slug === design.slug);
       const previous = index > 0 ? designs[index - 1] : null;
@@ -1000,7 +1050,9 @@
           </div>
           <div class="detail-kicker">${escapeHTML(t("detailKicker"))}</div>
           <h1 class="detail-title">${escapeHTML(design.name)}</h1>
-          <p class="detail-summary">${escapeHTML(design.summary)}</p>
+          <p class="detail-summary">${escapeHTML(
+            translateContent(design.summary)
+          )}</p>
           <div class="detail-chips">
             <span
               class="detail-chip"
@@ -1072,7 +1124,7 @@
             <div class="hero-panel-label">${escapeHTML(t("styleSnapshot"))}</div>
             <div class="detail-sidecard-title">${escapeHTML(category.label)}</div>
             <p class="hero-panel-quote">${escapeHTML(
-              design.overview?.[0] || design.summary
+              translateContent(design.overview?.[0] || design.summary)
             )}</p>
             <div class="card-palette">${renderPaletteDots(colors, 5)}</div>
           </div>
@@ -1123,7 +1175,7 @@
           <article class="detail-card">
             <h2 class="detail-card-title">${escapeHTML(t("summarySection"))}</h2>
             <div class="detail-paragraphs">
-              ${(design.overview || [design.summary])
+              ${translateList(design.overview || [design.summary])
                 .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
                 .join("")}
             </div>
@@ -1131,7 +1183,7 @@
               design.keyCharacteristics?.length
                 ? `
                   <ul class="detail-list">
-                    ${design.keyCharacteristics
+                    ${translateList(design.keyCharacteristics)
                       .map((item) => `<li>${escapeHTML(item)}</li>`)
                       .join("")}
                   </ul>
@@ -1244,6 +1296,8 @@
           </article>
         </aside>
       `;
+
+      bindPreviewFrameTranslation();
     }
 
     document.addEventListener("click", (event) => {

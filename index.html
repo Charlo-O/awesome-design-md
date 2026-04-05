@@ -6,21 +6,21 @@
   <title>Awesome DESIGN.md Index</title>
   <meta
     name="description"
-    content="以 PMFrame 的信息架构为灵感，为本地 awesome-design-md 仓库整理的 DESIGN.md 风格索引站。"
+    content="从品牌风格、预览页和设计文档。点击任意框架查看详细UI风格。"
   >
   <link rel="stylesheet" href="site-assets/fonts.css">
   <link rel="stylesheet" href="site-assets/site.css">
 </head>
 <body data-page="home">
   <header class="hero page-max">
+    <div class="lang-switcher-slot hero-corner-lang" id="home-lang-switcher"></div>
     <div class="hero-copy">
-      <div class="site-domain"><span class="site-domain-accent">ADI</span>ndex.local</div>
+      <div class="hero-topbar">
+        <div class="site-domain"><span class="site-domain-accent">vibeui</span>.top</div>
+      </div>
       <div class="hero-label" id="home-hero-label">Local Design Atlas</div>
       <h1 id="home-hero-title"><span id="hero-count">54</span> 个<br><em>DESIGN.md 风格索引</em></h1>
-      <p class="hero-desc" id="home-hero-desc">
-        参考 PMFrame 的版式与浏览路径，把本地 <code>awesome-design-md</code> 里的品牌风格、
-        预览页和设计文档整理成一个可搜索、可收藏、可跳转的静态索引站。
-      </p>
+      <p class="hero-desc" id="home-hero-desc">从品牌风格、预览页和设计文档。点击任意框架查看详细UI风格。</p>
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="hero-stat-label" id="stat-designs-label">风格条目</span>
@@ -36,21 +36,15 @@
         </div>
       </div>
     </div>
-    <aside class="hero-panel" id="hero-panel">
-      <div class="hero-panel-label" id="hero-panel-label">Featured Excerpt</div>
-      <div class="hero-panel-body" id="hero-panel-body"></div>
-    </aside>
   </header>
 
   <section class="controls page-max">
     <div class="filters" id="filters"></div>
     <div class="controls-right">
-      <div class="lang-switcher-slot" id="home-lang-switcher"></div>
       <div class="search-wrap">
         <span class="search-icon">⌕</span>
         <input type="text" id="search" placeholder="搜索品牌名、风格描述或关键词…">
       </div>
-      <div class="count-label" id="count-label"></div>
     </div>
   </section>
 
@@ -74,11 +68,12 @@
   </div>
 
   <footer class="site-footer page-max">
-    <span class="footer-domain"><span class="site-domain-accent">ADI</span>ndex.local</span>
+    <span class="footer-domain"><span class="site-domain-accent">vibeui</span>.top</span>
     <span class="footer-note" id="home-footer-note">Built from local <code>design-md/*</code> assets in <code>awesome-design-md</code>.</span>
   </footer>
 
   <script src="site-assets/designs.js"></script>
+  <script src="site-assets/translations.js"></script>
   <script src="site-assets/site.js"></script>
 </body>
 </html>
