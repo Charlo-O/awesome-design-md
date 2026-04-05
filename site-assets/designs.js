@@ -1,5 +1,5 @@
 window.SITE_META = {
-  "generatedAt": "2026-04-05T11:51:06.747Z",
+  "generatedAt": "2026-04-05T12:15:11.393Z",
   "totalDesigns": 112,
   "totalPreviews": 166,
   "totalCategories": 9,
@@ -2678,7 +2678,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/01-minimalism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/01-minimalism/README.md",
@@ -2739,7 +2739,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/02-neumorphism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/02-neumorphism/README.md",
@@ -2800,7 +2800,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/03-glassmorphism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/03-glassmorphism/README.md",
@@ -2861,7 +2861,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/04-brutalism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/04-brutalism/README.md",
@@ -2922,7 +2922,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/05-3d-hyperrealism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/05-3d-hyperrealism/README.md",
@@ -2983,7 +2983,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/06-vibrant-block.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/06-vibrant-block/README.md",
@@ -3044,7 +3044,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/07-dark-mode-oled.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/07-dark-mode-oled/README.md",
@@ -3104,7 +3104,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/08-accessible.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/08-accessible/README.md",
@@ -3165,7 +3165,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/09-claymorphism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/09-claymorphism/README.md",
@@ -3226,7 +3226,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/10-aurora-ui.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/10-aurora-ui/README.md",
@@ -3287,7 +3287,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/11-retro-futurism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/11-retro-futurism/README.md",
@@ -3348,7 +3348,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/12-flat-design.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/12-flat-design/README.md",
@@ -3409,7 +3409,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/13-skeuomorphism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/13-skeuomorphism/README.md",
@@ -3467,7 +3467,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/14-liquid-glass.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/14-liquid-glass/README.md",
@@ -3524,7 +3524,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/15-motion-driven.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/15-motion-driven/README.md",
@@ -3583,7 +3583,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/16-micro-interactions.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/16-micro-interactions/README.md",
@@ -3644,7 +3644,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/17-inclusive-design.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/17-inclusive-design/README.md",
@@ -3703,7 +3703,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/18-zero-interface.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/18-zero-interface/README.md",
@@ -3764,7 +3764,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/19-soft-ui-evolution.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/19-soft-ui-evolution/README.md",
@@ -3818,7 +3818,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/20-hero-centric.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/20-hero-centric/README.md",
@@ -3872,7 +3872,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/21-conversion-optimized.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/21-conversion-optimized/README.md",
@@ -3926,7 +3926,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/22-feature-rich.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/22-feature-rich/README.md",
@@ -3980,7 +3980,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/23-minimal-direct.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/23-minimal-direct/README.md",
@@ -4034,7 +4034,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/24-social-proof.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/24-social-proof/README.md",
@@ -4088,7 +4088,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/25-interactive-demo.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/25-interactive-demo/README.md",
@@ -4142,7 +4142,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/26-trust-authority.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/26-trust-authority/README.md",
@@ -4196,7 +4196,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/27-storytelling.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/27-storytelling/README.md",
@@ -4256,7 +4256,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/28-data-dense-dashboard.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/28-data-dense-dashboard/README.md",
@@ -4317,7 +4317,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/29-heatmap-density.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/29-heatmap-density/README.md",
@@ -4371,7 +4371,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/30-executive-summary.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/30-executive-summary/README.md",
@@ -4429,7 +4429,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/31-real-time-monitoring.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/31-real-time-monitoring/README.md",
@@ -4483,7 +4483,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/32-drill-down-analytics.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/32-drill-down-analytics/README.md",
@@ -4537,7 +4537,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/33-comparative-analytics.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/33-comparative-analytics/README.md",
@@ -4594,7 +4594,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/34-predictive-analytics.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/34-predictive-analytics/README.md",
@@ -4648,7 +4648,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/35-user-behavior-analytics.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/35-user-behavior-analytics/README.md",
@@ -4708,7 +4708,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/36-financial-analytics.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/36-financial-analytics/README.md",
@@ -4762,7 +4762,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/37-sales-intelligence.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/37-sales-intelligence/README.md",
@@ -4823,7 +4823,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/38-neubrutalism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/38-neubrutalism/README.md",
@@ -4880,7 +4880,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/39-bento-box.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/39-bento-box/README.md",
@@ -4941,7 +4941,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/40-y2k-revival.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/40-y2k-revival/README.md",
@@ -5001,7 +5001,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/41-cyberpunk.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/41-cyberpunk/README.md",
@@ -5062,7 +5062,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/42-organic-biophilic.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/42-organic-biophilic/README.md",
@@ -5122,7 +5122,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/43-ai-native.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/43-ai-native/README.md",
@@ -5183,7 +5183,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/44-memphis-revival.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/44-memphis-revival/README.md",
@@ -5243,7 +5243,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/45-vaporwave.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/45-vaporwave/README.md",
@@ -5301,7 +5301,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/46-dimensional-layering.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/46-dimensional-layering/README.md",
@@ -5358,7 +5358,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/47-exaggerated-minimalism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/47-exaggerated-minimalism/README.md",
@@ -5412,7 +5412,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/48-kinetic-typography.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/48-kinetic-typography/README.md",
@@ -5466,7 +5466,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/49-parallax-storytelling.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/49-parallax-storytelling/README.md",
@@ -5524,7 +5524,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/50-swiss-modernism.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/50-swiss-modernism/README.md",
@@ -5583,7 +5583,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/51-hud-scifi.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/51-hud-scifi/README.md",
@@ -5642,7 +5642,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/52-pixel-art.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/52-pixel-art/README.md",
@@ -5700,7 +5700,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/53-bento-grids.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/53-bento-grids/README.md",
@@ -5761,7 +5761,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/54-neubrutalism-v2.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/54-neubrutalism-v2/README.md",
@@ -5817,7 +5817,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/55-spatial-ui.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/55-spatial-ui/README.md",
@@ -5878,7 +5878,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/56-e-ink-paper.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/56-e-ink-paper/README.md",
@@ -5939,7 +5939,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/57-gen-z-chaos.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/57-gen-z-chaos/README.md",
@@ -5999,7 +5999,7 @@ window.DESIGNS = [
     },
     "sourceSite": {
       "name": "UI/UX Pro Max",
-      "url": "extra/uiuxskillProMax/index.html"
+      "url": "extra/uiuxskillProMax/refstyles/58-biomimetic-organic.html"
     },
     "files": {
       "readme": "extra/uiuxskillProMax/generated/58-biomimetic-organic/README.md",

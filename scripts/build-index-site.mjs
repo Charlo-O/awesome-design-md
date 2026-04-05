@@ -571,7 +571,7 @@ function buildExternalDesignRecord(style, index) {
     fonts: extractFonts(previewContent),
     sourceSite: {
       name: "UI/UX Pro Max",
-      url: "extra/uiuxskillProMax/index.html",
+      url: previewRelativePath,
     },
     files: {
       readme: generatedFiles.readme,
