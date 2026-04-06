@@ -285,6 +285,140 @@
     return (items || []).map((item) => translateContent(item));
   }
 
+  const bilingualStyleCategories = new Set([
+    "styleGeneral",
+    "styleLanding",
+    "styleAnalytics",
+  ]);
+  const simplifiedStyleZhNames = {
+    "uiuxpro-01-minimalism": "极简主义与瑞士风格",
+    "uiuxpro-02-neumorphism": "新拟物化",
+    "uiuxpro-03-glassmorphism": "玻璃拟态",
+    "uiuxpro-04-brutalism": "粗野主义",
+    "uiuxpro-05-3d-hyperrealism": "3D 与超写实主义",
+    "uiuxpro-06-vibrant-block": "活力色块风格",
+    "uiuxpro-07-dark-mode-oled": "OLED 深色模式",
+    "uiuxpro-08-accessible": "无障碍与伦理设计",
+    "uiuxpro-09-claymorphism": "黏土拟态",
+    "uiuxpro-10-aurora-ui": "极光 UI",
+    "uiuxpro-11-retro-futurism": "复古未来主义",
+    "uiuxpro-12-flat-design": "扁平化设计",
+    "uiuxpro-13-skeuomorphism": "拟物化设计",
+    "uiuxpro-14-liquid-glass": "液态玻璃",
+    "uiuxpro-15-motion-driven": "动态驱动",
+    "uiuxpro-16-micro-interactions": "微交互",
+    "uiuxpro-17-inclusive-design": "包容性设计",
+    "uiuxpro-18-zero-interface": "零界面",
+    "uiuxpro-19-soft-ui-evolution": "柔和 UI 进化版",
+    "uiuxpro-20-hero-centric": "主视觉导向设计",
+    "uiuxpro-21-conversion-optimized": "转化优化",
+    "uiuxpro-22-feature-rich": "丰富功能展示",
+    "uiuxpro-23-minimal-direct": "极简直观",
+    "uiuxpro-24-social-proof": "社会证明导向",
+    "uiuxpro-25-interactive-demo": "互动产品演示",
+    "uiuxpro-26-trust-authority": "信任与权威",
+    "uiuxpro-27-storytelling": "叙事驱动",
+    "uiuxpro-28-data-dense-dashboard": "数据密集仪表板",
+    "uiuxpro-29-heatmap-density": "热图风格",
+    "uiuxpro-30-executive-summary": "高管仪表板",
+    "uiuxpro-31-real-time-monitoring": "实时监控",
+    "uiuxpro-32-drill-down-analytics": "下钻分析",
+    "uiuxpro-33-comparative-analytics": "对比分析仪表板",
+    "uiuxpro-34-predictive-analytics": "预测分析",
+    "uiuxpro-35-user-behavior-analytics": "用户行为分析",
+    "uiuxpro-36-financial-analytics": "财务仪表板",
+    "uiuxpro-37-sales-intelligence": "销售智能仪表板",
+    "uiuxpro-38-neubrutalism": "新粗野主义",
+    "uiuxpro-39-bento-box": "便当盒网格",
+    "uiuxpro-40-y2k-revival": "Y2K 美学",
+    "uiuxpro-41-cyberpunk": "赛博朋克 UI",
+    "uiuxpro-42-organic-biophilic": "有机亲生物设计",
+    "uiuxpro-43-ai-native": "AI 原生 UI",
+    "uiuxpro-44-memphis-revival": "孟菲斯设计",
+    "uiuxpro-45-vaporwave": "蒸汽波",
+    "uiuxpro-46-dimensional-layering": "多维层叠",
+    "uiuxpro-47-exaggerated-minimalism": "夸张极简主义",
+    "uiuxpro-48-kinetic-typography": "动态排版",
+    "uiuxpro-49-parallax-storytelling": "视差叙事",
+    "uiuxpro-50-swiss-modernism": "瑞士现代主义 2.0",
+    "uiuxpro-51-hud-scifi": "科幻 HUD / FUI",
+    "uiuxpro-52-pixel-art": "像素艺术",
+    "uiuxpro-53-bento-grids": "便当盒网格",
+    "uiuxpro-54-neubrutalism-v2": "新粗野主义",
+    "uiuxpro-55-spatial-ui": "空间 UI (VisionOS)",
+    "uiuxpro-56-e-ink-paper": "电子墨水 / 纸质",
+    "uiuxpro-57-gen-z-chaos": "Z 世代混乱 / 极繁主义",
+    "uiuxpro-58-biomimetic-organic": "仿生 / 有机 2.0",
+  };
+  const bilingualStyleNameSkip = new Set([
+    "一般",
+    "通用",
+    "落地页",
+    "落地頁",
+    "分析仪表",
+    "分析仪表板",
+    "分析儀表",
+    "分析儀表板",
+  ]);
+
+  function getStyleZhName(design) {
+    if (!bilingualStyleCategories.has(design?.categoryKey)) {
+      return "";
+    }
+
+    if (simplifiedStyleZhNames[design.slug]) {
+      return simplifiedStyleZhNames[design.slug];
+    }
+
+    const terms = Array.isArray(design.searchTerms) ? design.searchTerms : [];
+    for (const term of terms) {
+      const text = normalizeText(term);
+      if (!text) {
+        continue;
+      }
+
+      if (!/[\u3400-\u9fff]/.test(text)) {
+        continue;
+      }
+
+      if (bilingualStyleNameSkip.has(text)) {
+        continue;
+      }
+
+      if (text.length > 40) {
+        continue;
+      }
+
+      if (/[(),]/.test(text) && text.length > 18) {
+        continue;
+      }
+
+      return text;
+    }
+
+    return normalizeText(translateContent(design.name));
+  }
+
+  function localizedDesignName(design) {
+    const raw = String(design?.name ?? "");
+    if (getLanguage() !== "zh" || !bilingualStyleCategories.has(design?.categoryKey)) {
+      return raw;
+    }
+
+    const zhName = getStyleZhName(design);
+    const rawNormalized = normalizeText(raw).toLowerCase();
+    const zhNormalized = normalizeText(zhName).toLowerCase();
+    if (!zhName || zhNormalized === rawNormalized) {
+      return raw;
+    }
+
+    if (zhNormalized.includes(rawNormalized)) {
+      return zhName;
+    }
+
+    return `${zhName} / ${raw}`;
+  }
+
   function escapeHTML(value) {
     return String(value ?? "")
       .replaceAll("&", "&amp;")
@@ -395,6 +529,7 @@
   function searchBlob(design) {
     return [
       design.name,
+      getStyleZhName(design),
       design.summary,
       translateContent(design.summary),
       design.categoryLabelZh,
@@ -481,7 +616,7 @@
           <span>${escapeHTML(sourceLabel(design))}</span>
         </div>
         <div class="card-head">
-          <div class="card-name">${escapeHTML(design.name)}</div>
+          <div class="card-name">${escapeHTML(localizedDesignName(design))}</div>
           <span
             class="card-tag"
             style="background:${category.bg};color:${category.text};border-color:${category.border};"
@@ -692,7 +827,7 @@
                 )}
               </button>
             </div>
-            <h2 class="modal-title">${escapeHTML(design.name)}</h2>
+            <h2 class="modal-title">${escapeHTML(localizedDesignName(design))}</h2>
             <p class="modal-summary">${escapeHTML(
               translateContent(design.summary)
             )}</p>
@@ -929,7 +1064,9 @@
             .map(
               (item) => `
                 <a class="related-card" href="${detailHref(item.slug)}">
-                  <div class="related-card-name">${escapeHTML(item.name)}</div>
+                  <div class="related-card-name">${escapeHTML(
+                    localizedDesignName(item)
+                  )}</div>
                   <div class="related-card-desc">${escapeHTML(
                     translateContent(item.summary)
                   )}</div>
@@ -1059,10 +1196,11 @@
           ? design.files.previewDark
           : design.files.preview;
 
-      document.title = t("detailDocumentTitle", design.name);
+      const displayName = localizedDesignName(design);
+      document.title = t("detailDocumentTitle", displayName);
       document
         .querySelector('meta[name="description"]')
-        ?.setAttribute("content", t("detailMetaDescription", design.name));
+        ?.setAttribute("content", t("detailMetaDescription", displayName));
       footerNote.innerHTML = t("detailFooterNote");
 
       hero.innerHTML = `
@@ -1072,7 +1210,7 @@
             ${renderLanguageSwitcher()}
           </div>
           <div class="detail-kicker">${escapeHTML(t("detailKicker"))}</div>
-          <h1 class="detail-title">${escapeHTML(design.name)}</h1>
+          <h1 class="detail-title">${escapeHTML(displayName)}</h1>
           <p class="detail-summary">${escapeHTML(
             translateContent(design.summary)
           )}</p>
@@ -1126,13 +1264,17 @@
               previous
                 ? `<a class="nav-mini-link" href="${detailHref(
                     previous.slug
-                  )}">${escapeHTML(t("previousLink", previous.name))}</a>`
+                  )}">${escapeHTML(
+                    t("previousLink", localizedDesignName(previous))
+                  )}</a>`
                 : ""
             }
             ${
               next
-                ? `<a class="nav-mini-link" href="${detailHref(next.slug)}">${escapeHTML(
-                    t("nextLink", next.name)
+                ? `<a class="nav-mini-link" href="${detailHref(
+                    next.slug
+                  )}">${escapeHTML(
+                    t("nextLink", localizedDesignName(next))
                   )}</a>`
                 : ""
             }
@@ -1189,7 +1331,7 @@
                 class="preview-frame"
                 id="detail-preview-frame"
                 src="${escapeHTML(previewSrc)}"
-                title="${escapeHTML(design.name)} preview"
+                title="${escapeHTML(localizedDesignName(design))} preview"
                 loading="lazy"
               ></iframe>
             </div>
