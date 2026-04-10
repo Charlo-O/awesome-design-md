@@ -492,6 +492,52 @@
     localStorage.setItem(previewModeKey, mode);
   }
 
+  function getCardPreviewLabel() {
+    return getLanguage() === "en" ? "Preview" : "预览";
+  }
+
+  function getCardPreviewAriaLabel(name) {
+    return getLanguage() === "en"
+      ? `Show preview for ${name}`
+      : `显示 ${name} 的预览`;
+  }
+
+  function getCardPreviewStageAriaLabel(name) {
+    return getLanguage() === "en"
+      ? `Open details for ${name}`
+      : `打开 ${name} 的详情页`;
+  }
+
+  function localizeEmbeddedFrame(frame) {
+    if (getLanguage() !== "zh" || !frame?.contentDocument?.body) {
+      return;
+    }
+
+    const doc = frame.contentDocument;
+    const walker = doc.createTreeWalker(doc.body, doc.defaultView.NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const translated = translateContent(node.textContent);
+      if (translated !== node.textContent) {
+        node.textContent = translated;
+      }
+    }
+
+    doc.querySelectorAll("[placeholder]").forEach((element) => {
+      const translated = translateContent(element.getAttribute("placeholder"));
+      if (translated !== element.getAttribute("placeholder")) {
+        element.setAttribute("placeholder", translated);
+      }
+    });
+
+    doc.querySelectorAll("[title]").forEach((element) => {
+      const translated = translateContent(element.getAttribute("title"));
+      if (translated !== element.getAttribute("title")) {
+        element.setAttribute("title", translated);
+      }
+    });
+  }
+
   function renderLanguageSwitcher() {
     const lang = getLanguage();
     return `
@@ -581,15 +627,34 @@
       .join("");
   }
 
-  function renderFilePills(design) {
-    const pills = [t("readmeLabel"), "DESIGN", t("fileLightShort")];
+  function renderFilePills(design, options = {}) {
+    const { includeCardPreview = false } = options;
+    const pills = ["UI/UX", t("fileLightShort")];
     if (design.files.previewDark) {
       pills.push(t("fileDarkShort"));
     }
 
-    return pills
+    const staticPills = pills
       .map((pill) => `<span class="file-pill">${escapeHTML(pill)}</span>`)
       .join("");
+
+    if (!includeCardPreview || !design.files.preview) {
+      return staticPills;
+    }
+
+    return `${staticPills}
+      <button
+        class="file-pill file-pill-link"
+        type="button"
+        data-card-preview="${escapeHTML(design.files.preview)}"
+        data-detail-href="${escapeHTML(detailHref(design.slug))}"
+        data-preview-name="${escapeHTML(localizedDesignName(design))}"
+        aria-label="${escapeHTML(getCardPreviewAriaLabel(localizedDesignName(design)))}"
+        aria-expanded="false"
+        aria-controls="card-preview-popover"
+      >
+        ${escapeHTML(getCardPreviewLabel())}
+      </button>`;
   }
 
   function renderCard(design) {
@@ -626,7 +691,7 @@
         </div>
         <div class="card-desc">${escapeHTML(translateContent(design.summary))}</div>
         <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
-        <div class="card-files">${renderFilePills(design)}</div>
+        <div class="card-files">${renderFilePills(design, { includeCardPreview: true })}</div>
       </article>
     `;
   }
@@ -662,6 +727,45 @@
       modalIndex: -1,
       modalPool: [],
     };
+    const previewPopover = (() => {
+      const root = document.createElement("section");
+      root.id = "card-preview-popover";
+      root.className = "card-preview-popover";
+      root.setAttribute("aria-hidden", "true");
+      root.innerHTML = `
+        <div class="card-preview-popover-inner">
+          <div class="card-preview-popover-head">
+            <span class="card-preview-popover-kicker"></span>
+            <span class="card-preview-popover-title"></span>
+          </div>
+          <div
+            class="card-preview-popover-stage"
+            role="link"
+            tabindex="0"
+          >
+            <div class="card-preview-popover-canvas">
+              <iframe
+                class="card-preview-popover-frame"
+                loading="lazy"
+                tabindex="-1"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(root);
+      return {
+        root,
+        kicker: root.querySelector(".card-preview-popover-kicker"),
+        title: root.querySelector(".card-preview-popover-title"),
+        stage: root.querySelector(".card-preview-popover-stage"),
+        canvas: root.querySelector(".card-preview-popover-canvas"),
+        frame: root.querySelector(".card-preview-popover-frame"),
+      };
+    })();
+    let previewHideTimer = 0;
+    let activePreviewButton = null;
+    let previewPopoverOpenedAt = 0;
 
     setLanguage(getLanguage());
 
@@ -675,6 +779,172 @@
     document.getElementById("stat-categories").textContent = String(
       siteMeta.totalCategories || Object.keys(categoryMeta).length
     );
+
+    function updatePreviewPopoverMetrics() {
+      const chromePadding = 26;
+      const maxVisibleWidth = Math.min(Math.max(window.innerWidth - 56, 260), 760);
+      const maxVisibleHeight = Math.max(window.innerHeight - 120, 320);
+      const frameHeight = Number(previewPopover.frame.dataset.frameHeight) || 1360;
+      const scale = Math.min(0.56, maxVisibleWidth / 1280);
+      const safeScale = Math.max(scale, 0.2);
+      const visibleWidth = Math.round(1280 * safeScale);
+      const contentHeight = Math.round(frameHeight * safeScale);
+      const visibleHeight = Math.min(contentHeight, Math.round(maxVisibleHeight));
+      previewPopover.root.style.setProperty(
+        "--card-preview-scale",
+        safeScale.toFixed(4)
+      );
+      previewPopover.root.style.setProperty(
+        "--card-preview-visible-width",
+        `${visibleWidth}px`
+      );
+      previewPopover.root.style.setProperty(
+        "--card-preview-visible-height",
+        `${visibleHeight}px`
+      );
+      previewPopover.root.style.setProperty(
+        "--card-preview-frame-height",
+        `${frameHeight}px`
+      );
+      previewPopover.root.style.setProperty(
+        "--card-preview-content-height",
+        `${contentHeight}px`
+      );
+      previewPopover.root.style.width = `${visibleWidth + chromePadding}px`;
+    }
+
+    function syncPreviewFrameHeight() {
+      const doc = previewPopover.frame.contentDocument;
+      if (!doc) {
+        previewPopover.frame.dataset.frameHeight = "1360";
+        return;
+      }
+
+      const root = doc.documentElement;
+      const body = doc.body;
+      const frameHeight = Math.max(
+        1360,
+        root?.scrollHeight || 0,
+        root?.offsetHeight || 0,
+        root?.clientHeight || 0,
+        body?.scrollHeight || 0,
+        body?.offsetHeight || 0,
+        body?.clientHeight || 0
+      );
+      previewPopover.frame.dataset.frameHeight = String(frameHeight);
+    }
+
+    function clearPreviewHideTimer() {
+      if (!previewHideTimer) {
+        return;
+      }
+
+      window.clearTimeout(previewHideTimer);
+      previewHideTimer = 0;
+    }
+
+    function setPreviewButtonExpanded(button, expanded) {
+      if (!button) {
+        return;
+      }
+
+      button.setAttribute("aria-expanded", expanded ? "true" : "false");
+    }
+
+    function positionPreviewPopover(button) {
+      if (!button || !document.body.contains(button)) {
+        return;
+      }
+
+      const buttonRect = button.getBoundingClientRect();
+      const popoverRect = previewPopover.root.getBoundingClientRect();
+      const gap = 14;
+      const inset = 12;
+      let left = buttonRect.left + buttonRect.width / 2 - popoverRect.width / 2;
+      left = Math.min(
+        Math.max(left, inset),
+        window.innerWidth - popoverRect.width - inset
+      );
+
+      let top = buttonRect.top - popoverRect.height - gap;
+      let placement = "top";
+      if (top < inset) {
+        top = buttonRect.bottom + gap;
+        placement = "bottom";
+      }
+
+      if (top + popoverRect.height > window.innerHeight - inset) {
+        top = Math.max(inset, window.innerHeight - popoverRect.height - inset);
+      }
+
+      previewPopover.root.dataset.placement = placement;
+      previewPopover.root.style.left = `${Math.round(left)}px`;
+      previewPopover.root.style.top = `${Math.round(top)}px`;
+    }
+
+    function hidePreviewPopover() {
+      clearPreviewHideTimer();
+      setPreviewButtonExpanded(activePreviewButton, false);
+      activePreviewButton = null;
+      previewPopover.root.removeAttribute("data-detail-href");
+      previewPopover.root.classList.remove("is-open");
+      previewPopover.root.setAttribute("aria-hidden", "true");
+      previewPopover.root.removeAttribute("data-placement");
+    }
+
+    function schedulePreviewHide() {
+      clearPreviewHideTimer();
+      previewHideTimer = window.setTimeout(() => {
+        if (previewPopover.root.matches(":hover")) {
+          return;
+        }
+
+        hidePreviewPopover();
+      }, 120);
+    }
+
+    function showPreviewPopover(button) {
+      if (!button?.dataset.cardPreview) {
+        return;
+      }
+
+      clearPreviewHideTimer();
+      updatePreviewPopoverMetrics();
+      if (activePreviewButton && activePreviewButton !== button) {
+        setPreviewButtonExpanded(activePreviewButton, false);
+      }
+
+      activePreviewButton = button;
+      previewPopover.kicker.textContent = t("lightPreview");
+      previewPopover.title.textContent = button.dataset.previewName || "";
+      previewPopover.frame.title = `${button.dataset.previewName || ""} ${t("lightPreview")}`;
+      previewPopover.stage.setAttribute(
+        "aria-label",
+        getCardPreviewStageAriaLabel(button.dataset.previewName || "")
+      );
+      previewPopover.root.dataset.detailHref = button.dataset.detailHref || "";
+      previewPopover.root.classList.add("is-open");
+      previewPopover.root.setAttribute("aria-hidden", "false");
+      previewPopoverOpenedAt = performance.now();
+      setPreviewButtonExpanded(button, true);
+
+      const nextSrc = button.dataset.cardPreview;
+      if (previewPopover.frame.dataset.src !== nextSrc) {
+        previewPopover.frame.dataset.src = nextSrc;
+        previewPopover.frame.dataset.frameHeight = "1360";
+        previewPopover.frame.src = nextSrc;
+        previewPopover.stage.scrollTop = 0;
+        previewPopover.stage.scrollLeft = 0;
+      } else {
+        localizeEmbeddedFrame(previewPopover.frame);
+        syncPreviewFrameHeight();
+        previewPopover.stage.scrollTop = 0;
+        previewPopover.stage.scrollLeft = 0;
+      }
+
+      updatePreviewPopoverMetrics();
+      positionPreviewPopover(button);
+    }
 
     function renderStaticChrome() {
       document.title = t("homeDocumentTitle");
@@ -916,6 +1186,7 @@
     }
 
     function openModal(slug) {
+      hidePreviewPopover();
       const pool = state.visibleDesigns.length ? state.visibleDesigns : designs;
       const index = pool.findIndex((design) => design.slug === slug);
       if (index === -1) {
@@ -928,6 +1199,7 @@
     }
 
     function rerender() {
+      hidePreviewPopover();
       renderFilters();
       renderFavoritesSection();
       renderGrid();
@@ -971,6 +1243,52 @@
       rerender();
     });
 
+    previewPopover.root.addEventListener("mouseenter", () => {
+      clearPreviewHideTimer();
+    });
+
+    previewPopover.root.addEventListener("mouseleave", () => {
+      schedulePreviewHide();
+    });
+
+    previewPopover.stage.addEventListener("click", () => {
+      if (performance.now() - previewPopoverOpenedAt < 180) {
+        return;
+      }
+
+      const href = previewPopover.root.dataset.detailHref;
+      if (!href) {
+        return;
+      }
+
+      hidePreviewPopover();
+      window.location.assign(href);
+    });
+
+    previewPopover.stage.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+
+      const href = previewPopover.root.dataset.detailHref;
+      if (!href) {
+        return;
+      }
+
+      event.preventDefault();
+      hidePreviewPopover();
+      window.location.assign(href);
+    });
+
+    previewPopover.frame.addEventListener("load", () => {
+      localizeEmbeddedFrame(previewPopover.frame);
+      syncPreviewFrameHeight();
+      updatePreviewPopoverMetrics();
+      if (activePreviewButton) {
+        positionPreviewPopover(activePreviewButton);
+      }
+    });
+
     document.addEventListener("click", (event) => {
       const langButton = event.target.closest("[data-lang-choice]");
       if (langButton) {
@@ -978,6 +1296,13 @@
         setLanguage(langButton.dataset.langChoice);
         renderStaticChrome();
         rerender();
+        return;
+      }
+
+      const previewButton = event.target.closest("[data-card-preview]");
+      if (previewButton) {
+        event.preventDefault();
+        showPreviewPopover(previewButton);
         return;
       }
 
@@ -991,7 +1316,10 @@
       }
 
       const card = event.target.closest(".card[data-slug]");
-      if (card) {
+      const interactiveTarget = event.target.closest(
+        "a, button, input, select, textarea, summary"
+      );
+      if (card && !interactiveTarget) {
         openModal(card.dataset.slug);
         return;
       }
@@ -999,6 +1327,56 @@
       if (event.target === refs.overlay || event.target.closest("[data-modal-close]")) {
         closeModal();
       }
+    });
+
+    document.addEventListener("mouseover", (event) => {
+      const previewButton = event.target.closest("[data-card-preview]");
+      if (!previewButton) {
+        return;
+      }
+
+      showPreviewPopover(previewButton);
+    });
+
+    document.addEventListener("mouseout", (event) => {
+      const previewButton = event.target.closest("[data-card-preview]");
+      if (!previewButton || previewButton !== activePreviewButton) {
+        return;
+      }
+
+      const relatedTarget = event.relatedTarget;
+      if (
+        relatedTarget &&
+        (previewButton.contains(relatedTarget) ||
+          previewPopover.root.contains(relatedTarget))
+      ) {
+        return;
+      }
+
+      schedulePreviewHide();
+    });
+
+    document.addEventListener("focusin", (event) => {
+      const previewButton = event.target.closest("[data-card-preview]");
+      if (!previewButton) {
+        return;
+      }
+
+      showPreviewPopover(previewButton);
+    });
+
+    document.addEventListener("focusout", (event) => {
+      const previewButton = event.target.closest("[data-card-preview]");
+      if (!previewButton || previewButton !== activePreviewButton) {
+        return;
+      }
+
+      const relatedTarget = event.relatedTarget;
+      if (relatedTarget && previewPopover.root.contains(relatedTarget)) {
+        return;
+      }
+
+      schedulePreviewHide();
     });
 
     refs.modalPrev.addEventListener("click", () => {
@@ -1026,6 +1404,10 @@
         closeModal();
       }
 
+      if (event.key === "Escape" && activePreviewButton) {
+        hidePreviewPopover();
+      }
+
       if (state.modalIndex >= 0 && event.key === "ArrowLeft" && state.modalIndex > 0) {
         state.modalIndex -= 1;
         renderModal();
@@ -1041,6 +1423,24 @@
       }
     });
 
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (activePreviewButton) {
+          positionPreviewPopover(activePreviewButton);
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", () => {
+      if (activePreviewButton) {
+        updatePreviewPopoverMetrics();
+        positionPreviewPopover(activePreviewButton);
+      }
+    });
+
+    updatePreviewPopoverMetrics();
     renderStaticChrome();
     rerender();
   }

@@ -566,12 +566,138 @@ h1 em {
 }
 
 .file-pill {
+  appearance: none;
+  border: 1px solid transparent;
   padding: 4px 7px;
   border-radius: 6px;
   background: rgba(247, 242, 235, 0.94);
   color: var(--text-muted);
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
+  line-height: 1.2;
+}
+
+.file-pill-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card-preview-popover {
+  --card-preview-scale: 0.56;
+  --card-preview-width: 1280px;
+  --card-preview-frame-height: 1360px;
+  --card-preview-visible-width: 717px;
+  --card-preview-visible-height: 762px;
+  --card-preview-content-height: 762px;
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  z-index: 34;
+  width: calc(var(--card-preview-visible-width) + 26px);
+  max-width: calc(100vw - 24px);
+  padding: 12px;
+  border: 1px solid rgba(210, 196, 177, 0.9);
+  border-radius: 20px;
+  background: rgba(255, 252, 247, 0.96);
+  box-shadow:
+    0 30px 60px rgba(31, 24, 15, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.98);
+  transform-origin: top center;
+  transition:
+    opacity 140ms ease,
+    transform 160ms ease,
+    visibility 0ms linear 160ms;
+}
+
+.card-preview-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 140ms ease,
+    transform 160ms ease,
+    visibility 0ms linear 0ms;
+}
+
+.card-preview-popover-inner {
+  display: grid;
+  gap: 10px;
+}
+
+.card-preview-popover-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-preview-popover-kicker {
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-preview-popover-title {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: right;
+}
+
+.card-preview-popover-stage {
+  overflow: auto;
+  border: 1px solid rgba(210, 196, 177, 0.82);
+  border-radius: 14px;
+  background: #fff;
+  width: var(--card-preview-visible-width);
+  height: var(--card-preview-visible-height);
+  cursor: pointer;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(157, 136, 112, 0.7) rgba(247, 242, 235, 0.92);
+}
+
+.card-preview-popover-stage:focus-visible {
+  outline: 2px solid rgba(157, 136, 112, 0.88);
+  outline-offset: 4px;
+}
+
+.card-preview-popover-stage::-webkit-scrollbar {
+  width: 10px;
+}
+
+.card-preview-popover-stage::-webkit-scrollbar-track {
+  background: rgba(247, 242, 235, 0.92);
+}
+
+.card-preview-popover-stage::-webkit-scrollbar-thumb {
+  background: rgba(157, 136, 112, 0.7);
+  border-radius: 999px;
+  border: 2px solid rgba(247, 242, 235, 0.92);
+}
+
+.card-preview-popover-canvas {
+  width: var(--card-preview-visible-width);
+  height: var(--card-preview-content-height);
+  background: #fff;
+}
+
+.card-preview-popover-frame {
+  width: var(--card-preview-width);
+  height: var(--card-preview-frame-height);
+  border: 0;
+  background: #fff;
+  display: block;
+  transform: scale(var(--card-preview-scale));
+  transform-origin: top left;
+  pointer-events: none;
 }
 
 .fav-star {
