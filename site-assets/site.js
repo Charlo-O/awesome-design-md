@@ -1,6 +1,127 @@
 (function () {
-  const designs = window.DESIGNS || [];
-  const siteMeta = window.SITE_META || {};
+  const rawDesigns = window.DESIGNS || [];
+  const hotkeysAgents = window.HOTKEYS_AGENTS || [];
+  const hotkeysSummaryZh = window.HOTKEYS_SUMMARY_ZH || {};
+  const skillTagLabels = {
+    zh: {
+      Design: "设计",
+      Dev: "开发",
+      Motion: "动效",
+      Accessibility: "无障碍",
+      Marketing: "营销",
+      Video: "视频",
+    },
+    en: {
+      Design: "Design",
+      Dev: "Dev",
+      Motion: "Motion",
+      Accessibility: "Accessibility",
+      Marketing: "Marketing",
+      Video: "Video",
+    },
+  };
+  const skillPaletteByTag = {
+    Design: ["#02182c", "#ef0d45", "#ffd7e2", "#fff7fa", "#f4f8fc"],
+    Dev: ["#02182c", "#2563eb", "#dbeafe", "#eff6ff", "#f4f8fc"],
+    Motion: ["#02182c", "#0891b2", "#cffafe", "#ecfeff", "#f4f8fc"],
+    Accessibility: ["#02182c", "#059669", "#dcfce7", "#ecfdf5", "#f4f8fc"],
+    Marketing: ["#02182c", "#e11d48", "#ffe4e6", "#fff1f2", "#f4f8fc"],
+    Video: ["#02182c", "#d97706", "#fef3c7", "#fffbeb", "#f4f8fc"],
+  };
+
+  function buildSkillMonogram(name) {
+    const tokens = String(name || "")
+      .replace(/[^a-zA-Z0-9]+/g, " ")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (tokens.length === 0) {
+      return "SK";
+    }
+    if (tokens.length === 1) {
+      return tokens[0].slice(0, 2).toUpperCase();
+    }
+    return `${tokens[0][0]}${tokens[1][0]}`.toUpperCase();
+  }
+
+  function buildHotkeysSkills(items) {
+    return items.map((item, index) => {
+      const tags = Array.isArray(item.tags) ? item.tags : [];
+      const primaryTag = tags[0] || "Design";
+      const colors = skillPaletteByTag[primaryTag] || [
+        "#02182c",
+        "#475569",
+        "#e2e8f0",
+        "#f8fafc",
+        "#f1f5f9",
+      ];
+
+      return {
+        id: rawDesigns.length + index + 1,
+        slug: `skill-${item.id}`,
+        name: item.name,
+        monogram: buildSkillMonogram(item.name),
+        entryType: "skill",
+        categoryKey: "skill",
+        categoryLabelZh: "技能",
+        categoryLabelEn: "Skill Library",
+        summary: item.description,
+        summaryZh: hotkeysSummaryZh[item.id] || "",
+        overview: [item.description],
+        keyCharacteristics: [],
+        colors,
+        fonts: {
+          serif: null,
+          sans: "Geist, Inter, system-ui, sans-serif",
+          mono: "JetBrains Mono, SFMono-Regular, Menlo, monospace",
+        },
+        sourceSite: {
+          name: item.author,
+          url: item.sourceUrl,
+        },
+        files: {
+          readme: null,
+          design: null,
+          preview: null,
+          previewDark: null,
+        },
+        stats: {
+          previewCount: 0,
+          colorCount: colors.length,
+        },
+        searchTerms: [
+          ...(tags || []),
+          ...tags.map((tag) => skillTagLabels.zh[tag] || tag),
+          item.author,
+          item.description,
+          hotkeysSummaryZh[item.id] || "",
+          item.npxCommand || "",
+          "hotkeys.design",
+          "skill",
+          "技能",
+        ].filter(Boolean),
+        skillCommand: item.npxCommand || null,
+        skillTags: tags,
+        skillTagsZh: tags.map((tag) => skillTagLabels.zh[tag] || tag),
+        skillAuthor: item.author,
+        skillAuthorUrl: item.authorUrl || null,
+        skillLibraryUrl: "https://hotkeys.design/",
+        featured: Boolean(item.featured),
+        createdAt: item.createdAt || null,
+      };
+    });
+  }
+
+  const designs = [...rawDesigns, ...buildHotkeysSkills(hotkeysAgents)];
+  const computedSiteMeta = {
+    totalDesigns: designs.length,
+    totalPreviews: designs.reduce((sum, design) => sum + (design.stats?.previewCount || 0), 0),
+    totalCategories: new Set(designs.map((design) => design.categoryKey)).size,
+  };
+  const siteMeta = {
+    ...(window.SITE_META || {}),
+    ...computedSiteMeta,
+  };
   const zhTranslations = window.ZH_TRANSLATIONS || {};
   const favoritesKey = "adm_index_favorites_v1";
   const previewModeKey = "adm_index_preview_mode_v1";
@@ -20,10 +141,24 @@
         `<span class="hero-count-inline">${count}</span> 个<br><em>DESIGN.md 风格索引</em>`,
       homeHeroDesc:
         "从品牌风格、预览页和设计文档。点击任意框架查看详细UI风格。",
+      homeHeroLabelSkill: "Hotkeys 技能库",
+      homeHeroTitleSkill: (count) =>
+        `<span class="hero-count-inline">${count}</span> 个<br><em>Skill 命令索引</em>`,
+      homeHeroDescSkill:
+        "从 hotkeys.design 收录的技能与命令中浏览。点击任意条目查看安装命令、标签与来源链接。",
       statDesigns: "风格条目",
       statPreviews: "预览页面",
       statCategories: "分组类型",
+      statDesignsSkill: "技能条目",
+      statPreviewsSkill: "命令数量",
+      statCategoriesSkill: "标签类型",
       searchPlaceholder: "搜索",
+      modeSwitcherLabel: "当前展示",
+      modeUi: "UI设计",
+      modeSkill: "Skill",
+      modeSkillNote: "skill",
+      modeSwitchTo: "切换为",
+      modeCurrentOnly: "只显示当前分类",
       favoritesSection: "★ 我的常看",
       filterAll: (count) => `全部 (${count})`,
       filterFavorites: (count) => `收藏 (${count})`,
@@ -36,6 +171,8 @@
       modalFavoriteOff: "☆ 收藏",
       close: "关闭",
       detailPage: "详情页",
+      copyCommand: "复制命令",
+      copiedCommand: "已复制",
       lightPreview: "浅色预览",
       darkPreview: "深色预览",
       summarySection: "风格摘要",
@@ -44,10 +181,24 @@
       palette: "调色板",
       fileAccess: "文件入口",
       homeFooterNote:
-        '基于本地 <code>design-md/*</code> 与 <code>extra/uiuxskillProMax</code> 资产构建的索引站。',
+        '基于本地 <code>design-md/*</code>、<code>extra/uiuxskillProMax</code> 与 <code>hotkeys.design</code> 技能数据构建的索引站。',
       detailBack: "← 返回索引站",
       detailKicker: "设计详情",
       originalSite: "原站",
+      authorLink: "作者主页",
+      skillLibraryLabel: "Hotkeys 技能库",
+      skillAuthorLabel: "作者",
+      skillTagsLabel: "技能标签",
+      skillSourceLabel: "来源链接",
+      skillCommandLabel: "安装命令",
+      skillFeatured: "Hotkeys 热门收录",
+      commandEyebrow: "快速安装",
+      commandTitle: "安装命令",
+      commandHint:
+        "这类条目不提供本地预览，可直接复制安装命令或跳转到来源页。",
+      commandUnavailable: "当前条目没有可复制的安装命令。",
+      skillDetailMetaDescription: (name) =>
+        `${name} 的技能详情页，包含安装命令、来源链接与标签信息。`,
       previousLink: (name) => `← ${name}`,
       nextLink: (name) => `${name} →`,
       styleSnapshot: "风格快照",
@@ -77,6 +228,8 @@
         "请从索引站重新进入，或检查地址栏里的 slug 参数。",
       detailFooterNote:
         "当前本地风格条目的详情页。",
+      skillDetailFooterNote:
+        "当前技能条目的详情页。",
       favoritesCount: (count) => `${count} 个`,
       prevItem: "上一项",
       nextItem: "下一项",
@@ -97,10 +250,24 @@
         `<span class="hero-count-inline">${count}</span><br><em>DESIGN.md Style Index</em>`,
       homeHeroDesc:
         "Browse brand styles, preview pages, and design documents. Open any item to inspect the detailed UI style.",
+      homeHeroLabelSkill: "Hotkeys Skill Library",
+      homeHeroTitleSkill: (count) =>
+        `<span class="hero-count-inline">${count}</span><br><em>Skill Command Index</em>`,
+      homeHeroDescSkill:
+        "Browse skills and install commands collected from hotkeys.design. Open any item to inspect commands, tags, and source links.",
       statDesigns: "Design Entries",
       statPreviews: "Preview Pages",
       statCategories: "Categories",
+      statDesignsSkill: "Skill Entries",
+      statPreviewsSkill: "Commands",
+      statCategoriesSkill: "Tag Types",
       searchPlaceholder: "Search",
+      modeSwitcherLabel: "Current View",
+      modeUi: "UI",
+      modeSkill: "Skills",
+      modeSkillNote: "skill",
+      modeSwitchTo: "Switch to",
+      modeCurrentOnly: "Only show current category",
       favoritesSection: "★ Saved Picks",
       filterAll: (count) => `All (${count})`,
       filterFavorites: (count) => `Saved Only (${count})`,
@@ -113,6 +280,8 @@
       modalFavoriteOff: "☆ Save",
       close: "Close",
       detailPage: "Detail Page",
+      copyCommand: "Copy Command",
+      copiedCommand: "Copied",
       lightPreview: "Light Preview",
       darkPreview: "Dark Preview",
       summarySection: "Style Summary",
@@ -121,10 +290,24 @@
       palette: "Palette",
       fileAccess: "File Access",
       homeFooterNote:
-        'Built from local <code>design-md/*</code> and <code>extra/uiuxskillProMax</code> assets.',
+        'Built from local <code>design-md/*</code>, <code>extra/uiuxskillProMax</code>, and <code>hotkeys.design</code> skill data.',
       detailBack: "← Back to Index",
       detailKicker: "Design Detail",
       originalSite: "Original Site",
+      authorLink: "Author Page",
+      skillLibraryLabel: "Hotkeys Library",
+      skillAuthorLabel: "Author",
+      skillTagsLabel: "Tags",
+      skillSourceLabel: "Source Link",
+      skillCommandLabel: "Install Command",
+      skillFeatured: "Featured on Hotkeys",
+      commandEyebrow: "Quick Install",
+      commandTitle: "Install Command",
+      commandHint:
+        "This entry does not include a local preview. Copy the install command or jump to the source page instead.",
+      commandUnavailable: "No install command is available for this entry.",
+      skillDetailMetaDescription: (name) =>
+        `Skill detail page for ${name}, with install command, source links, and tags.`,
       previousLink: (name) => `← ${name}`,
       nextLink: (name) => `${name} →`,
       styleSnapshot: "Style Snapshot",
@@ -154,6 +337,8 @@
         "Open it again from the index, or check the slug parameter in the URL.",
       detailFooterNote:
         "Local detail page for the current style entry.",
+      skillDetailFooterNote:
+        "Detail page for the current skill entry.",
       favoritesCount: (count) => `${count} saved`,
       prevItem: "Previous item",
       nextItem: "Next item",
@@ -227,7 +412,23 @@
       text: "#2d4f85",
       border: "#c9d6ef",
     },
+    skill: {
+      labelZh: "技能",
+      labelEn: "Skill Library",
+      bg: "#f6eefc",
+      text: "#66319a",
+      border: "#dec8f4",
+    },
   };
+  const uiCategoryKeys = Object.keys(categoryMeta).filter((key) => key !== "skill");
+  const skillTagOrder = [
+    "Design",
+    "Dev",
+    "Motion",
+    "Accessibility",
+    "Marketing",
+    "Video",
+  ];
 
   const page = document.body.dataset.page;
 
@@ -283,6 +484,73 @@
 
   function translateList(items) {
     return (items || []).map((item) => translateContent(item));
+  }
+
+  function isSkillEntry(design) {
+    return design?.entryType === "skill" || design?.categoryKey === "skill";
+  }
+
+  function getLocalizedSkillTags(design) {
+    if (!isSkillEntry(design)) {
+      return [];
+    }
+
+    if (getLanguage() === "zh") {
+      return design.skillTagsZh?.length
+        ? design.skillTagsZh
+        : (design.skillTags || []).map((tag) => skillTagLabels.zh[tag] || tag);
+    }
+
+    return design.skillTags || [];
+  }
+
+  function getLocalizedSummary(design) {
+    if (isSkillEntry(design)) {
+      return getLanguage() === "zh" && design.summaryZh
+        ? design.summaryZh
+        : design.summary || "";
+    }
+
+    return translateContent(design.summary);
+  }
+
+  function getLocalizedOverview(design) {
+    if (isSkillEntry(design)) {
+      return [getLocalizedSummary(design), t("commandHint")].filter(Boolean);
+    }
+
+    return translateList(design.overview || [design.summary]);
+  }
+
+  function getLocalizedTraits(design) {
+    if (isSkillEntry(design)) {
+      const traits = [];
+      const tags = getLocalizedSkillTags(design);
+
+      if (design.skillAuthor) {
+        traits.push(`${t("skillAuthorLabel")}: ${design.skillAuthor}`);
+      }
+
+      if (tags.length) {
+        traits.push(`${t("skillTagsLabel")}: ${tags.join(" · ")}`);
+      }
+
+      if (design.skillCommand) {
+        traits.push(`${t("skillCommandLabel")}: ${design.skillCommand}`);
+      }
+
+      if (design.sourceSite?.url) {
+        traits.push(`${t("skillSourceLabel")}: ${design.sourceSite.url}`);
+      }
+
+      if (design.featured) {
+        traits.push(t("skillFeatured"));
+      }
+
+      return traits;
+    }
+
+    return translateList(design.keyCharacteristics || []);
   }
 
   const bilingualStyleCategories = new Set([
@@ -440,6 +708,91 @@
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 
+  function renderCommandPanel(design, options = {}) {
+    const { compact = false, buttonClass = "detail-action" } = options;
+    if (!design.skillCommand) {
+      return `<p class="command-empty">${escapeHTML(t("commandUnavailable"))}</p>`;
+    }
+
+    return `
+      <div class="command-panel ${compact ? "command-panel-compact" : ""}">
+        <code class="command-code">${escapeHTML(design.skillCommand)}</code>
+        <button
+          class="${escapeHTML(buttonClass)}"
+          type="button"
+          data-copy-command="${escapeHTML(design.skillCommand)}"
+          data-copy-label="${escapeHTML(t("copyCommand"))}"
+        >
+          ${escapeHTML(t("copyCommand"))}
+        </button>
+      </div>
+    `;
+  }
+
+  function renderSkillTagPills(design) {
+    const tags = getLocalizedSkillTags(design);
+    return tags
+      .map((tag) => `<span class="file-pill">${escapeHTML(tag)}</span>`)
+      .join("");
+  }
+
+  function renderResourceLinks(design, options = {}) {
+    const { includeAuthor = true } = options;
+    const links = [];
+    if (design.skillLibraryUrl) {
+      links.push({ label: t("skillLibraryLabel"), href: design.skillLibraryUrl });
+    }
+    if (design.sourceSite?.url) {
+      links.push({ label: t("originalSite"), href: design.sourceSite.url });
+    }
+    if (includeAuthor && design.skillAuthorUrl) {
+      links.push({ label: t("authorLink"), href: design.skillAuthorUrl });
+    }
+
+    return links
+      .map(
+        (item) => `
+          <a class="file-link" href="${escapeHTML(item.href)}" target="_blank" rel="noopener">
+            <span>${escapeHTML(item.label)}</span>
+            <code>${escapeHTML(item.href)}</code>
+          </a>
+        `
+      )
+      .join("");
+  }
+
+  async function copyCommandValue(value) {
+    if (!value) {
+      return false;
+    }
+
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+
+    const field = document.createElement("textarea");
+    field.value = value;
+    field.setAttribute("readonly", "");
+    field.style.position = "absolute";
+    field.style.left = "-9999px";
+    document.body.appendChild(field);
+    field.select();
+    const copied = document.execCommand("copy");
+    document.body.removeChild(field);
+    return copied;
+  }
+
+  function flashCopyButton(button) {
+    const defaultLabel = button.dataset.copyLabel || t("copyCommand");
+    button.textContent = t("copiedCommand");
+    window.setTimeout(() => {
+      if (button.isConnected) {
+        button.textContent = defaultLabel;
+      }
+    }, 1600);
+  }
+
   function getCategory(key) {
     const lang = getLanguage();
     const meta = categoryMeta[key];
@@ -560,7 +913,66 @@
     `;
   }
 
+  function getModePool(mode) {
+    return designs.filter((design) =>
+      mode === "skill" ? isSkillEntry(design) : !isSkillEntry(design)
+    );
+  }
+
+  function getModeStats(mode) {
+    const pool = getModePool(mode);
+    if (mode === "skill") {
+      return {
+        totalDesigns: pool.length,
+        totalPreviews: pool.filter((design) => design.skillCommand).length,
+        totalCategories: new Set(
+          pool.flatMap((design) => design.skillTags || [])
+        ).size,
+      };
+    }
+
+    return {
+      totalDesigns: pool.length,
+      totalPreviews: pool.reduce(
+        (sum, design) => sum + (design.stats?.previewCount || 0),
+        0
+      ),
+      totalCategories: new Set(pool.map((design) => design.categoryKey)).size,
+    };
+  }
+
+  function getSkillTagLabel(tag) {
+    const lang = getLanguage();
+    return skillTagLabels[lang]?.[tag] || tag;
+  }
+
+  function renderModeSwitcher(mode) {
+    const targetMode = mode === "ui" ? "skill" : "ui";
+    const currentLabel = mode === "ui" ? t("modeUi") : t("modeSkill");
+    const targetLabel = targetMode === "ui" ? t("modeUi") : t("modeSkill");
+    const targetNoteLabel = targetMode === "skill" ? t("modeSkillNote") : targetLabel;
+    return `
+      <div class="mode-switcher-head">
+        <span class="hero-stat-label">${escapeHTML(t("modeSwitcherLabel"))}</span>
+        <button
+          class="mode-switcher-note"
+          type="button"
+          data-content-mode="${escapeHTML(targetMode)}"
+        >
+          <span class="mode-switcher-note-text">${escapeHTML(t("modeSwitchTo"))}</span><span class="mode-switcher-note-target ${
+            targetMode === "skill" ? "is-skill" : ""
+          }">${escapeHTML(targetNoteLabel)}</span>
+        </button>
+      </div>
+      <div class="mode-switcher-current">${escapeHTML(currentLabel)}</div>
+    `;
+  }
+
   function sourceLabel(design) {
+    if (isSkillEntry(design) && design.sourceSite?.name) {
+      return design.sourceSite.name;
+    }
+
     if (!design.sourceSite?.url) {
       return getCategory(design.categoryKey).label;
     }
@@ -577,15 +989,23 @@
       design.name,
       getStyleZhName(design),
       design.summary,
-      translateContent(design.summary),
+      design.summaryZh,
+      getLocalizedSummary(design),
       design.categoryLabelZh,
       design.categoryLabelEn,
       ...(design.overview || []),
+      ...(getLanguage() === "zh" && design.summaryZh ? [design.summaryZh] : []),
+      ...getLocalizedOverview(design),
       ...translateList(design.overview || []),
       ...(design.keyCharacteristics || []),
+      ...getLocalizedTraits(design),
       ...translateList(design.keyCharacteristics || []),
       ...(design.searchTerms || []),
       ...translateList(design.searchTerms || []),
+      ...(design.skillTags || []),
+      ...(design.skillTagsZh || []),
+      design.skillCommand,
+      design.skillAuthor,
       design.sourceSite?.name,
       design.sourceSite?.url,
     ]
@@ -629,6 +1049,14 @@
 
   function renderFilePills(design, options = {}) {
     const { includeCardPreview = false } = options;
+
+    if (isSkillEntry(design)) {
+      const pills = ["SKILL", ...getLocalizedSkillTags(design).slice(0, 2)];
+      return pills
+        .map((pill) => `<span class="file-pill">${escapeHTML(pill)}</span>`)
+        .join("");
+    }
+
     const pills = ["UI/UX", t("fileLightShort")];
     if (design.files.previewDark) {
       pills.push(t("fileDarkShort"));
@@ -689,7 +1117,7 @@
             ${escapeHTML(category.label)}
           </span>
         </div>
-        <div class="card-desc">${escapeHTML(translateContent(design.summary))}</div>
+        <div class="card-desc">${escapeHTML(getLocalizedSummary(design))}</div>
         <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
         <div class="card-files">${renderFilePills(design, { includeCardPreview: true })}</div>
       </article>
@@ -712,14 +1140,19 @@
       homeHeroTitle: document.getElementById("home-hero-title"),
       homeHeroDesc: document.getElementById("home-hero-desc"),
       statDesignsLabel: document.getElementById("stat-designs-label"),
+      statDesignsValue: document.getElementById("stat-designs"),
       statPreviewsLabel: document.getElementById("stat-previews-label"),
+      statPreviewsValue: document.getElementById("stat-previews"),
       statCategoriesLabel: document.getElementById("stat-categories-label"),
+      statCategoriesValue: document.getElementById("stat-categories"),
       favoritesLabel: document.getElementById("favorites-label"),
       homeFooterNote: document.getElementById("home-footer-note"),
       homeLangSwitcher: document.getElementById("home-lang-switcher"),
+      homeModeSwitcher: document.getElementById("home-mode-switcher"),
     };
 
     const state = {
+      contentMode: "ui",
       activeFilter: "all",
       favoritesOnly: false,
       query: "",
@@ -768,17 +1201,6 @@
     let previewPopoverOpenedAt = 0;
 
     setLanguage(getLanguage());
-
-    document.getElementById("stat-designs").textContent = String(
-      siteMeta.totalDesigns || designs.length
-    );
-    document.getElementById("stat-previews").textContent = String(
-      siteMeta.totalPreviews ||
-        designs.reduce((sum, design) => sum + (design.stats?.previewCount || 0), 0)
-    );
-    document.getElementById("stat-categories").textContent = String(
-      siteMeta.totalCategories || Object.keys(categoryMeta).length
-    );
 
     function updatePreviewPopoverMetrics() {
       const chromePadding = 26;
@@ -947,32 +1369,55 @@
     }
 
     function renderStaticChrome() {
+      const modeStats = getModeStats(state.contentMode);
+      const skillMode = state.contentMode === "skill";
+
       document.title = t("homeDocumentTitle");
       document
         .querySelector('meta[name="description"]')
-        ?.setAttribute("content", t("homeMetaDescription"));
-      refs.homeHeroLabel.textContent = t("homeHeroLabel");
-      refs.homeHeroTitle.innerHTML = t(
-        "homeHeroTitle",
-        siteMeta.totalDesigns || designs.length
-      );
-      refs.homeHeroDesc.innerHTML = t("homeHeroDesc");
-      refs.statDesignsLabel.textContent = t("statDesigns");
-      refs.statPreviewsLabel.textContent = t("statPreviews");
-      refs.statCategoriesLabel.textContent = t("statCategories");
+        ?.setAttribute(
+          "content",
+          skillMode ? t("homeHeroDescSkill") : t("homeMetaDescription")
+        );
+      refs.homeHeroLabel.textContent = skillMode
+        ? t("homeHeroLabelSkill")
+        : t("homeHeroLabel");
+      refs.homeHeroTitle.innerHTML = skillMode
+        ? t("homeHeroTitleSkill", modeStats.totalDesigns)
+        : t("homeHeroTitle", modeStats.totalDesigns);
+      refs.homeHeroDesc.innerHTML = skillMode
+        ? t("homeHeroDescSkill")
+        : t("homeHeroDesc");
+      refs.statDesignsLabel.textContent = skillMode
+        ? t("statDesignsSkill")
+        : t("statDesigns");
+      refs.statDesignsValue.textContent = String(modeStats.totalDesigns);
+      refs.statPreviewsLabel.textContent = skillMode
+        ? t("statPreviewsSkill")
+        : t("statPreviews");
+      refs.statPreviewsValue.textContent = String(modeStats.totalPreviews);
+      refs.statCategoriesLabel.textContent = skillMode
+        ? t("statCategoriesSkill")
+        : t("statCategories");
+      refs.statCategoriesValue.textContent = String(modeStats.totalCategories);
       refs.search.placeholder = t("searchPlaceholder");
       refs.favoritesLabel.textContent = t("favoritesSection");
       refs.homeFooterNote.innerHTML = t("homeFooterNote");
       refs.homeLangSwitcher.innerHTML = renderLanguageSwitcher();
+      refs.homeModeSwitcher.innerHTML = renderModeSwitcher(state.contentMode);
       refs.modalPrev.setAttribute("aria-label", t("prevItem"));
       refs.modalNext.setAttribute("aria-label", t("nextItem"));
     }
 
     function getFilteredDesigns() {
       const query = state.query.trim().toLowerCase();
-      return designs.filter((design) => {
+      const pool = getModePool(state.contentMode);
+      return pool.filter((design) => {
         const categoryMatch =
-          state.activeFilter === "all" || design.categoryKey === state.activeFilter;
+          state.activeFilter === "all" ||
+          (state.contentMode === "skill"
+            ? (design.skillTags || []).includes(state.activeFilter)
+            : design.categoryKey === state.activeFilter);
         const favoriteMatch = !state.favoritesOnly || isFavorite(design.slug);
         const queryMatch = !query || searchBlob(design).includes(query);
         return categoryMatch && favoriteMatch && queryMatch;
@@ -980,20 +1425,40 @@
     }
 
     function renderFilters() {
-      const favoritesCount = getFavoriteSlugs().length;
+      const pool = getModePool(state.contentMode);
+      const favoritesCount = pool.filter((design) => isFavorite(design.slug)).length;
+      const modeItems =
+        state.contentMode === "skill"
+          ? skillTagOrder
+              .map((tag) => {
+                const count = pool.filter((design) =>
+                  (design.skillTags || []).includes(tag)
+                ).length;
+                return {
+                  key: tag,
+                  count,
+                  label: `${getSkillTagLabel(tag)} (${count})`,
+                  active: state.activeFilter === tag && !state.favoritesOnly,
+                  className: "",
+                };
+              })
+              .filter((item) => item.count > 0)
+          : uiCategoryKeys.map((key) => ({
+              key,
+              label: `${getCategory(key).label} (${pool.filter(
+                (design) => design.categoryKey === key
+              ).length})`,
+              active: state.activeFilter === key && !state.favoritesOnly,
+              className: "",
+            }));
       const items = [
         {
           key: "all",
-          label: t("filterAll", designs.length),
+          label: t("filterAll", pool.length),
           active: state.activeFilter === "all" && !state.favoritesOnly,
           className: "",
         },
-        ...Object.entries(categoryMeta).map(([key, meta]) => ({
-          key,
-          label: `${getCategory(key).label} (${designs.filter((design) => design.categoryKey === key).length})`,
-          active: state.activeFilter === key && !state.favoritesOnly,
-          className: "",
-        })),
+        ...modeItems,
         {
           key: "favorites",
           label: t("filterFavorites", favoritesCount),
@@ -1018,8 +1483,9 @@
     }
 
     function renderFavoritesSection() {
+      const modePool = getModePool(state.contentMode);
       const favorites = getFavoriteSlugs()
-        .map((slug) => designs.find((design) => design.slug === slug))
+        .map((slug) => modePool.find((design) => design.slug === slug))
         .filter(Boolean);
 
       if (
@@ -1070,9 +1536,8 @@
         ${category.bg}
       `;
       const favorite = isFavorite(design.slug);
-      const overview = design.overview?.length
-        ? translateList(design.overview).join("\n\n")
-        : translateContent(design.summary);
+      const overview = getLocalizedOverview(design).join("\n\n");
+      const traits = getLocalizedTraits(design);
 
       refs.modalShell.innerHTML = `
         <div class="modal-frame">
@@ -1098,26 +1563,47 @@
               </button>
             </div>
             <h2 class="modal-title">${escapeHTML(localizedDesignName(design))}</h2>
-            <p class="modal-summary">${escapeHTML(
-              translateContent(design.summary)
-            )}</p>
+            <p class="modal-summary">${escapeHTML(getLocalizedSummary(design))}</p>
             <div class="modal-actions">
-              <a class="modal-action" href="${detailHref(design.slug)}">${escapeHTML(
-                t("detailPage")
-              )}</a>
-              <a class="modal-action" href="${escapeHTML(design.files.preview)}" target="_blank" rel="noopener">${escapeHTML(
-                t("lightPreview")
-              )}</a>
               ${
-                design.files.previewDark
-                  ? `<a class="modal-action" href="${escapeHTML(
+                isSkillEntry(design)
+                  ? `
+                    ${renderCommandPanel(design, {
+                      compact: true,
+                      buttonClass: "modal-action",
+                    })}
+                  `
+                  : `
+                    <a class="modal-action" href="${detailHref(design.slug)}">${escapeHTML(
+                      t("detailPage")
+                    )}</a>
+                    ${
+                      design.files.preview
+                        ? `<a class="modal-action" href="${escapeHTML(
+                            design.files.preview
+                          )}" target="_blank" rel="noopener">${escapeHTML(
+                            t("lightPreview")
+                          )}</a>`
+                        : ""
+                    }
+                    ${
                       design.files.previewDark
-                    )}" target="_blank" rel="noopener">${escapeHTML(
-                      t("darkPreview")
-                    )}</a>`
-                  : ""
+                        ? `<a class="modal-action" href="${escapeHTML(
+                            design.files.previewDark
+                          )}" target="_blank" rel="noopener">${escapeHTML(
+                            t("darkPreview")
+                          )}</a>`
+                        : ""
+                    }
+                    ${
+                      design.files.design
+                        ? `<a class="modal-action" href="${escapeHTML(
+                            design.files.design
+                          )}" target="_blank" rel="noopener">DESIGN.md</a>`
+                        : ""
+                    }
+                  `
               }
-              <a class="modal-action" href="${escapeHTML(design.files.design)}" target="_blank" rel="noopener">DESIGN.md</a>
             </div>
           </div>
           <div class="modal-split">
@@ -1133,7 +1619,7 @@
                   t("traitsSection")
                 )}</h3>
                 <ul class="modal-list">
-                  ${translateList(design.keyCharacteristics || [])
+                  ${traits
                     .map((item) => `<li>${escapeHTML(item)}</li>`)
                     .join("")}
                 </ul>
@@ -1143,24 +1629,48 @@
               <article class="meta-card">
                 <div class="meta-grid">
                   <div class="meta-item">
-                    <span class="meta-label">${escapeHTML(t("sourceSite"))}</span>
+                    <span class="meta-label">${escapeHTML(
+                      isSkillEntry(design) ? t("skillAuthorLabel") : t("sourceSite")
+                    )}</span>
                     <span class="meta-value">${
-                      design.sourceSite?.url
-                        ? `<a class="file-link" href="${escapeHTML(
-                            design.sourceSite.url
-                          )}" target="_blank" rel="noopener">${escapeHTML(
-                            sourceLabel(design)
-                          )}</a>`
-                        : escapeHTML(sourceLabel(design))
+                      isSkillEntry(design)
+                        ? design.skillAuthorUrl
+                          ? `<a class="file-link" href="${escapeHTML(
+                              design.skillAuthorUrl
+                            )}" target="_blank" rel="noopener">${escapeHTML(
+                              design.skillAuthor || sourceLabel(design)
+                            )}</a>`
+                          : escapeHTML(design.skillAuthor || sourceLabel(design))
+                        : design.sourceSite?.url
+                          ? `<a class="file-link" href="${escapeHTML(
+                              design.sourceSite.url
+                            )}" target="_blank" rel="noopener">${escapeHTML(
+                              sourceLabel(design)
+                            )}</a>`
+                          : escapeHTML(sourceLabel(design))
                     }</span>
                   </div>
                   <div class="meta-item">
-                    <span class="meta-label">${escapeHTML(t("palette"))}</span>
-                    <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
+                    <span class="meta-label">${escapeHTML(
+                      isSkillEntry(design) ? t("skillSourceLabel") : t("palette")
+                    )}</span>
+                    ${
+                      isSkillEntry(design)
+                        ? `<div class="file-list">${renderResourceLinks(design, {
+                            includeAuthor: false,
+                          })}</div>`
+                        : `<div class="card-palette">${renderPaletteDots(colors, 4)}</div>`
+                    }
                   </div>
                   <div class="meta-item">
-                    <span class="meta-label">${escapeHTML(t("fileAccess"))}</span>
-                    <div class="card-files">${renderFilePills(design)}</div>
+                    <span class="meta-label">${escapeHTML(
+                      isSkillEntry(design) ? t("skillTagsLabel") : t("fileAccess")
+                    )}</span>
+                    <div class="${isSkillEntry(design) ? "card-files" : "card-files"}">${
+                      isSkillEntry(design)
+                        ? renderSkillTagPills(design)
+                        : renderFilePills(design)
+                    }</div>
                   </div>
                 </div>
               </article>
@@ -1299,10 +1809,38 @@
         return;
       }
 
+      const modeButton = event.target.closest("[data-content-mode]");
+      if (modeButton) {
+        event.preventDefault();
+        const nextMode = modeButton.dataset.contentMode === "skill" ? "skill" : "ui";
+        if (state.contentMode !== nextMode) {
+          state.contentMode = nextMode;
+          state.activeFilter = "all";
+          state.favoritesOnly = false;
+          renderStaticChrome();
+          rerender();
+        }
+        return;
+      }
+
       const previewButton = event.target.closest("[data-card-preview]");
       if (previewButton) {
         event.preventDefault();
         showPreviewPopover(previewButton);
+        return;
+      }
+
+      const copyButton = event.target.closest("[data-copy-command]");
+      if (copyButton) {
+        event.preventDefault();
+        event.stopPropagation();
+        copyCommandValue(copyButton.dataset.copyCommand)
+          .then((copied) => {
+            if (copied) {
+              flashCopyButton(copyButton);
+            }
+          })
+          .catch(() => {});
         return;
       }
 
@@ -1467,9 +2005,7 @@
                   <div class="related-card-name">${escapeHTML(
                     localizedDesignName(item)
                   )}</div>
-                  <div class="related-card-desc">${escapeHTML(
-                    translateContent(item.summary)
-                  )}</div>
+                  <div class="related-card-desc">${escapeHTML(getLocalizedSummary(item))}</div>
                 </a>
               `
             )
@@ -1595,13 +2131,22 @@
         preferredMode === "dark" && design.files.previewDark
           ? design.files.previewDark
           : design.files.preview;
+      const overviewParagraphs = getLocalizedOverview(design);
+      const detailTraits = getLocalizedTraits(design);
 
       const displayName = localizedDesignName(design);
       document.title = t("detailDocumentTitle", displayName);
       document
         .querySelector('meta[name="description"]')
-        ?.setAttribute("content", t("detailMetaDescription", displayName));
-      footerNote.innerHTML = t("detailFooterNote");
+        ?.setAttribute(
+          "content",
+          isSkillEntry(design)
+            ? t("skillDetailMetaDescription", displayName)
+            : t("detailMetaDescription", displayName)
+        );
+      footerNote.innerHTML = isSkillEntry(design)
+        ? t("skillDetailFooterNote")
+        : t("detailFooterNote");
 
       hero.innerHTML = `
         <section class="detail-headline">
@@ -1611,9 +2156,7 @@
           </div>
           <div class="detail-kicker">${escapeHTML(t("detailKicker"))}</div>
           <h1 class="detail-title">${escapeHTML(displayName)}</h1>
-          <p class="detail-summary">${escapeHTML(
-            translateContent(design.summary)
-          )}</p>
+          <p class="detail-summary">${escapeHTML(getLocalizedSummary(design))}</p>
           <div class="detail-chips">
             <span
               class="detail-chip"
@@ -1629,26 +2172,63 @@
             </span>
           </div>
           <div class="detail-actions">
-            <a class="detail-action" href="${escapeHTML(
-              design.files.preview
-            )}" target="_blank" rel="noopener">${escapeHTML(
-        t("lightPreview")
-      )}</a>
             ${
-              design.files.previewDark
-                ? `<a class="detail-action" href="${escapeHTML(
+              isSkillEntry(design)
+                ? `
+                  ${
+                    design.skillLibraryUrl
+                      ? `<a class="detail-action" href="${escapeHTML(
+                          design.skillLibraryUrl
+                        )}" target="_blank" rel="noopener">${escapeHTML(
+                          t("skillLibraryLabel")
+                        )}</a>`
+                      : ""
+                  }
+                  ${
+                    design.skillAuthorUrl
+                      ? `<a class="detail-action" href="${escapeHTML(
+                          design.skillAuthorUrl
+                        )}" target="_blank" rel="noopener">${escapeHTML(
+                          t("authorLink")
+                        )}</a>`
+                      : ""
+                  }
+                `
+                : `
+                  ${
+                    design.files.preview
+                      ? `<a class="detail-action" href="${escapeHTML(
+                          design.files.preview
+                        )}" target="_blank" rel="noopener">${escapeHTML(
+                          t("lightPreview")
+                        )}</a>`
+                      : ""
+                  }
+                  ${
                     design.files.previewDark
-                  )}" target="_blank" rel="noopener">${escapeHTML(
-                    t("darkPreview")
-                  )}</a>`
-                : ""
+                      ? `<a class="detail-action" href="${escapeHTML(
+                          design.files.previewDark
+                        )}" target="_blank" rel="noopener">${escapeHTML(
+                          t("darkPreview")
+                        )}</a>`
+                      : ""
+                  }
+                  ${
+                    design.files.design
+                      ? `<a class="detail-action" href="${escapeHTML(
+                          design.files.design
+                        )}" target="_blank" rel="noopener">DESIGN.md</a>`
+                      : ""
+                  }
+                  ${
+                    design.files.readme
+                      ? `<a class="detail-action" href="${escapeHTML(
+                          design.files.readme
+                        )}" target="_blank" rel="noopener">README</a>`
+                      : ""
+                  }
+                `
             }
-            <a class="detail-action" href="${escapeHTML(
-              design.files.design
-            )}" target="_blank" rel="noopener">DESIGN.md</a>
-            <a class="detail-action" href="${escapeHTML(
-              design.files.readme
-            )}" target="_blank" rel="noopener">README</a>
             ${
               design.sourceSite?.url
                 ? `<a class="detail-action" href="${escapeHTML(
@@ -1689,7 +2269,7 @@
             <div class="hero-panel-label">${escapeHTML(t("styleSnapshot"))}</div>
             <div class="detail-sidecard-title">${escapeHTML(category.label)}</div>
             <p class="hero-panel-quote">${escapeHTML(
-              translateContent(design.overview?.[0] || design.summary)
+              overviewParagraphs[0] || getLocalizedSummary(design)
             )}</p>
             <div class="card-palette">${renderPaletteDots(colors, 5)}</div>
           </div>
@@ -1698,57 +2278,70 @@
 
       layout.innerHTML = `
         <section class="detail-main">
-          <article class="detail-card">
-            <h2 class="detail-card-title">${escapeHTML(t("previewSection"))}</h2>
-            <div class="preview-toolbar">
-              <button
-                class="preview-toggle ${preferredMode === "light" ? "active" : ""}"
-                type="button"
-                data-preview-src="${escapeHTML(design.files.preview)}"
-                data-preview-frame="#detail-preview-frame"
-                data-preview-mode="light"
-              >
-                ${escapeHTML(t("lightPreview"))}
-              </button>
-              ${
-                design.files.previewDark
-                  ? `
+          ${
+            design.files.preview
+              ? `
+                <article class="detail-card">
+                  <h2 class="detail-card-title">${escapeHTML(t("previewSection"))}</h2>
+                  <div class="preview-toolbar">
                     <button
-                      class="preview-toggle ${preferredMode === "dark" ? "active" : ""}"
+                      class="preview-toggle ${preferredMode === "light" ? "active" : ""}"
                       type="button"
-                      data-preview-src="${escapeHTML(design.files.previewDark)}"
+                      data-preview-src="${escapeHTML(design.files.preview)}"
                       data-preview-frame="#detail-preview-frame"
-                      data-preview-mode="dark"
+                      data-preview-mode="light"
                     >
-                      ${escapeHTML(t("darkPreview"))}
+                      ${escapeHTML(t("lightPreview"))}
                     </button>
-                  `
-                  : ""
-              }
-            </div>
-            <div class="preview-frame-wrap">
-              <iframe
-                class="preview-frame"
-                id="detail-preview-frame"
-                src="${escapeHTML(previewSrc)}"
-                title="${escapeHTML(localizedDesignName(design))} preview"
-                loading="lazy"
-              ></iframe>
-            </div>
-          </article>
+                    ${
+                      design.files.previewDark
+                        ? `
+                          <button
+                            class="preview-toggle ${preferredMode === "dark" ? "active" : ""}"
+                            type="button"
+                            data-preview-src="${escapeHTML(design.files.previewDark)}"
+                            data-preview-frame="#detail-preview-frame"
+                            data-preview-mode="dark"
+                          >
+                            ${escapeHTML(t("darkPreview"))}
+                          </button>
+                        `
+                        : ""
+                    }
+                  </div>
+                  <div class="preview-frame-wrap">
+                    <iframe
+                      class="preview-frame"
+                      id="detail-preview-frame"
+                      src="${escapeHTML(previewSrc)}"
+                      title="${escapeHTML(localizedDesignName(design))} preview"
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                </article>
+              `
+              : `
+                <article class="detail-card">
+                  <div class="hero-panel-label">${escapeHTML(t("commandEyebrow"))}</div>
+                  <h2 class="detail-card-title">${escapeHTML(t("commandTitle"))}</h2>
+                  <p class="detail-summary">${escapeHTML(t("commandHint"))}</p>
+                  ${renderCommandPanel(design)}
+                </article>
+              `
+          }
 
           <article class="detail-card">
             <h2 class="detail-card-title">${escapeHTML(t("summarySection"))}</h2>
             <div class="detail-paragraphs">
-              ${translateList(design.overview || [design.summary])
+              ${overviewParagraphs
                 .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
                 .join("")}
             </div>
             ${
-              design.keyCharacteristics?.length
+              detailTraits.length
                 ? `
                   <ul class="detail-list">
-                    ${translateList(design.keyCharacteristics)
+                    ${detailTraits
                       .map((item) => `<li>${escapeHTML(item)}</li>`)
                       .join("")}
                   </ul>
@@ -1800,31 +2393,49 @@
             <div class="hero-panel-label">${escapeHTML(t("filesEyebrow"))}</div>
             <h2 class="detail-card-title">${escapeHTML(t("filesTitle"))}</h2>
             <div class="file-list">
-              <a class="file-link" href="${escapeHTML(
-                design.files.readme
-              )}" target="_blank" rel="noopener"><span>${escapeHTML(
-        t("readmeLabel")
-      )}</span><code>${escapeHTML(design.files.readme)}</code></a>
-              <a class="file-link" href="${escapeHTML(
-                design.files.design
-              )}" target="_blank" rel="noopener"><span>${escapeHTML(
-        t("designLabel")
-      )}</span><code>${escapeHTML(design.files.design)}</code></a>
-              <a class="file-link" href="${escapeHTML(
-                design.files.preview
-              )}" target="_blank" rel="noopener"><span>${escapeHTML(
-        t("lightPreview")
-      )}</span><code>${escapeHTML(design.files.preview)}</code></a>
               ${
-                design.files.previewDark
-                  ? `<a class="file-link" href="${escapeHTML(
+                isSkillEntry(design)
+                  ? renderResourceLinks(design)
+                  : `
+                    ${
+                      design.files.readme
+                        ? `<a class="file-link" href="${escapeHTML(
+                            design.files.readme
+                          )}" target="_blank" rel="noopener"><span>${escapeHTML(
+                            t("readmeLabel")
+                          )}</span><code>${escapeHTML(design.files.readme)}</code></a>`
+                        : ""
+                    }
+                    ${
+                      design.files.design
+                        ? `<a class="file-link" href="${escapeHTML(
+                            design.files.design
+                          )}" target="_blank" rel="noopener"><span>${escapeHTML(
+                            t("designLabel")
+                          )}</span><code>${escapeHTML(design.files.design)}</code></a>`
+                        : ""
+                    }
+                    ${
+                      design.files.preview
+                        ? `<a class="file-link" href="${escapeHTML(
+                            design.files.preview
+                          )}" target="_blank" rel="noopener"><span>${escapeHTML(
+                            t("lightPreview")
+                          )}</span><code>${escapeHTML(design.files.preview)}</code></a>`
+                        : ""
+                    }
+                    ${
                       design.files.previewDark
-                    )}" target="_blank" rel="noopener"><span>${escapeHTML(
-                      t("darkPreview")
-                    )}</span><code>${escapeHTML(
-                      design.files.previewDark
-                    )}</code></a>`
-                  : ""
+                        ? `<a class="file-link" href="${escapeHTML(
+                            design.files.previewDark
+                          )}" target="_blank" rel="noopener"><span>${escapeHTML(
+                            t("darkPreview")
+                          )}</span><code>${escapeHTML(
+                            design.files.previewDark
+                          )}</code></a>`
+                        : ""
+                    }
+                  `
               }
             </div>
           </article>
@@ -1848,7 +2459,7 @@
                   t("metadataPreviewCount")
                 )}</span>
                 <span class="meta-value">${escapeHTML(
-                  String(design.stats?.previewCount || 1)
+                  String(design.stats?.previewCount ?? 0)
                 )}</span>
               </div>
               <div class="meta-item">
@@ -1871,6 +2482,19 @@
         event.preventDefault();
         setLanguage(langButton.dataset.langChoice);
         renderPage();
+        return;
+      }
+
+      const copyButton = event.target.closest("[data-copy-command]");
+      if (copyButton) {
+        event.preventDefault();
+        copyCommandValue(copyButton.dataset.copyCommand)
+          .then((copied) => {
+            if (copied) {
+              flashCopyButton(copyButton);
+            }
+          })
+          .catch(() => {});
         return;
       }
 

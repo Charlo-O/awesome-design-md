@@ -193,6 +193,63 @@ h1 em {
   line-height: 1.1;
 }
 
+.hero-mode-stat {
+  width: 196px;
+  min-width: 196px;
+  max-width: 196px;
+  display: grid;
+  gap: 8px;
+  align-content: center;
+}
+
+.mode-switcher-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mode-switcher-note {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mode-switcher-note:hover {
+  color: var(--text-secondary);
+}
+
+.mode-switcher-note-text {
+  display: inline-block;
+}
+
+.mode-switcher-note-target {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.mode-switcher-note-target.is-skill {
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.mode-switcher-current {
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
 .hero-panel-quote {
   font-size: 15px;
   color: var(--text-secondary);
@@ -948,6 +1005,39 @@ h1 em {
   color: var(--text-secondary);
 }
 
+.command-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.command-panel-compact {
+  margin-top: 0;
+}
+
+.command-code {
+  flex: 1 1 260px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  word-break: break-all;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.command-empty {
+  margin: 16px 0 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 .swatch-grid {
   display: grid;
   gap: 10px;
@@ -1255,6 +1345,12 @@ h1 em {
 
   .hero-stat {
     min-width: calc(50% - 6px);
+  }
+
+  .hero-mode-stat {
+    width: 100%;
+    min-width: 100%;
+    max-width: none;
   }
 
   .grid {
