@@ -1085,24 +1085,39 @@
       </button>`;
   }
 
-  function renderCard(design) {
+  function renderCardPreview(design) {
+    if (!design.files.preview) {
+      return `<div class="card-preview"><div class="card-preview-empty">${escapeHTML(
+        design.monogram
+      )}</div></div>`;
+    }
+
+    return `
+      <div class="card-preview">
+        <div class="card-preview-viewport">
+          <iframe
+            class="card-preview-frame"
+            src="${escapeHTML(design.files.preview)}"
+            title="${escapeHTML(localizedDesignName(design))} preview"
+            loading="lazy"
+            tabindex="-1"
+          ></iframe>
+        </div>
+      </div>`;
+  }
+
+  function renderUiCard(design) {
     const category = getCategory(design.categoryKey);
     const colors = (design.colors || []).slice(0, 4);
     const tint = hexToRgba(colors[1] || colors[0] || category.border, 0.2);
     const favorite = isFavorite(design.slug);
+    const hasInlinePreview = !!design.files.preview;
+    const cardClass = hasInlinePreview ? "card has-preview" : "card is-standard";
 
     return `
-      <article class="card" data-slug="${escapeHTML(design.slug)}" style="--card-soft:${tint}">
-        <button
-          class="fav-star ${favorite ? "is-favorite" : ""}"
-          type="button"
-          data-favorite="${escapeHTML(design.slug)}"
-          aria-label="${escapeHTML(
-            favorite ? t("removeFavoriteAria") : t("addFavoriteAria")
-          )}"
-        >
-          ${favorite ? "★" : "☆"}
-        </button>
+      <article class="${cardClass}" data-slug="${escapeHTML(design.slug)}" style="--card-soft:${tint}">
+        ${hasInlinePreview ? renderCardPreview(design) : ""}
+        <div class="card-info">
         <div class="card-ghost">${escapeHTML(design.monogram)}</div>
         <div class="card-topline">
           <span># ${String(design.id).padStart(2, "0")}</span>
@@ -1118,10 +1133,68 @@
           </span>
         </div>
         <div class="card-desc">${escapeHTML(getLocalizedSummary(design))}</div>
-        <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
-        <div class="card-files">${renderFilePills(design, { includeCardPreview: true })}</div>
+        <div class="card-footer">
+          <div class="card-meta-row">
+            <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
+            <button
+              class="fav-star ${favorite ? "is-favorite" : ""}"
+              type="button"
+              data-favorite="${escapeHTML(design.slug)}"
+              aria-label="${escapeHTML(
+                favorite ? t("removeFavoriteAria") : t("addFavoriteAria")
+              )}"
+            >
+              ${favorite ? "★" : "☆"}
+            </button>
+          </div>
+          <div class="card-files">${renderFilePills(design, { includeCardPreview: hasInlinePreview })}</div>
+        </div>
+        </div>
       </article>
     `;
+  }
+
+  function renderSkillCard(design) {
+    const category = getCategory(design.categoryKey);
+    const colors = (design.colors || []).slice(0, 4);
+    const tint = hexToRgba(colors[1] || colors[0] || category.border, 0.2);
+    const favorite = isFavorite(design.slug);
+
+    return `
+      <article class="card is-standard skill-card" data-slug="${escapeHTML(design.slug)}" style="--card-soft:${tint}">
+        <button
+          class="fav-star ${favorite ? "is-favorite" : ""}"
+          type="button"
+          data-favorite="${escapeHTML(design.slug)}"
+          aria-label="${escapeHTML(
+            favorite ? t("removeFavoriteAria") : t("addFavoriteAria")
+          )}"
+        >
+          ${favorite ? "★" : "☆"}
+        </button>
+        <div class="card-ghost">${escapeHTML(design.monogram)}</div>
+        <div class="card-topline">
+          <span># ${String(design.id).padStart(3, "0")}</span>
+          <span>${escapeHTML(sourceLabel(design))}</span>
+        </div>
+        <div class="card-head">
+          <div class="card-name">${escapeHTML(localizedDesignName(design))}</div>
+          <span
+            class="card-tag"
+            style="background:${category.bg};color:${category.text};border-color:${category.border};"
+          >
+            ${escapeHTML(category.label)}
+          </span>
+        </div>
+        <div class="card-desc">${escapeHTML(getLocalizedSummary(design))}</div>
+        <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
+        <div class="card-files">${renderFilePills(design)}</div>
+      </article>
+    `;
+  }
+
+  function renderCard(design) {
+    return isSkillEntry(design) ? renderSkillCard(design) : renderUiCard(design);
   }
 
   function initHome() {
@@ -1199,6 +1272,23 @@
     let previewHideTimer = 0;
     let activePreviewButton = null;
     let previewPopoverOpenedAt = 0;
+
+    function bindCardPreviewFrames(scope) {
+      scope.querySelectorAll(".card-preview").forEach((preview) => {
+        const frame = preview.querySelector(".card-preview-frame");
+        if (!frame || frame.dataset.bound === "true") {
+          return;
+        }
+
+        frame.dataset.bound = "true";
+        const markReady = () => preview.classList.add("is-ready");
+        frame.addEventListener("load", markReady, { once: true });
+
+        if (frame.contentDocument?.readyState === "complete") {
+          markReady();
+        }
+      });
+    }
 
     setLanguage(getLanguage());
 
@@ -1497,6 +1587,7 @@
         refs.favoritesSection.hidden = false;
         refs.favoritesCount.textContent = t("favoritesCount", favorites.length);
         refs.favoritesGrid.innerHTML = favorites.map(renderCard).join("");
+        bindCardPreviewFrames(refs.favoritesGrid);
         return;
       }
 
@@ -1518,6 +1609,7 @@
       }
 
       refs.grid.innerHTML = state.visibleDesigns.map(renderCard).join("");
+      bindCardPreviewFrames(refs.grid);
     }
 
     function renderModal() {
