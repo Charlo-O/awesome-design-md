@@ -28,6 +28,41 @@
     Marketing: ["#02182c", "#e11d48", "#ffe4e6", "#fff1f2", "#f4f8fc"],
     Video: ["#02182c", "#d97706", "#fef3c7", "#fffbeb", "#f4f8fc"],
   };
+  const imagineCasesUrl = "extra/awesome-gpt-image-2/data/cases.json";
+  const imagineImageBase = "extra/awesome-gpt-image-2/data";
+  const imagineRepoUrl = "https://github.com/freestylefly/awesome-gpt-image-2";
+  let imagineEntries = [];
+  let imagineCategoryKeys = [];
+  const imagineCategoryLabelsZh = {
+    "Architecture & Spaces": "建筑与空间",
+    "Brand & Logos": "品牌与标志",
+    "Characters & People": "人物与角色",
+    "Charts & Infographics": "图表与信息可视化",
+    "Documents & Publishing": "文档与出版物",
+    "History & Classical Themes": "历史与古风题材",
+    "Illustration & Art": "插画与艺术",
+    "Other Use Cases": "其他应用场景",
+    "Photography & Realism": "摄影与写实",
+    "Posters & Typography": "海报与排版",
+    "Products & E-commerce": "商品与电商",
+    "Scenes & Storytelling": "场景与叙事",
+    "UI & Interfaces": "UI 与界面",
+  };
+  const imagineCategoryPalette = [
+    { bg: "#edf1f8", text: "#284b7b", border: "#c9d4e8" },
+    { bg: "#f8ebef", text: "#7f3551", border: "#e6c7d3" },
+    { bg: "#fdf2e7", text: "#8a5514", border: "#edd3b0" },
+    { bg: "#e8f4ee", text: "#1a5a3e", border: "#c7ddcf" },
+    { bg: "#f4efe8", text: "#5a534a", border: "#ddd1c2" },
+    { bg: "#fff0e5", text: "#8a4d19", border: "#f0cfb3" },
+    { bg: "#efe9fb", text: "#4a2f76", border: "#d2c3f0" },
+    { bg: "#f7f2eb", text: "#6d655d", border: "#d8cbbb" },
+    { bg: "#e9f1ff", text: "#2d4f85", border: "#c9d6ef" },
+    { bg: "#fff4dc", text: "#77570c", border: "#ead29a" },
+    { bg: "#edf9f2", text: "#21603d", border: "#c8e4d2" },
+    { bg: "#f8eef9", text: "#6a3571", border: "#e4c7e7" },
+    { bg: "#edf5eb", text: "#315d2d", border: "#cfe0ca" },
+  ];
 
   function buildSkillMonogram(name) {
     const tokens = String(name || "")
@@ -112,6 +147,86 @@
     });
   }
 
+  function normalizeImagineImagePath(path) {
+    const value = String(path || "").replace(/^\/+/, "");
+    if (value.startsWith("images/")) {
+      return `${imagineImageBase}/${value}`;
+    }
+
+    return value || `${imagineImageBase}/images/category-covers/gallery.jpg`;
+  }
+
+  function buildImagineMonogram(category) {
+    const compact = String(category || "Imagine")
+      .split(/[\s&]+/)
+      .filter(Boolean)
+      .map((token) => token[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+    return compact || "I2";
+  }
+
+  function buildImagineEntries(siteData) {
+    imagineCategoryKeys = Array.isArray(siteData?.categories)
+      ? siteData.categories
+      : [];
+
+    return (siteData?.cases || []).map((item) => {
+      const title = item.title || `Case ${item.id}`;
+      const promptPreview = item.promptPreview || item.prompt || "";
+      const image = normalizeImagineImagePath(item.image);
+
+      return {
+        id: item.id,
+        slug: `imagine-${item.id}`,
+        name: title,
+        monogram: buildImagineMonogram(item.category),
+        entryType: "imagine",
+        categoryKey: item.category || "Other Use Cases",
+        summary: promptPreview,
+        overview: [promptPreview, item.prompt || ""].filter(Boolean),
+        keyCharacteristics: [
+          ...(item.styles || []).map((style) => `Style: ${style}`),
+          ...(item.scenes || []).map((scene) => `Scene: ${scene}`),
+        ],
+        colors: ["#171411", "#d2c4b1", "#f7f2eb", "#1d5b48"],
+        files: {
+          image,
+        },
+        stats: {
+          previewCount: item.prompt ? 1 : 0,
+        },
+        sourceSite: {
+          name: item.sourceLabel || "GPT-Image2",
+          url: item.sourceUrl || item.githubUrl || siteData.repository || imagineRepoUrl,
+        },
+        searchTerms: [
+          title,
+          item.imageAlt,
+          item.category,
+          ...(item.styles || []),
+          ...(item.scenes || []),
+          item.sourceLabel,
+          item.promptPreview,
+          item.prompt,
+          "GPT-Image2",
+          "Imagine 2",
+        ].filter(Boolean),
+        imagine: {
+          image,
+          imageAlt: item.imageAlt || title,
+          prompt: item.prompt || "",
+          promptPreview,
+          styles: item.styles || [],
+          scenes: item.scenes || [],
+          githubUrl: item.githubUrl || siteData.repository || imagineRepoUrl,
+          repository: siteData.repository || imagineRepoUrl,
+        },
+      };
+    });
+  }
+
   const designs = [...rawDesigns, ...buildHotkeysSkills(hotkeysAgents)];
   const computedSiteMeta = {
     totalDesigns: designs.length,
@@ -146,16 +261,25 @@
         `<span class="hero-count-inline">${count}</span> 个<br><em>Skill 命令索引</em>`,
       homeHeroDescSkill:
         "从 hotkeys.design 收录的技能与命令中浏览。点击任意条目查看安装命令、标签与来源链接。",
+      homeHeroLabelImagine: "GPT-Image2 图像库",
+      homeHeroTitleImagine: (count) =>
+        `<span class="hero-count-inline">${count}</span> 个<br><em>Imagine 2 图像索引</em>`,
+      homeHeroDescImagine:
+        "从 awesome-gpt-image-2 收录的案例图片与 Prompt 中浏览。按原仓库分类筛选，点击条目查看图片、提示词和来源。",
       statDesigns: "风格条目",
       statPreviews: "预览页面",
       statCategories: "分组类型",
       statDesignsSkill: "技能条目",
       statPreviewsSkill: "命令数量",
       statCategoriesSkill: "标签类型",
+      statDesignsImagine: "图片案例",
+      statPreviewsImagine: "Prompt 数量",
+      statCategoriesImagine: "原仓库分类",
       searchPlaceholder: "搜索",
-      modeSwitcherLabel: "当前展示",
+      modeSwitcherLabel: "内容类型",
       modeUi: "UI设计",
       modeSkill: "Skill",
+      modeImagine: "Imagine 2",
       modeSkillNote: "skill",
       modeSwitchTo: "切换为",
       modeCurrentOnly: "只显示当前分类",
@@ -173,6 +297,11 @@
       detailPage: "详情页",
       copyCommand: "复制命令",
       copiedCommand: "已复制",
+      copyPrompt: "复制 Prompt",
+      imagePreview: "案例图片",
+      promptSection: "Prompt",
+      imageSource: "图片来源",
+      githubSource: "GitHub 案例",
       lightPreview: "浅色预览",
       darkPreview: "深色预览",
       summarySection: "风格摘要",
@@ -181,7 +310,7 @@
       palette: "调色板",
       fileAccess: "文件入口",
       homeFooterNote:
-        '基于本地 <code>design-md/*</code>、<code>extra/uiuxskillProMax</code> 与 <code>hotkeys.design</code> 技能数据构建的索引站。',
+        '基于本地 <code>design-md/*</code>、<code>extra/uiuxskillProMax</code>、<code>hotkeys.design</code> 与 <code>awesome-gpt-image-2</code> 数据构建的索引站。',
       detailBack: "← 返回索引站",
       detailKicker: "设计详情",
       originalSite: "原站",
@@ -255,16 +384,25 @@
         `<span class="hero-count-inline">${count}</span><br><em>Skill Command Index</em>`,
       homeHeroDescSkill:
         "Browse skills and install commands collected from hotkeys.design. Open any item to inspect commands, tags, and source links.",
+      homeHeroLabelImagine: "GPT-Image2 Gallery",
+      homeHeroTitleImagine: (count) =>
+        `<span class="hero-count-inline">${count}</span><br><em>Imagine 2 Image Index</em>`,
+      homeHeroDescImagine:
+        "Browse local images and reusable prompts from awesome-gpt-image-2. Filter by the repository categories, then open an item for its image, prompt, and source.",
       statDesigns: "Design Entries",
       statPreviews: "Preview Pages",
       statCategories: "Categories",
       statDesignsSkill: "Skill Entries",
       statPreviewsSkill: "Commands",
       statCategoriesSkill: "Tag Types",
+      statDesignsImagine: "Image Cases",
+      statPreviewsImagine: "Prompts",
+      statCategoriesImagine: "Repo Categories",
       searchPlaceholder: "Search",
-      modeSwitcherLabel: "Current View",
+      modeSwitcherLabel: "Content Type",
       modeUi: "UI",
       modeSkill: "Skills",
+      modeImagine: "Imagine 2",
       modeSkillNote: "skill",
       modeSwitchTo: "Switch to",
       modeCurrentOnly: "Only show current category",
@@ -282,6 +420,11 @@
       detailPage: "Detail Page",
       copyCommand: "Copy Command",
       copiedCommand: "Copied",
+      copyPrompt: "Copy Prompt",
+      imagePreview: "Case Image",
+      promptSection: "Prompt",
+      imageSource: "Image Source",
+      githubSource: "GitHub Case",
       lightPreview: "Light Preview",
       darkPreview: "Dark Preview",
       summarySection: "Style Summary",
@@ -290,7 +433,7 @@
       palette: "Palette",
       fileAccess: "File Access",
       homeFooterNote:
-        'Built from local <code>design-md/*</code>, <code>extra/uiuxskillProMax</code>, and <code>hotkeys.design</code> skill data.',
+        'Built from local <code>design-md/*</code>, <code>extra/uiuxskillProMax</code>, <code>hotkeys.design</code>, and <code>awesome-gpt-image-2</code> data.',
       detailBack: "← Back to Index",
       detailKicker: "Design Detail",
       originalSite: "Original Site",
@@ -490,6 +633,25 @@
     return design?.entryType === "skill" || design?.categoryKey === "skill";
   }
 
+  function isImagineEntry(design) {
+    return design?.entryType === "imagine";
+  }
+
+  async function loadImagineEntries() {
+    if (imagineEntries.length > 0) {
+      return imagineEntries;
+    }
+
+    const response = await fetch(imagineCasesUrl);
+    if (!response.ok) {
+      throw new Error(`Unable to load Imagine 2 cases: ${response.status}`);
+    }
+
+    const siteData = await response.json();
+    imagineEntries = buildImagineEntries(siteData);
+    return imagineEntries;
+  }
+
   function getLocalizedSkillTags(design) {
     if (!isSkillEntry(design)) {
       return [];
@@ -505,6 +667,10 @@
   }
 
   function getLocalizedSummary(design) {
+    if (isImagineEntry(design)) {
+      return design.imagine?.promptPreview || design.summary || "";
+    }
+
     if (isSkillEntry(design)) {
       return getLanguage() === "zh" && design.summaryZh
         ? design.summaryZh
@@ -515,6 +681,13 @@
   }
 
   function getLocalizedOverview(design) {
+    if (isImagineEntry(design)) {
+      return [
+        design.imagine?.promptPreview || design.summary || "",
+        design.imagine?.prompt || "",
+      ].filter(Boolean);
+    }
+
     if (isSkillEntry(design)) {
       return [getLocalizedSummary(design), t("commandHint")].filter(Boolean);
     }
@@ -523,6 +696,18 @@
   }
 
   function getLocalizedTraits(design) {
+    if (isImagineEntry(design)) {
+      const category = getCategory(design.categoryKey);
+      return [
+        `${t("metadataCategory")}: ${category.label}`,
+        ...(design.imagine?.styles || []).map((style) => `Style: ${style}`),
+        ...(design.imagine?.scenes || []).map((scene) => `Scene: ${scene}`),
+        design.sourceSite?.name
+          ? `${t("imageSource")}: ${design.sourceSite.name}`
+          : "",
+      ].filter(Boolean);
+    }
+
     if (isSkillEntry(design)) {
       const traits = [];
       const tags = getLocalizedSkillTags(design);
@@ -803,6 +988,18 @@
       };
     }
 
+    const imagineIndex = imagineCategoryKeys.indexOf(key);
+    if (imagineIndex >= 0 || imagineCategoryLabelsZh[key]) {
+      const palette =
+        imagineCategoryPalette[
+          Math.max(imagineIndex, 0) % imagineCategoryPalette.length
+        ];
+      return {
+        ...palette,
+        label: lang === "en" ? key : imagineCategoryLabelsZh[key] || key,
+      };
+    }
+
     return {
       label: key,
       bg: "#f4efe8",
@@ -914,9 +1111,15 @@
   }
 
   function getModePool(mode) {
-    return designs.filter((design) =>
-      mode === "skill" ? isSkillEntry(design) : !isSkillEntry(design)
-    );
+    if (mode === "skill") {
+      return designs.filter((design) => isSkillEntry(design));
+    }
+
+    if (mode === "imagine") {
+      return imagineEntries;
+    }
+
+    return designs.filter((design) => !isSkillEntry(design));
   }
 
   function getModeStats(mode) {
@@ -928,6 +1131,14 @@
         totalCategories: new Set(
           pool.flatMap((design) => design.skillTags || [])
         ).size,
+      };
+    }
+
+    if (mode === "imagine") {
+      return {
+        totalDesigns: pool.length,
+        totalPreviews: pool.filter((design) => design.imagine?.prompt).length,
+        totalCategories: imagineCategoryKeys.length,
       };
     }
 
@@ -947,28 +1158,61 @@
   }
 
   function renderModeSwitcher(mode) {
-    const targetMode = mode === "ui" ? "skill" : "ui";
-    const currentLabel = mode === "ui" ? t("modeUi") : t("modeSkill");
-    const targetLabel = targetMode === "ui" ? t("modeUi") : t("modeSkill");
-    const targetNoteLabel = targetMode === "skill" ? t("modeSkillNote") : targetLabel;
+    const modeItems = [
+      {
+        key: "ui",
+        label: t("modeUi"),
+        count: getModeStats("ui").totalDesigns,
+      },
+      {
+        key: "skill",
+        label: t("modeSkill"),
+        count: getModeStats("skill").totalDesigns,
+      },
+      {
+        key: "imagine",
+        label: t("modeImagine"),
+        count: getModeStats("imagine").totalDesigns,
+      },
+    ];
+
     return `
-      <div class="mode-switcher-head">
+      <div class="mode-tabs-head">
         <span class="hero-stat-label">${escapeHTML(t("modeSwitcherLabel"))}</span>
-        <button
-          class="mode-switcher-note"
-          type="button"
-          data-content-mode="${escapeHTML(targetMode)}"
-        >
-          <span class="mode-switcher-note-text">${escapeHTML(t("modeSwitchTo"))}</span><span class="mode-switcher-note-target ${
-            targetMode === "skill" ? "is-skill" : ""
-          }">${escapeHTML(targetNoteLabel)}</span>
-        </button>
       </div>
-      <div class="mode-switcher-current">${escapeHTML(currentLabel)}</div>
+      <div
+        class="mode-tabs"
+        role="tablist"
+        aria-label="${escapeHTML(t("modeSwitcherLabel"))}"
+        data-active-mode="${escapeHTML(mode)}"
+      >
+        ${modeItems
+          .map((item) => {
+            const active = item.key === mode;
+            return `
+              <button
+                class="mode-tab ${active ? "active" : ""}"
+                type="button"
+                role="tab"
+                aria-selected="${active ? "true" : "false"}"
+                aria-controls="filters"
+                data-content-mode="${escapeHTML(item.key)}"
+              >
+                <span class="mode-tab-label">${escapeHTML(item.label)}</span>
+                <span class="mode-tab-count">${escapeHTML(String(item.count))}</span>
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
     `;
   }
 
   function sourceLabel(design) {
+    if (isImagineEntry(design) && design.sourceSite?.name) {
+      return design.sourceSite.name;
+    }
+
     if (isSkillEntry(design) && design.sourceSite?.name) {
       return design.sourceSite.name;
     }
@@ -1049,6 +1293,13 @@
 
   function renderFilePills(design, options = {}) {
     const { includeCardPreview = false } = options;
+
+    if (isImagineEntry(design)) {
+      const pills = (design.imagine?.styles || []).slice(0, 2);
+      return pills
+        .map((pill) => `<span class="file-pill">${escapeHTML(pill)}</span>`)
+        .join("");
+    }
 
     if (isSkillEntry(design)) {
       const pills = ["SKILL", ...getLocalizedSkillTags(design).slice(0, 2)];
@@ -1193,7 +1444,60 @@
     `;
   }
 
+  function renderImagineCard(design) {
+    const category = getCategory(design.categoryKey);
+    const favorite = isFavorite(design.slug);
+    const image = design.imagine?.image || design.files?.image || "";
+
+    return `
+      <article class="card imagine-card" data-slug="${escapeHTML(design.slug)}">
+        <div class="imagine-thumb">
+          <button
+            class="fav-star ${favorite ? "is-favorite" : ""}"
+            type="button"
+            data-favorite="${escapeHTML(design.slug)}"
+            aria-label="${escapeHTML(
+              favorite ? t("removeFavoriteAria") : t("addFavoriteAria")
+            )}"
+          >
+            ${favorite ? "★" : "☆"}
+          </button>
+          <img
+            src="${escapeHTML(image)}"
+            alt="${escapeHTML(design.imagine?.imageAlt || localizedDesignName(design))}"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-info">
+          <div class="card-topline">
+            <span># ${String(design.id).padStart(3, "0")}</span>
+            <span>${escapeHTML(sourceLabel(design))}</span>
+          </div>
+          <div class="card-head">
+            <div class="card-name">${escapeHTML(localizedDesignName(design))}</div>
+            <span
+              class="card-tag"
+              style="background:${category.bg};color:${category.text};border-color:${category.border};"
+            >
+              ${escapeHTML(category.label)}
+            </span>
+          </div>
+          <div class="card-desc">${escapeHTML(getLocalizedSummary(design))}</div>
+          <div class="card-footer">
+            <div class="card-meta-row">
+              <div class="card-files">${renderFilePills(design)}</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
   function renderCard(design) {
+    if (isImagineEntry(design)) {
+      return renderImagineCard(design);
+    }
+
     return isSkillEntry(design) ? renderSkillCard(design) : renderUiCard(design);
   }
 
@@ -1461,34 +1765,51 @@
     function renderStaticChrome() {
       const modeStats = getModeStats(state.contentMode);
       const skillMode = state.contentMode === "skill";
+      const imagineMode = state.contentMode === "imagine";
 
       document.title = t("homeDocumentTitle");
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute(
           "content",
-          skillMode ? t("homeHeroDescSkill") : t("homeMetaDescription")
+          imagineMode
+            ? t("homeHeroDescImagine")
+            : skillMode
+              ? t("homeHeroDescSkill")
+              : t("homeMetaDescription")
         );
-      refs.homeHeroLabel.textContent = skillMode
-        ? t("homeHeroLabelSkill")
-        : t("homeHeroLabel");
-      refs.homeHeroTitle.innerHTML = skillMode
-        ? t("homeHeroTitleSkill", modeStats.totalDesigns)
-        : t("homeHeroTitle", modeStats.totalDesigns);
-      refs.homeHeroDesc.innerHTML = skillMode
-        ? t("homeHeroDescSkill")
-        : t("homeHeroDesc");
-      refs.statDesignsLabel.textContent = skillMode
-        ? t("statDesignsSkill")
-        : t("statDesigns");
+      refs.homeHeroLabel.textContent = imagineMode
+        ? t("homeHeroLabelImagine")
+        : skillMode
+          ? t("homeHeroLabelSkill")
+          : t("homeHeroLabel");
+      refs.homeHeroTitle.innerHTML = imagineMode
+        ? t("homeHeroTitleImagine", modeStats.totalDesigns)
+        : skillMode
+          ? t("homeHeroTitleSkill", modeStats.totalDesigns)
+          : t("homeHeroTitle", modeStats.totalDesigns);
+      refs.homeHeroDesc.innerHTML = imagineMode
+        ? t("homeHeroDescImagine")
+        : skillMode
+          ? t("homeHeroDescSkill")
+          : t("homeHeroDesc");
+      refs.statDesignsLabel.textContent = imagineMode
+        ? t("statDesignsImagine")
+        : skillMode
+          ? t("statDesignsSkill")
+          : t("statDesigns");
       refs.statDesignsValue.textContent = String(modeStats.totalDesigns);
-      refs.statPreviewsLabel.textContent = skillMode
-        ? t("statPreviewsSkill")
-        : t("statPreviews");
+      refs.statPreviewsLabel.textContent = imagineMode
+        ? t("statPreviewsImagine")
+        : skillMode
+          ? t("statPreviewsSkill")
+          : t("statPreviews");
       refs.statPreviewsValue.textContent = String(modeStats.totalPreviews);
-      refs.statCategoriesLabel.textContent = skillMode
-        ? t("statCategoriesSkill")
-        : t("statCategories");
+      refs.statCategoriesLabel.textContent = imagineMode
+        ? t("statCategoriesImagine")
+        : skillMode
+          ? t("statCategoriesSkill")
+          : t("statCategories");
       refs.statCategoriesValue.textContent = String(modeStats.totalCategories);
       refs.search.placeholder = t("searchPlaceholder");
       refs.favoritesLabel.textContent = t("favoritesSection");
@@ -1533,6 +1854,15 @@
                 };
               })
               .filter((item) => item.count > 0)
+          : state.contentMode === "imagine"
+            ? imagineCategoryKeys.map((key) => ({
+                key,
+                label: `${getCategory(key).label} (${pool.filter(
+                  (design) => design.categoryKey === key
+                ).length})`,
+                active: state.activeFilter === key && !state.favoritesOnly,
+                className: "",
+              }))
           : uiCategoryKeys.map((key) => ({
               key,
               label: `${getCategory(key).label} (${pool.filter(
@@ -1612,9 +1942,127 @@
       bindCardPreviewFrames(refs.grid);
     }
 
+    function renderImagineModal(design) {
+      const category = getCategory(design.categoryKey);
+      const favorite = isFavorite(design.slug);
+      const image = design.imagine?.image || design.files?.image || "";
+      const prompt = design.imagine?.prompt || getLocalizedSummary(design);
+      const tags = [
+        ...(design.imagine?.styles || []),
+        ...(design.imagine?.scenes || []),
+      ];
+
+      refs.modalShell.innerHTML = `
+        <div class="modal-frame imagine-modal">
+          <button class="modal-close" type="button" data-modal-close aria-label="${escapeHTML(
+            t("close")
+          )}">×</button>
+          <div class="imagine-modal-image">
+            <img
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(design.imagine?.imageAlt || localizedDesignName(design))}"
+            >
+          </div>
+          <div class="modal-split">
+            <div class="modal-content">
+              <section class="modal-section">
+                <span
+                  class="modal-pill"
+                  style="background:${category.bg};color:${category.text};border-color:${category.border};"
+                >
+                  # ${String(design.id).padStart(3, "0")} · ${escapeHTML(category.label)}
+                </span>
+                <h2 class="modal-title">${escapeHTML(localizedDesignName(design))}</h2>
+                <p class="modal-summary">${escapeHTML(getLocalizedSummary(design))}</p>
+                <div class="modal-actions">
+                  <button
+                    class="modal-action"
+                    type="button"
+                    data-copy-command="${escapeHTML(prompt)}"
+                    data-copy-label="${escapeHTML(t("copyPrompt"))}"
+                  >
+                    ${escapeHTML(t("copyPrompt"))}
+                  </button>
+                  <button
+                    class="modal-action"
+                    type="button"
+                    data-favorite="${escapeHTML(design.slug)}"
+                  >
+                    ${escapeHTML(
+                      favorite ? t("modalFavoriteOn") : t("modalFavoriteOff")
+                    )}
+                  </button>
+                  ${
+                    design.imagine?.githubUrl
+                      ? `<a class="modal-action" href="${escapeHTML(
+                          design.imagine.githubUrl
+                        )}" target="_blank" rel="noopener">${escapeHTML(
+                          t("githubSource")
+                        )}</a>`
+                      : ""
+                  }
+                  ${
+                    design.sourceSite?.url
+                      ? `<a class="modal-action" href="${escapeHTML(
+                          design.sourceSite.url
+                        )}" target="_blank" rel="noopener">${escapeHTML(
+                          t("imageSource")
+                        )}</a>`
+                      : ""
+                  }
+                </div>
+              </section>
+              <section class="modal-section">
+                <h3 class="modal-section-title">${escapeHTML(
+                  t("promptSection")
+                )}</h3>
+                <p class="modal-summary imagine-prompt">${escapeHTML(prompt)}</p>
+              </section>
+            </div>
+            <aside class="modal-sidebar">
+              <article class="meta-card">
+                <div class="meta-grid">
+                  <div class="meta-item">
+                    <span class="meta-label">${escapeHTML(
+                      t("metadataCategory")
+                    )}</span>
+                    <span class="meta-value">${escapeHTML(category.label)}</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">${escapeHTML(t("imageSource"))}</span>
+                    <span class="meta-value">${escapeHTML(sourceLabel(design))}</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">${escapeHTML(t("fileAccess"))}</span>
+                    <div class="card-files">
+                      ${tags
+                        .slice(0, 6)
+                        .map((tag) => `<span class="file-pill">${escapeHTML(tag)}</span>`)
+                        .join("")}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </aside>
+          </div>
+        </div>
+      `;
+
+      refs.modalPrev.disabled = state.modalIndex <= 0;
+      refs.modalNext.disabled = state.modalIndex >= state.modalPool.length - 1;
+      refs.overlay.classList.add("open");
+      refs.overlay.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
     function renderModal() {
       const design = state.modalPool[state.modalIndex];
       if (!design) {
+        return;
+      }
+
+      if (isImagineEntry(design)) {
+        renderImagineModal(design);
         return;
       }
 
@@ -1904,7 +2352,13 @@
       const modeButton = event.target.closest("[data-content-mode]");
       if (modeButton) {
         event.preventDefault();
-        const nextMode = modeButton.dataset.contentMode === "skill" ? "skill" : "ui";
+        const requestedMode = modeButton.dataset.contentMode;
+        const nextMode =
+          requestedMode === "skill"
+            ? "skill"
+            : requestedMode === "imagine"
+              ? "imagine"
+              : "ui";
         if (state.contentMode !== nextMode) {
           state.contentMode = nextMode;
           state.activeFilter = "all";
@@ -2073,6 +2527,14 @@
     updatePreviewPopoverMetrics();
     renderStaticChrome();
     rerender();
+    loadImagineEntries()
+      .then(() => {
+        renderStaticChrome();
+        rerender();
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
   }
 
   function renderRelated(design) {
