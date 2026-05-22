@@ -1,0 +1,63 @@
+{
+  "repository": "https://opennana.com/awesome-prompt-gallery?model=Seedance%202.0",
+  "label": "Seedance 2.0",
+  "totalCases": 609,
+  "categories": [
+    "Architecture & Spaces",
+    "Brand & Logos",
+    "Characters & People",
+    "History & Classical Themes",
+    "Illustration & Art",
+    "Photography & Realism",
+    "Posters & Typography",
+    "Products & E-commerce",
+    "Scenes & Storytelling",
+    "UI & Interfaces"
+  ],
+  "styles": [
+    "3D",
+    "Architecture",
+    "Brand",
+    "Character",
+    "Classical",
+    "Illustration",
+    "Infographic",
+    "Photography",
+    "Poster",
+    "Product",
+    "Realistic",
+    "UI",
+    "Video"
+  ],
+  "scenes": [
+    "Commerce",
+    "Creative",
+    "Education",
+    "Fashion",
+    "Food",
+    "History",
+    "Social",
+    "Story",
+    "Tech",
+    "Travel"
+  ],
+  "mediaTypes": {
+    "Video": 609
+  },
+  "generatedAt": "2026-05-20T05:10:16.041Z",
+  "pageSize": 120,
+  "pages": 6,
+  "categoryCounts": {
+    "Photography & Realism": 272,
+    "Scenes & Storytelling": 213,
+    "Products & E-commerce": 6,
+    "Brand & Logos": 41,
+    "Characters & People": 39,
+    "Posters & Typography": 2,
+    "History & Classical Themes": 8,
+    "Architecture & Spaces": 16,
+    "Illustration & Art": 7,
+    "UI & Interfaces": 5
+  },
+  "pagePathPattern": "pages/page-{page}.json"
+}

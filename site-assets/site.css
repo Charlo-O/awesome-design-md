@@ -223,10 +223,16 @@ h1 em {
   --active-index: 0;
   --mode-count: 3;
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(var(--mode-count), minmax(0, 1fr));
-  width: min(100%, 500px);
+  display: flex;
+  width: min(100%, 940px);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   border-bottom: 1px solid var(--border);
+}
+
+.mode-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .mode-tabs[data-active-mode="skill"] {
@@ -239,6 +245,7 @@ h1 em {
 
 .mode-tabs::after {
   content: "";
+  display: none;
   position: absolute;
   left: 0;
   bottom: -1px;
@@ -253,13 +260,16 @@ h1 em {
   appearance: none;
   border: none;
   background: transparent;
-  min-width: 0;
+  flex: 0 0 auto;
+  min-width: 108px;
   min-height: 40px;
+  margin-bottom: -1px;
   padding: 0 18px 11px 0;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
+  border-bottom: 2px solid transparent;
   border-radius: 0;
   color: var(--text-secondary);
   cursor: pointer;
@@ -275,6 +285,7 @@ h1 em {
 
 .mode-tab.active {
   color: var(--text);
+  border-bottom-color: var(--text);
 }
 
 .mode-tab-label {
@@ -551,6 +562,22 @@ h1 em {
   background: var(--border);
 }
 
+.grid-auto-load {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  min-height: 36px;
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.grid-auto-load span {
+  min-height: 16px;
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+}
+
 .card {
   position: relative;
   overflow: hidden;
@@ -665,6 +692,53 @@ h1 em {
 
 .imagine-card:hover .imagine-thumb img {
   transform: scale(1.025);
+}
+
+.imagine-media-badge,
+.imagine-play-badge {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.imagine-media-badge {
+  left: 10px;
+  bottom: 10px;
+  min-height: 24px;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 253, 250, 0.74);
+  border-radius: 999px;
+  background: rgba(23, 20, 17, 0.62);
+  color: var(--bg);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  line-height: 1;
+  backdrop-filter: blur(10px);
+}
+
+.imagine-play-badge {
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 253, 250, 0.78);
+  border-radius: 50%;
+  background: rgba(23, 20, 17, 0.5);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 16px 34px rgba(31, 24, 15, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.imagine-play-badge::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 13px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid var(--bg);
 }
 
 .imagine-card .imagine-thumb .fav-star {
@@ -1189,6 +1263,15 @@ h1 em {
   background: var(--surface);
 }
 
+.imagine-modal-image video {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  max-height: min(88vh, 900px);
+  object-fit: contain;
+  background: #171411;
+}
+
 .modal-close {
   position: absolute;
   top: 18px;
@@ -1293,6 +1376,34 @@ h1 em {
   border: 1px solid var(--border);
   border-radius: 14px;
   background: rgba(247, 242, 235, 0.62);
+}
+
+.imagine-media-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.imagine-media-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.imagine-media-chip.is-video {
+  border-color: #d8c5ef;
+  background: #f3edfb;
+  color: #573186;
 }
 
 .modal-section + .modal-section {

@@ -1,0 +1,72 @@
+{
+  "repository": "https://opennana.com/awesome-prompt-gallery?model=Nano%20Banana%20Pro",
+  "label": "Nano Banana",
+  "totalCases": 5999,
+  "categories": [
+    "Architecture & Spaces",
+    "Brand & Logos",
+    "Characters & People",
+    "Charts & Infographics",
+    "Documents & Publishing",
+    "History & Classical Themes",
+    "Illustration & Art",
+    "Other Use Cases",
+    "Photography & Realism",
+    "Posters & Typography",
+    "Products & E-commerce",
+    "Scenes & Storytelling",
+    "UI & Interfaces"
+  ],
+  "styles": [
+    "3D",
+    "Architecture",
+    "Brand",
+    "Character",
+    "Classical",
+    "Documents",
+    "Illustration",
+    "Infographic",
+    "Other Use Cases",
+    "Photography",
+    "Poster",
+    "Product",
+    "Realistic",
+    "Scenes",
+    "UI",
+    "Video"
+  ],
+  "scenes": [
+    "Commerce",
+    "Creative",
+    "Education",
+    "Fashion",
+    "Food",
+    "History",
+    "Social",
+    "Story",
+    "Tech",
+    "Travel"
+  ],
+  "mediaTypes": {
+    "Image": 5999
+  },
+  "generatedAt": "2026-05-20T05:10:15.739Z",
+  "pageSize": 120,
+  "pages": 50,
+  "categoryCounts": {
+    "Photography & Realism": 4171,
+    "Brand & Logos": 162,
+    "Characters & People": 417,
+    "Scenes & Storytelling": 225,
+    "History & Classical Themes": 26,
+    "Posters & Typography": 106,
+    "Charts & Infographics": 66,
+    "Illustration & Art": 211,
+    "Products & E-commerce": 217,
+    "Documents & Publishing": 18,
+    "Architecture & Spaces": 154,
+    "UI & Interfaces": 60,
+    "Other Use Cases": 166
+  },
+  "pagePathPattern": "pages/page-{page}.json"
+}

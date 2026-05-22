@@ -48,6 +48,7 @@
     "Scenes & Storytelling": "场景与叙事",
     "UI & Interfaces": "UI 与界面",
   };
+  const promptFineCategoryKeys = Object.keys(imagineCategoryLabelsZh);
   const imagineCategoryPalette = [
     { bg: "#edf1f8", text: "#284b7b", border: "#c9d4e8" },
     { bg: "#f8ebef", text: "#7f3551", border: "#e6c7d3" },
@@ -62,6 +63,79 @@
     { bg: "#edf9f2", text: "#21603d", border: "#c8e4d2" },
     { bg: "#f8eef9", text: "#6a3571", border: "#e4c7e7" },
     { bg: "#edf5eb", text: "#315d2d", border: "#cfe0ca" },
+  ];
+  const openNanaDataBase = "extra/opennana-prompt-gallery/data";
+  const openNanaRemoteAssetBaseUrls = {
+    "nano-banana-2":
+      "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-nano-banana/main",
+    "nano-banana-pro":
+      "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-nano-banana/main",
+    chatgpt: "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-chatgpt/main",
+    grok: "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-grok/main",
+    "seedance-2.0":
+      "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-seedance-2-images/main",
+  };
+  const seedanceVideoAssetBaseUrls = [
+    "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-seedance-2-video-1/main",
+    "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-seedance-2-video-2/main",
+    "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-seedance-2-video-3/main",
+    "https://raw.githubusercontent.com/Charlo-O/awesome-design-assets-seedance-2-video-4/main",
+  ];
+  const promptModeSources = [
+    {
+      key: "nano-banana",
+      label: "Nano Banana",
+      url: `${openNanaDataBase}/nano-banana.json`,
+      metaUrl: `${openNanaDataBase}/nano-banana/meta.json`,
+      pageBaseUrl: `${openNanaDataBase}/nano-banana/pages`,
+      total: 5999,
+      categories: promptFineCategoryKeys,
+    },
+    {
+      key: "chatgpt",
+      label: "ChatGPT",
+      url: `${openNanaDataBase}/chatgpt.json`,
+      metaUrl: `${openNanaDataBase}/chatgpt/meta.json`,
+      pageBaseUrl: `${openNanaDataBase}/chatgpt/pages`,
+      total: 1300,
+      categories: promptFineCategoryKeys,
+    },
+    {
+      key: "grok",
+      label: "Grok",
+      url: `${openNanaDataBase}/grok.json`,
+      metaUrl: `${openNanaDataBase}/grok/meta.json`,
+      pageBaseUrl: `${openNanaDataBase}/grok/pages`,
+      total: 54,
+      categories: promptFineCategoryKeys,
+    },
+    {
+      key: "seedance-2.0",
+      label: "Seedance 2.0",
+      url: `${openNanaDataBase}/seedance-2.0.json`,
+      metaUrl: `${openNanaDataBase}/seedance-2.0/meta.json`,
+      pageBaseUrl: `${openNanaDataBase}/seedance-2.0/pages`,
+      total: 609,
+      categories: promptFineCategoryKeys,
+    },
+  ];
+  const promptModeMap = new Map(
+    promptModeSources.map((source) => [source.key, source])
+  );
+  const promptModeEntries = new Map();
+  const promptModeMeta = new Map();
+  const promptModeCategoryKeys = new Map(
+    promptModeSources.map((source) => [source.key, source.categories])
+  );
+  const promptModeLoadedPages = new Map();
+  const promptModeLoading = new Set();
+  const promptCategoryLabelsZh = {
+    Image: "图片",
+    Video: "视频",
+  };
+  const promptCategoryPalette = [
+    { bg: "#edf7f6", text: "#1e5f5a", border: "#c5dfdc" },
+    { bg: "#f3edfb", text: "#573186", border: "#d8c5ef" },
   ];
 
   function buildSkillMonogram(name) {
@@ -156,6 +230,49 @@
     return value || `${imagineImageBase}/images/category-covers/gallery.jpg`;
   }
 
+  function isPromptMode(mode) {
+    return promptModeMap.has(mode);
+  }
+
+  function normalizePromptAssetPath(path) {
+    const value = String(path || "").replace(/^\/+/, "");
+    if (value.startsWith("assets/")) {
+      const [, assetBucket, ...assetPathParts] = value.split("/");
+      const seedanceVideoIndex =
+        assetBucket === "seedance-2.0" && /\.(mp4|mov|webm)$/i.test(value)
+          ? (parseInt(assetPathParts[0], 10) || 0) % seedanceVideoAssetBaseUrls.length
+          : -1;
+      const remoteBase =
+        seedanceVideoIndex >= 0
+          ? seedanceVideoAssetBaseUrls[seedanceVideoIndex]
+          : openNanaRemoteAssetBaseUrls[assetBucket];
+      if (remoteBase && assetPathParts.length) {
+        return `${remoteBase.replace(/\/$/, "")}/${[assetBucket, ...assetPathParts].join("/")}`;
+      }
+
+      return `${openNanaDataBase}/${value}`;
+    }
+
+    return value;
+  }
+
+  function getPromptModeLabel(mode) {
+    return promptModeMap.get(mode)?.label || "OpenNana";
+  }
+
+  function promptPageUrl(source, page) {
+    return `${source.pageBaseUrl}/page-${String(page).padStart(3, "0")}.json`;
+  }
+
+  function getMediaTypeLabel(mediaType) {
+    const isVideo = mediaType === "video";
+    if (getLanguage() === "zh") {
+      return isVideo ? "视频" : "图片";
+    }
+
+    return isVideo ? "Video" : "Image";
+  }
+
   function buildImagineMonogram(category) {
     const compact = String(category || "Imagine")
       .split(/[\s&]+/)
@@ -227,6 +344,97 @@
     });
   }
 
+  function buildPromptEntries(siteData, source) {
+    const categories = Array.isArray(siteData?.categories)
+      ? siteData.categories
+      : source.categories || [];
+    promptModeCategoryKeys.set(source.key, categories);
+
+    return (siteData?.cases || []).map((item, index) => {
+      const title = item.title || `${source.label} Case ${item.sourceId || item.id}`;
+      const promptPreview = item.promptPreview || item.prompt || "";
+      const image = normalizePromptAssetPath(item.image);
+      const media = (item.media || [])
+        .map((mediaItem) => ({
+          ...mediaItem,
+          path: normalizePromptAssetPath(mediaItem.path),
+        }))
+        .filter((mediaItem) => mediaItem.path);
+      const fullImage =
+        media.find((mediaItem) => mediaItem.kind === "image")?.path || image;
+      const video =
+        normalizePromptAssetPath(item.video) ||
+        media.find((mediaItem) => mediaItem.type === "video")?.path ||
+        "";
+      const mediaType = item.mediaType === "video" || video ? "video" : "image";
+      const sourceUrl =
+        item.sourceUrl ||
+        item.githubUrl ||
+        siteData.repository ||
+        source.repository ||
+        promptModeMap.get(source.key)?.url;
+
+      return {
+        id: item.sourceId || item.id || index + 1,
+        slug: `prompt-${source.key}-${item.sourceId || item.id || item.slug || index}`,
+        name: title,
+        monogram: buildImagineMonogram(item.category || source.label),
+        entryType: "imagine",
+        categoryKey: item.category || (mediaType === "video" ? "Video" : "Image"),
+        summary: promptPreview,
+        overview: [promptPreview, item.prompt || ""].filter(Boolean),
+        keyCharacteristics: [
+          `${getMediaTypeLabel(mediaType)}: ${source.label}`,
+          ...(item.styles || []).map((style) => `Tag: ${style}`),
+          ...(item.scenes || []).map((scene) => `Model: ${scene}`),
+        ],
+        colors: mediaType === "video"
+          ? ["#191426", "#7c4fd6", "#f3edfb", "#282033"]
+          : ["#102826", "#39a7a0", "#edf7f6", "#f7fbfa"],
+        files: {
+          image,
+          video,
+        },
+        stats: {
+          previewCount: item.prompt ? 1 : 0,
+        },
+        sourceSite: {
+          name: item.sourceLabel || source.label || "OpenNana",
+          url: sourceUrl,
+        },
+        searchTerms: [
+          title,
+          item.imageAlt,
+          item.category,
+          item.mediaType,
+          source.label,
+          ...(item.styles || []),
+          ...(item.scenes || []),
+          item.sourceLabel,
+          item.promptPreview,
+          item.prompt,
+          "OpenNana",
+          "prompt gallery",
+        ].filter(Boolean),
+        imagine: {
+          image,
+          fullImage,
+          video,
+          media,
+          mediaType,
+          imageAlt: item.imageAlt || title,
+          prompt: item.prompt || "",
+          promptPreview,
+          styles: item.styles || [],
+          scenes: item.scenes || [],
+          githubUrl: item.githubUrl || sourceUrl,
+          repository: siteData.repository || source.repository || sourceUrl,
+          model: source.label,
+        },
+      };
+    });
+  }
+
   const designs = [...rawDesigns, ...buildHotkeysSkills(hotkeysAgents)];
   const computedSiteMeta = {
     totalDesigns: designs.length,
@@ -253,7 +461,7 @@
         `${name} 的本地风格详情页，包含设计摘要、调色板、本地预览与文件入口。`,
       homeHeroLabel: "本地设计图谱",
       homeHeroTitle: (count) =>
-        `<span class="hero-count-inline">${count}</span> 个<br><em>DESIGN.md 风格索引</em>`,
+        `<span class="hero-count-inline">${count}</span> 个<br><em>UI设计模板</em>`,
       homeHeroDesc:
         "从品牌风格、预览页和设计文档。点击任意框架查看详细UI风格。",
       homeHeroLabelSkill: "Hotkeys 技能库",
@@ -263,7 +471,7 @@
         "从 hotkeys.design 收录的技能与命令中浏览。点击任意条目查看安装命令、标签与来源链接。",
       homeHeroLabelImagine: "GPT-Image2 图像库",
       homeHeroTitleImagine: (count) =>
-        `<span class="hero-count-inline">${count}</span> 个<br><em>Imagine 2 图像索引</em>`,
+        `<span class="hero-count-inline">${count}</span> 个<br><em>Image 图像案例</em>`,
       homeHeroDescImagine:
         "从 awesome-gpt-image-2 收录的案例图片与 Prompt 中浏览。按原仓库分类筛选，点击条目查看图片、提示词和来源。",
       statDesigns: "风格条目",
@@ -279,7 +487,7 @@
       modeSwitcherLabel: "内容类型",
       modeUi: "UI设计",
       modeSkill: "Skill",
-      modeImagine: "Imagine 2",
+      modeImagine: "Image",
       modeSkillNote: "skill",
       modeSwitchTo: "切换为",
       modeCurrentOnly: "只显示当前分类",
@@ -376,7 +584,7 @@
         `Local detail page for ${name}, with summaries, palettes, local previews, and file links.`,
       homeHeroLabel: "Local Design Atlas",
       homeHeroTitle: (count) =>
-        `<span class="hero-count-inline">${count}</span><br><em>DESIGN.md Style Index</em>`,
+        `<span class="hero-count-inline">${count}</span><br><em>UI Design Templates</em>`,
       homeHeroDesc:
         "Browse brand styles, preview pages, and design documents. Open any item to inspect the detailed UI style.",
       homeHeroLabelSkill: "Hotkeys Skill Library",
@@ -386,7 +594,7 @@
         "Browse skills and install commands collected from hotkeys.design. Open any item to inspect commands, tags, and source links.",
       homeHeroLabelImagine: "GPT-Image2 Gallery",
       homeHeroTitleImagine: (count) =>
-        `<span class="hero-count-inline">${count}</span><br><em>Imagine 2 Image Index</em>`,
+        `<span class="hero-count-inline">${count}</span><br><em>Image Cases</em>`,
       homeHeroDescImagine:
         "Browse local images and reusable prompts from awesome-gpt-image-2. Filter by the repository categories, then open an item for its image, prompt, and source.",
       statDesigns: "Design Entries",
@@ -402,7 +610,7 @@
       modeSwitcherLabel: "Content Type",
       modeUi: "UI",
       modeSkill: "Skills",
-      modeImagine: "Imagine 2",
+      modeImagine: "Image",
       modeSkillNote: "skill",
       modeSwitchTo: "Switch to",
       modeCurrentOnly: "Only show current category",
@@ -650,6 +858,100 @@
     const siteData = await response.json();
     imagineEntries = buildImagineEntries(siteData);
     return imagineEntries;
+  }
+
+  async function loadPromptModeMeta(mode) {
+    const source = promptModeMap.get(mode);
+    if (!source) {
+      return null;
+    }
+
+    if (promptModeMeta.has(mode)) {
+      return promptModeMeta.get(mode);
+    }
+
+    const response = await fetch(source.metaUrl);
+    if (!response.ok) {
+      throw new Error(`Unable to load ${source.label} metadata: ${response.status}`);
+    }
+
+    const meta = await response.json();
+    promptModeMeta.set(mode, meta);
+    promptModeCategoryKeys.set(
+      mode,
+      Array.isArray(meta.categories) ? meta.categories : source.categories || []
+    );
+    return meta;
+  }
+
+  async function loadPromptModeFullData(mode, source) {
+    const response = await fetch(source.url);
+    if (!response.ok) {
+      throw new Error(`Unable to load ${source.label} cases: ${response.status}`);
+    }
+
+    const siteData = await response.json();
+    const entries = buildPromptEntries(siteData, source);
+    promptModeEntries.set(mode, entries);
+    promptModeLoadedPages.set(mode, new Set(["full"]));
+    return entries;
+  }
+
+  async function loadPromptModePage(mode, page = 1) {
+    const source = promptModeMap.get(mode);
+    if (!source) {
+      return [];
+    }
+
+    if (!source.pageBaseUrl) {
+      return loadPromptModeFullData(mode, source);
+    }
+
+    const loadedPages = promptModeLoadedPages.get(mode) || new Set();
+    if (loadedPages.has(page) || loadedPages.has("full")) {
+      return promptModeEntries.get(mode) || [];
+    }
+
+    const response = await fetch(promptPageUrl(source, page));
+    if (!response.ok) {
+      throw new Error(`Unable to load ${source.label} page ${page}: ${response.status}`);
+    }
+
+    const siteData = await response.json();
+    const existing = promptModeEntries.get(mode) || [];
+    const nextEntries = buildPromptEntries(siteData, source);
+    const seen = new Set(existing.map((entry) => entry.slug));
+    const merged = [
+      ...existing,
+      ...nextEntries.filter((entry) => !seen.has(entry.slug)),
+    ];
+    loadedPages.add(page);
+    promptModeLoadedPages.set(mode, loadedPages);
+    promptModeEntries.set(mode, merged);
+    return merged;
+  }
+
+  async function loadPromptModeEntries(mode) {
+    const source = promptModeMap.get(mode);
+    if (!source) {
+      return [];
+    }
+
+    const loadedPages = promptModeLoadedPages.get(mode);
+    if (promptModeEntries.has(mode) && loadedPages?.size > 0) {
+      if (!promptModeMeta.has(mode)) {
+        await loadPromptModeMeta(mode);
+      }
+      return promptModeEntries.get(mode);
+    }
+
+    try {
+      await loadPromptModeMeta(mode);
+      return await loadPromptModePage(mode, 1);
+    } catch (error) {
+      console.warn(error);
+      return loadPromptModeFullData(mode, source);
+    }
   }
 
   function getLocalizedSkillTags(design) {
@@ -1000,6 +1302,18 @@
       };
     }
 
+    if (promptCategoryLabelsZh[key]) {
+      const keys = Object.keys(promptCategoryLabelsZh);
+      const palette =
+        promptCategoryPalette[
+          Math.max(keys.indexOf(key), 0) % promptCategoryPalette.length
+        ];
+      return {
+        ...palette,
+        label: lang === "en" ? key : promptCategoryLabelsZh[key],
+      };
+    }
+
     return {
       label: key,
       bg: "#f4efe8",
@@ -1119,6 +1433,10 @@
       return imagineEntries;
     }
 
+    if (isPromptMode(mode)) {
+      return promptModeEntries.get(mode) || [];
+    }
+
     return designs.filter((design) => !isSkillEntry(design));
   }
 
@@ -1139,6 +1457,17 @@
         totalDesigns: pool.length,
         totalPreviews: pool.filter((design) => design.imagine?.prompt).length,
         totalCategories: imagineCategoryKeys.length,
+      };
+    }
+
+    if (isPromptMode(mode)) {
+      const source = promptModeMap.get(mode);
+      const meta = promptModeMeta.get(mode);
+      const categories = promptModeCategoryKeys.get(mode) || meta?.categories || source?.categories || [];
+      return {
+        totalDesigns: meta?.totalCases || pool.length || source?.total || 0,
+        totalPreviews: pool.length || meta?.totalCases || source?.total || 0,
+        totalCategories: categories.length,
       };
     }
 
@@ -1174,7 +1503,16 @@
         label: t("modeImagine"),
         count: getModeStats("imagine").totalDesigns,
       },
+      ...promptModeSources.map((source) => ({
+        key: source.key,
+        label: source.label,
+        count: getModeStats(source.key).totalDesigns,
+      })),
     ];
+    const activeIndex = Math.max(
+      modeItems.findIndex((item) => item.key === mode),
+      0
+    );
 
     return `
       <div class="mode-tabs-head">
@@ -1185,6 +1523,7 @@
         role="tablist"
         aria-label="${escapeHTML(t("modeSwitcherLabel"))}"
         data-active-mode="${escapeHTML(mode)}"
+        style="--mode-count:${modeItems.length};--active-index:${activeIndex};"
       >
         ${modeItems
           .map((item) => {
@@ -1250,6 +1589,12 @@
       ...(design.skillTagsZh || []),
       design.skillCommand,
       design.skillAuthor,
+      design.imagine?.mediaType,
+      design.imagine?.model,
+      design.imagine?.prompt,
+      design.imagine?.promptPreview,
+      ...(design.imagine?.styles || []),
+      ...(design.imagine?.scenes || []),
       design.sourceSite?.name,
       design.sourceSite?.url,
     ]
@@ -1295,7 +1640,10 @@
     const { includeCardPreview = false } = options;
 
     if (isImagineEntry(design)) {
-      const pills = (design.imagine?.styles || []).slice(0, 2);
+      const pills = [
+        getMediaTypeLabel(design.imagine?.mediaType || "image"),
+        ...(design.imagine?.styles || []).slice(0, 2),
+      ];
       return pills
         .map((pill) => `<span class="file-pill">${escapeHTML(pill)}</span>`)
         .join("");
@@ -1444,10 +1792,78 @@
     `;
   }
 
+  function renderImaginePrimaryMedia(design) {
+    const image =
+      design.imagine?.fullImage ||
+      design.imagine?.image ||
+      design.files?.image ||
+      "";
+    const poster = design.imagine?.image || image;
+    const video = design.imagine?.video || design.files?.video || "";
+    const alt = design.imagine?.imageAlt || localizedDesignName(design);
+
+    if (design.imagine?.mediaType === "video" && video) {
+      return `
+        <video
+          src="${escapeHTML(video)}"
+          poster="${escapeHTML(poster)}"
+          controls
+          playsinline
+          preload="metadata"
+        ></video>
+      `;
+    }
+
+    return `
+      <img
+        src="${escapeHTML(image)}"
+        alt="${escapeHTML(alt)}"
+        loading="lazy"
+        decoding="async"
+      >
+    `;
+  }
+
+  function renderImagineMediaStrip(design) {
+    const media = (design.imagine?.media || [])
+      .filter((item) => item.path && (item.kind === "image" || item.kind === "video"))
+      .filter((item, index, items) =>
+        items.findIndex((candidate) => candidate.path === item.path) === index
+      );
+
+    if (media.length <= 1) {
+      return "";
+    }
+
+    return `
+      <div class="imagine-media-strip" aria-label="OpenNana media files">
+        ${media
+          .slice(0, 8)
+          .map((item) => {
+            const isVideo = item.kind === "video";
+            const label = isVideo ? getMediaTypeLabel("video") : getMediaTypeLabel("image");
+            return `
+              <a
+                class="imagine-media-chip ${isVideo ? "is-video" : ""}"
+                href="${escapeHTML(item.path)}"
+                target="_blank"
+                rel="noopener"
+              >
+                <span>${escapeHTML(label)}</span>
+                <span>${escapeHTML(String(item.index || 1).padStart(2, "0"))}</span>
+              </a>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+  }
+
   function renderImagineCard(design) {
     const category = getCategory(design.categoryKey);
     const favorite = isFavorite(design.slug);
     const image = design.imagine?.image || design.files?.image || "";
+    const mediaType = design.imagine?.mediaType || "image";
 
     return `
       <article class="card imagine-card" data-slug="${escapeHTML(design.slug)}">
@@ -1466,7 +1882,16 @@
             src="${escapeHTML(image)}"
             alt="${escapeHTML(design.imagine?.imageAlt || localizedDesignName(design))}"
             loading="lazy"
+            decoding="async"
           >
+          ${
+            mediaType === "video"
+              ? `<span class="imagine-play-badge" aria-hidden="true"></span>`
+              : ""
+          }
+          <span class="imagine-media-badge">${escapeHTML(
+            getMediaTypeLabel(mediaType)
+          )}</span>
         </div>
         <div class="card-info">
           <div class="card-topline">
@@ -1766,46 +2191,73 @@
       const modeStats = getModeStats(state.contentMode);
       const skillMode = state.contentMode === "skill";
       const imagineMode = state.contentMode === "imagine";
+      const promptMode = isPromptMode(state.contentMode);
+      const mediaMode = imagineMode || promptMode;
+      const promptLabel = getPromptModeLabel(state.contentMode);
+      const promptHeroLabel =
+        getLanguage() === "zh"
+          ? `${promptLabel} 提示词库`
+          : `${promptLabel} Prompt Gallery`;
+      const promptHeroTitle =
+        getLanguage() === "zh"
+          ? `<span class="hero-count-inline">${modeStats.totalDesigns}</span> 个<br><em>${promptLabel} 案例</em>`
+          : `<span class="hero-count-inline">${modeStats.totalDesigns}</span><br><em>${promptLabel} Cases</em>`;
+      const promptHeroDesc =
+        getLanguage() === "zh"
+          ? "精选提示词、图片与视频案例，点击卡片查看媒体和完整 Prompt。"
+          : "Explore prompt, image, and video cases. Open any card for media and the full prompt.";
+      const promptCategoryStat =
+        getLanguage() === "zh" ? "媒体类型" : "Media Types";
 
       document.title = t("homeDocumentTitle");
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute(
           "content",
-          imagineMode
+          promptMode
+            ? promptHeroDesc
+            : imagineMode
             ? t("homeHeroDescImagine")
             : skillMode
               ? t("homeHeroDescSkill")
               : t("homeMetaDescription")
         );
-      refs.homeHeroLabel.textContent = imagineMode
+      refs.homeHeroLabel.textContent = promptMode
+        ? promptHeroLabel
+        : imagineMode
         ? t("homeHeroLabelImagine")
         : skillMode
           ? t("homeHeroLabelSkill")
           : t("homeHeroLabel");
-      refs.homeHeroTitle.innerHTML = imagineMode
+      refs.homeHeroTitle.innerHTML = promptMode
+        ? promptHeroTitle
+        : imagineMode
         ? t("homeHeroTitleImagine", modeStats.totalDesigns)
         : skillMode
           ? t("homeHeroTitleSkill", modeStats.totalDesigns)
           : t("homeHeroTitle", modeStats.totalDesigns);
-      refs.homeHeroDesc.innerHTML = imagineMode
+      refs.homeHeroDesc.innerHTML = promptMode
+        ? promptHeroDesc
+        : imagineMode
         ? t("homeHeroDescImagine")
         : skillMode
           ? t("homeHeroDescSkill")
           : t("homeHeroDesc");
-      refs.statDesignsLabel.textContent = imagineMode
+      refs.statDesignsLabel.textContent = mediaMode
         ? t("statDesignsImagine")
         : skillMode
           ? t("statDesignsSkill")
           : t("statDesigns");
       refs.statDesignsValue.textContent = String(modeStats.totalDesigns);
-      refs.statPreviewsLabel.textContent = imagineMode
+      refs.statPreviewsLabel.textContent = mediaMode
         ? t("statPreviewsImagine")
         : skillMode
           ? t("statPreviewsSkill")
           : t("statPreviews");
       refs.statPreviewsValue.textContent = String(modeStats.totalPreviews);
-      refs.statCategoriesLabel.textContent = imagineMode
+      refs.statCategoriesLabel.textContent = promptMode
+        ? promptCategoryStat
+        : imagineMode
         ? t("statCategoriesImagine")
         : skillMode
           ? t("statCategoriesSkill")
@@ -1838,6 +2290,9 @@
     function renderFilters() {
       const pool = getModePool(state.contentMode);
       const favoritesCount = pool.filter((design) => isFavorite(design.slug)).length;
+      const allCount = isPromptMode(state.contentMode)
+        ? promptModeMeta.get(state.contentMode)?.totalCases || getModeStats(state.contentMode).totalDesigns
+        : pool.length;
       const modeItems =
         state.contentMode === "skill"
           ? skillTagOrder
@@ -1863,6 +2318,23 @@
                 active: state.activeFilter === key && !state.favoritesOnly,
                 className: "",
               }))
+          : isPromptMode(state.contentMode)
+            ? (promptModeCategoryKeys.get(state.contentMode) || [])
+                .map((key) => {
+                  const meta = promptModeMeta.get(state.contentMode);
+                  const count = pool.filter(
+                    (design) => design.categoryKey === key
+                  ).length;
+                  const totalCount = meta?.categoryCounts?.[key] || count;
+                  return {
+                    key,
+                    count,
+                    label: `${getCategory(key).label} (${totalCount})`,
+                    active: state.activeFilter === key && !state.favoritesOnly,
+                    className: "",
+                  };
+                })
+                .filter((item) => item.count > 0 || promptModeMeta.has(state.contentMode))
           : uiCategoryKeys.map((key) => ({
               key,
               label: `${getCategory(key).label} (${pool.filter(
@@ -1874,7 +2346,7 @@
       const items = [
         {
           key: "all",
-          label: t("filterAll", pool.length),
+          label: t("filterAll", allCount),
           active: state.activeFilter === "all" && !state.favoritesOnly,
           className: "",
         },
@@ -1925,29 +2397,129 @@
       refs.favoritesGrid.innerHTML = "";
     }
 
-    function renderGrid() {
-      state.visibleDesigns = getFilteredDesigns();
+    function getNextPromptPage(mode) {
+      const meta = promptModeMeta.get(mode);
+      const loadedPages = promptModeLoadedPages.get(mode) || new Set();
+      if (!meta?.pages || loadedPages.has("full")) {
+        return null;
+      }
 
-      if (state.visibleDesigns.length === 0) {
-        refs.grid.innerHTML = `
-          <div class="empty-state">
-            <h2>${escapeHTML(t("emptyTitle"))}</h2>
-            <p>${escapeHTML(t("emptyBody"))}</p>
-          </div>
-        `;
+      for (let page = 1; page <= meta.pages; page += 1) {
+        if (!loadedPages.has(page)) {
+          return page;
+        }
+      }
+
+      return null;
+    }
+
+    function renderPromptAutoLoadSentinel(totalVisible = 0) {
+      if (!isPromptMode(state.contentMode)) {
+        return "";
+      }
+
+      const nextPage = getNextPromptPage(state.contentMode);
+      if (!nextPage) {
+        return "";
+      }
+
+      const meta = promptModeMeta.get(state.contentMode);
+      const total = meta?.totalCases || getModeStats(state.contentMode).totalDesigns;
+      const loading = promptModeLoading.has(state.contentMode);
+      return `
+        <div
+          class="grid-auto-load ${loading ? "is-loading" : ""}"
+          data-auto-load-prompts
+          data-loaded-count="${escapeHTML(String(totalVisible))}"
+          data-total-count="${escapeHTML(String(total))}"
+          aria-hidden="true"
+        >
+          <span>${escapeHTML(loading ? "Loading..." : "")}</span>
+        </div>
+      `;
+    }
+
+    function loadNextPromptPage() {
+      if (!isPromptMode(state.contentMode) || promptModeLoading.has(state.contentMode)) {
         return;
       }
 
-      refs.grid.innerHTML = state.visibleDesigns.map(renderCard).join("");
+      const mode = state.contentMode;
+      const nextPage = getNextPromptPage(mode);
+      if (!nextPage) {
+        return;
+      }
+
+      promptModeLoading.add(mode);
+      rerender();
+      loadPromptModePage(mode, nextPage)
+        .then(() => {
+          renderStaticChrome();
+          rerender();
+        })
+        .catch((error) => {
+          console.warn(error);
+        })
+        .finally(() => {
+          promptModeLoading.delete(mode);
+          rerender();
+        });
+    }
+
+    function maybeAutoLoadNextPromptPage() {
+      if (!isPromptMode(state.contentMode) || promptModeLoading.has(state.contentMode)) {
+        return;
+      }
+
+      const sentinel = refs.grid.querySelector("[data-auto-load-prompts]");
+      if (!sentinel) {
+        return;
+      }
+
+      const rect = sentinel.getBoundingClientRect();
+      const preloadDistance = Math.max(window.innerHeight * 1.2, 720);
+      if (rect.top <= window.innerHeight + preloadDistance) {
+        loadNextPromptPage();
+      }
+    }
+
+    function renderGrid() {
+      state.visibleDesigns = getFilteredDesigns();
+      const canLoadMorePrompts =
+        isPromptMode(state.contentMode) && Boolean(getNextPromptPage(state.contentMode));
+
+      if (state.visibleDesigns.length === 0) {
+        refs.grid.innerHTML = `
+          ${
+            canLoadMorePrompts
+              ? ""
+              : `
+                <div class="empty-state">
+                  <h2>${escapeHTML(t("emptyTitle"))}</h2>
+                  <p>${escapeHTML(t("emptyBody"))}</p>
+                </div>
+              `
+          }
+          ${renderPromptAutoLoadSentinel(0)}
+        `;
+        window.requestAnimationFrame(maybeAutoLoadNextPromptPage);
+        return;
+      }
+
+      refs.grid.innerHTML = [
+        ...state.visibleDesigns.map(renderCard),
+        renderPromptAutoLoadSentinel(state.visibleDesigns.length),
+      ].join("");
       bindCardPreviewFrames(refs.grid);
+      window.requestAnimationFrame(maybeAutoLoadNextPromptPage);
     }
 
     function renderImagineModal(design) {
       const category = getCategory(design.categoryKey);
       const favorite = isFavorite(design.slug);
-      const image = design.imagine?.image || design.files?.image || "";
       const prompt = design.imagine?.prompt || getLocalizedSummary(design);
       const tags = [
+        getMediaTypeLabel(design.imagine?.mediaType || "image"),
         ...(design.imagine?.styles || []),
         ...(design.imagine?.scenes || []),
       ];
@@ -1958,10 +2530,7 @@
             t("close")
           )}">×</button>
           <div class="imagine-modal-image">
-            <img
-              src="${escapeHTML(image)}"
-              alt="${escapeHTML(design.imagine?.imageAlt || localizedDesignName(design))}"
-            >
+            ${renderImaginePrimaryMedia(design)}
           </div>
           <div class="modal-split">
             <div class="modal-content">
@@ -1974,6 +2543,7 @@
                 </span>
                 <h2 class="modal-title">${escapeHTML(localizedDesignName(design))}</h2>
                 <p class="modal-summary">${escapeHTML(getLocalizedSummary(design))}</p>
+                ${renderImagineMediaStrip(design)}
                 <div class="modal-actions">
                   <button
                     class="modal-action"
@@ -2237,7 +2807,9 @@
 
     function openModal(slug) {
       hidePreviewPopover();
-      const pool = state.visibleDesigns.length ? state.visibleDesigns : designs;
+      const pool = state.visibleDesigns.length
+        ? state.visibleDesigns
+        : getModePool(state.contentMode);
       const index = pool.findIndex((design) => design.slug === slug);
       if (index === -1) {
         return;
@@ -2358,13 +2930,25 @@
             ? "skill"
             : requestedMode === "imagine"
               ? "imagine"
-              : "ui";
+              : isPromptMode(requestedMode)
+                ? requestedMode
+                : "ui";
         if (state.contentMode !== nextMode) {
           state.contentMode = nextMode;
           state.activeFilter = "all";
           state.favoritesOnly = false;
           renderStaticChrome();
           rerender();
+          if (isPromptMode(nextMode)) {
+            loadPromptModeEntries(nextMode)
+              .then(() => {
+                renderStaticChrome();
+                rerender();
+              })
+              .catch((error) => {
+                console.warn(error);
+              });
+          }
         }
         return;
       }
@@ -2513,6 +3097,7 @@
         if (activePreviewButton) {
           positionPreviewPopover(activePreviewButton);
         }
+        maybeAutoLoadNextPromptPage();
       },
       { passive: true }
     );
@@ -2522,6 +3107,7 @@
         updatePreviewPopoverMetrics();
         positionPreviewPopover(activePreviewButton);
       }
+      maybeAutoLoadNextPromptPage();
     });
 
     updatePreviewPopoverMetrics();

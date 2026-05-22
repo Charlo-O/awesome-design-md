@@ -1,0 +1,51 @@
+{
+  "repository": "https://opennana.com/awesome-prompt-gallery?model=Grok",
+  "label": "Grok",
+  "totalCases": 54,
+  "categories": [
+    "Brand & Logos",
+    "Characters & People",
+    "Illustration & Art",
+    "Photography & Realism",
+    "Scenes & Storytelling"
+  ],
+  "styles": [
+    "3D",
+    "Architecture",
+    "Brand",
+    "Character",
+    "Classical",
+    "Illustration",
+    "Photography",
+    "Poster",
+    "Product",
+    "Realistic",
+    "UI",
+    "Video"
+  ],
+  "scenes": [
+    "Commerce",
+    "Creative",
+    "Fashion",
+    "Food",
+    "History",
+    "Social",
+    "Story",
+    "Tech",
+    "Travel"
+  ],
+  "mediaTypes": {
+    "Image": 54
+  },
+  "generatedAt": "2026-05-20T05:10:15.995Z",
+  "pageSize": 120,
+  "pages": 1,
+  "categoryCounts": {
+    "Photography & Realism": 41,
+    "Characters & People": 8,
+    "Illustration & Art": 3,
+    "Scenes & Storytelling": 1,
+    "Brand & Logos": 1
+  },
+  "pagePathPattern": "pages/page-{page}.json"
+}
