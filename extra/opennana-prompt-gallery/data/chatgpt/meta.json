@@ -1,0 +1,72 @@
+{
+  "repository": "https://opennana.com/awesome-prompt-gallery?model=ChatGPT",
+  "label": "ChatGPT",
+  "totalCases": 1300,
+  "categories": [
+    "Architecture & Spaces",
+    "Brand & Logos",
+    "Characters & People",
+    "Charts & Infographics",
+    "Documents & Publishing",
+    "History & Classical Themes",
+    "Illustration & Art",
+    "Other Use Cases",
+    "Photography & Realism",
+    "Posters & Typography",
+    "Products & E-commerce",
+    "Scenes & Storytelling",
+    "UI & Interfaces"
+  ],
+  "styles": [
+    "3D",
+    "Architecture",
+    "Brand",
+    "Character",
+    "Classical",
+    "Documents",
+    "Illustration",
+    "Infographic",
+    "Other Use Cases",
+    "Photography",
+    "Poster",
+    "Product",
+    "Realistic",
+    "Scenes",
+    "UI",
+    "Video"
+  ],
+  "scenes": [
+    "Commerce",
+    "Creative",
+    "Education",
+    "Fashion",
+    "Food",
+    "History",
+    "Social",
+    "Story",
+    "Tech",
+    "Travel"
+  ],
+  "mediaTypes": {
+    "Image": 1300
+  },
+  "generatedAt": "2026-05-20T05:10:15.962Z",
+  "pageSize": 120,
+  "pages": 11,
+  "categoryCounts": {
+    "Illustration & Art": 67,
+    "Photography & Realism": 643,
+    "Characters & People": 103,
+    "Products & E-commerce": 81,
+    "Architecture & Spaces": 31,
+    "Posters & Typography": 144,
+    "Brand & Logos": 45,
+    "History & Classical Themes": 33,
+    "Scenes & Storytelling": 32,
+    "Charts & Infographics": 39,
+    "UI & Interfaces": 45,
+    "Other Use Cases": 31,
+    "Documents & Publishing": 6
+  },
+  "pagePathPattern": "pages/page-{page}.json"
+}
