@@ -1951,6 +1951,7 @@
       homeFooterNote: document.getElementById("home-footer-note"),
       homeLangSwitcher: document.getElementById("home-lang-switcher"),
       homeModeSwitcher: document.getElementById("home-mode-switcher"),
+      backToTop: document.getElementById("back-to-top"),
     };
 
     const state = {
@@ -1962,6 +1963,19 @@
       modalIndex: -1,
       modalPool: [],
     };
+
+    function updateBackToTopButton() {
+      if (!refs.backToTop) {
+        return;
+      }
+
+      refs.backToTop.classList.toggle("is-visible", window.scrollY > 520);
+    }
+
+    refs.backToTop?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
     const previewPopover = (() => {
       const root = document.createElement("section");
       root.id = "card-preview-popover";
@@ -3097,6 +3111,7 @@
         if (activePreviewButton) {
           positionPreviewPopover(activePreviewButton);
         }
+        updateBackToTopButton();
         maybeAutoLoadNextPromptPage();
       },
       { passive: true }
@@ -3107,10 +3122,12 @@
         updatePreviewPopoverMetrics();
         positionPreviewPopover(activePreviewButton);
       }
+      updateBackToTopButton();
       maybeAutoLoadNextPromptPage();
     });
 
     updatePreviewPopoverMetrics();
+    updateBackToTopButton();
     renderStaticChrome();
     rerender();
     loadImagineEntries()
