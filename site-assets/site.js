@@ -48,7 +48,41 @@
     "Scenes & Storytelling": "场景与叙事",
     "UI & Interfaces": "UI 与界面",
   };
-  const promptFineCategoryKeys = Object.keys(imagineCategoryLabelsZh);
+  Object.assign(imagineCategoryLabelsZh, {
+    "Portraits & Fashion": "人像与时尚",
+    "Celebrities & Sports": "名人与运动",
+    "Characters & IP": "角色与 IP",
+    "Food & Beverage": "美食与饮品",
+    "Brand & Icons": "品牌与图标",
+    "Social Media & Stickers": "社媒与表情包",
+    "Infographics & Diagrams": "信息图与图解",
+    "UI & App Screens": "UI 与应用界面",
+    "Architecture & Interiors": "建筑与室内",
+    "Cinematic & Storytelling": "影视与叙事",
+    "Illustration & Comics": "插画与漫画",
+    "Historical & Fantasy": "历史与幻想",
+    "Animals & Nature": "动物与自然",
+    "Other Creative Uses": "其他创意用途",
+  });
+  const promptFineCategoryKeys = [
+    "Portraits & Fashion",
+    "Celebrities & Sports",
+    "Characters & IP",
+    "Products & E-commerce",
+    "Food & Beverage",
+    "Brand & Icons",
+    "Social Media & Stickers",
+    "Posters & Typography",
+    "Infographics & Diagrams",
+    "UI & App Screens",
+    "Architecture & Interiors",
+    "Cinematic & Storytelling",
+    "Illustration & Comics",
+    "Historical & Fantasy",
+    "Documents & Publishing",
+    "Animals & Nature",
+    "Other Creative Uses",
+  ];
   const imagineCategoryPalette = [
     { bg: "#edf1f8", text: "#284b7b", border: "#c9d4e8" },
     { bg: "#f8ebef", text: "#7f3551", border: "#e6c7d3" },
@@ -384,9 +418,8 @@
         summary: promptPreview,
         overview: [promptPreview, item.prompt || ""].filter(Boolean),
         keyCharacteristics: [
-          `${getMediaTypeLabel(mediaType)}: ${source.label}`,
-          ...(item.styles || []).map((style) => `Tag: ${style}`),
-          ...(item.scenes || []).map((scene) => `Model: ${scene}`),
+          ...(item.styles || []).map((style) => `Style: ${style}`),
+          ...(item.scenes || []).map((scene) => `Scene: ${scene}`),
         ],
         colors: mediaType === "video"
           ? ["#191426", "#7c4fd6", "#f3edfb", "#282033"]
@@ -469,25 +502,25 @@
         `<span class="hero-count-inline">${count}</span> 个<br><em>Skill 命令索引</em>`,
       homeHeroDescSkill:
         "从 hotkeys.design 收录的技能与命令中浏览。点击任意条目查看安装命令、标签与来源链接。",
-      homeHeroLabelImagine: "GPT-Image2 图像库",
+      homeHeroLabelImagine: "image-2",
       homeHeroTitleImagine: (count) =>
-        `<span class="hero-count-inline">${count}</span> 个<br><em>Image 图像案例</em>`,
+        `<span class="hero-count-inline">${count}</span> 个<br><em>image-2</em>`,
       homeHeroDescImagine:
-        "从 awesome-gpt-image-2 收录的案例图片与 Prompt 中浏览。按原仓库分类筛选，点击条目查看图片、提示词和来源。",
+        "从 awesome-gpt-image-2 收录的案例图片与 Prompt 中浏览。按实际画面与提示词内容筛选，点击条目查看图片、提示词和来源。",
       statDesigns: "风格条目",
       statPreviews: "预览页面",
       statCategories: "分组类型",
       statDesignsSkill: "技能条目",
       statPreviewsSkill: "命令数量",
       statCategoriesSkill: "标签类型",
-      statDesignsImagine: "图片案例",
+      statDesignsImagine: "image-2",
       statPreviewsImagine: "Prompt 数量",
-      statCategoriesImagine: "原仓库分类",
+      statCategoriesImagine: "内容标签",
       searchPlaceholder: "搜索",
       modeSwitcherLabel: "内容类型",
       modeUi: "UI设计",
       modeSkill: "Skill",
-      modeImagine: "Image",
+      modeImagine: "image-2",
       modeSkillNote: "skill",
       modeSwitchTo: "切换为",
       modeCurrentOnly: "只显示当前分类",
@@ -592,25 +625,25 @@
         `<span class="hero-count-inline">${count}</span><br><em>Skill Command Index</em>`,
       homeHeroDescSkill:
         "Browse skills and install commands collected from hotkeys.design. Open any item to inspect commands, tags, and source links.",
-      homeHeroLabelImagine: "GPT-Image2 Gallery",
+      homeHeroLabelImagine: "image-2",
       homeHeroTitleImagine: (count) =>
-        `<span class="hero-count-inline">${count}</span><br><em>Image Cases</em>`,
+        `<span class="hero-count-inline">${count}</span><br><em>image-2</em>`,
       homeHeroDescImagine:
-        "Browse local images and reusable prompts from awesome-gpt-image-2. Filter by the repository categories, then open an item for its image, prompt, and source.",
+        "Browse local images and reusable prompts from awesome-gpt-image-2. Filter by the actual image and prompt content, then open an item for its image, prompt, and source.",
       statDesigns: "Design Entries",
       statPreviews: "Preview Pages",
       statCategories: "Categories",
       statDesignsSkill: "Skill Entries",
       statPreviewsSkill: "Commands",
       statCategoriesSkill: "Tag Types",
-      statDesignsImagine: "Image Cases",
+      statDesignsImagine: "image-2",
       statPreviewsImagine: "Prompts",
-      statCategoriesImagine: "Repo Categories",
+      statCategoriesImagine: "Content Labels",
       searchPlaceholder: "Search",
       modeSwitcherLabel: "Content Type",
       modeUi: "UI",
       modeSkill: "Skills",
-      modeImagine: "Image",
+      modeImagine: "image-2",
       modeSkillNote: "skill",
       modeSwitchTo: "Switch to",
       modeCurrentOnly: "Only show current category",
@@ -1641,7 +1674,6 @@
 
     if (isImagineEntry(design)) {
       const pills = [
-        getMediaTypeLabel(design.imagine?.mediaType || "image"),
         ...(design.imagine?.styles || []).slice(0, 2),
       ];
       return pills
@@ -2221,7 +2253,7 @@
           ? "精选提示词、图片与视频案例，点击卡片查看媒体和完整 Prompt。"
           : "Explore prompt, image, and video cases. Open any card for media and the full prompt.";
       const promptCategoryStat =
-        getLanguage() === "zh" ? "媒体类型" : "Media Types";
+        getLanguage() === "zh" ? "内容标签" : "Content Labels";
 
       document.title = t("homeDocumentTitle");
       document
@@ -2533,7 +2565,6 @@
       const favorite = isFavorite(design.slug);
       const prompt = design.imagine?.prompt || getLocalizedSummary(design);
       const tags = [
-        getMediaTypeLabel(design.imagine?.mediaType || "image"),
         ...(design.imagine?.styles || []),
         ...(design.imagine?.scenes || []),
       ];

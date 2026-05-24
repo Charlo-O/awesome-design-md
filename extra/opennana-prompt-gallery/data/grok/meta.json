@@ -3,24 +3,31 @@
   "label": "Grok",
   "totalCases": 54,
   "categories": [
-    "Brand & Logos",
-    "Characters & People",
-    "Illustration & Art",
-    "Photography & Realism",
-    "Scenes & Storytelling"
+    "Portraits & Fashion",
+    "Characters & IP",
+    "Products & E-commerce",
+    "Food & Beverage",
+    "Social Media & Stickers",
+    "Posters & Typography",
+    "Illustration & Comics",
+    "Historical & Fantasy",
+    "Animals & Nature"
   ],
   "styles": [
     "3D",
     "Architecture",
     "Brand",
     "Character",
+    "Cinematic",
     "Classical",
+    "Fashion",
+    "Food",
     "Illustration",
-    "Photography",
+    "Photo",
+    "Portrait",
     "Poster",
     "Product",
     "Realistic",
-    "UI",
     "Video"
   ],
   "scenes": [
@@ -29,7 +36,9 @@
     "Fashion",
     "Food",
     "History",
+    "Nature",
     "Social",
+    "Sports",
     "Story",
     "Tech",
     "Travel"
@@ -41,11 +50,15 @@
   "pageSize": 120,
   "pages": 1,
   "categoryCounts": {
-    "Photography & Realism": 41,
-    "Characters & People": 8,
-    "Illustration & Art": 3,
-    "Scenes & Storytelling": 1,
-    "Brand & Logos": 1
+    "Portraits & Fashion": 36,
+    "Characters & IP": 6,
+    "Posters & Typography": 1,
+    "Social Media & Stickers": 2,
+    "Illustration & Comics": 1,
+    "Historical & Fantasy": 3,
+    "Animals & Nature": 2,
+    "Products & E-commerce": 2,
+    "Food & Beverage": 1
   },
   "pagePathPattern": "pages/page-{page}.json"
 }
