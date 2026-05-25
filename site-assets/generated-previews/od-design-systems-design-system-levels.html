@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Levels Preview</title>
+  <style>
+    :root {
+      --ink: #141413;
+      --accent: #1d5b48;
+      --soft: #e7f3ee;
+      --paper: #fffdfa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 48px;
+      background:
+        radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 28%),
+        linear-gradient(145deg, var(--paper), color-mix(in srgb, var(--soft) 64%, white));
+      color: var(--ink);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+    main {
+      width: min(980px, 100%);
+      min-height: 560px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 34px;
+      padding: 42px;
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+      background: color-mix(in srgb, white 78%, var(--paper));
+      box-shadow: 0 28px 90px color-mix(in srgb, var(--ink) 12%, transparent);
+    }
+    .topline, .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: color-mix(in srgb, var(--ink) 58%, transparent);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 44px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      max-width: 680px;
+      font-family: Georgia, "Songti SC", serif;
+      font-size: clamp(42px, 8vw, 86px);
+      line-height: 0.96;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+    p {
+      max-width: 620px;
+      margin: 22px 0 0;
+      color: color-mix(in srgb, var(--ink) 72%, transparent);
+      font-size: 18px;
+      line-height: 1.72;
+    }
+    .mark {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--soft) 84%, white), white);
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: 76px;
+      box-shadow: inset 0 0 0 18px color-mix(in srgb, var(--paper) 72%, transparent);
+    }
+    ul {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: color-mix(in srgb, var(--ink) 68%, transparent);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    li::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      vertical-align: 1px;
+    }
+    @media (max-width: 720px) {
+      body { padding: 22px; }
+      main { min-height: 0; padding: 28px; }
+      .hero { grid-template-columns: 1fr; }
+      .mark { width: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="topline">
+      <span>design-system</span>
+      <span>web</span>
+    </div>
+    <section class="hero">
+      <div>
+        <h1>Levels</h1>
+        <p>Conversion-focused design that removes friction and guides users toward action through clarity, trust, and speed.</p>
+      </div>
+      <div class="mark">OD</div>
+    </section>
+    <div class="meta">
+      <span>设计与生产力</span>
+      <ul><li>Resource type: design-system</li><li>Surface: web</li><li>Scenario: design</li></ul>
+    </div>
+  </main>
+</body>
+</html>
