@@ -29,6 +29,7 @@
     Video: ["#02182c", "#d97706", "#fef3c7", "#fffbeb", "#f4f8fc"],
   };
   const imagineCasesUrl = "extra/awesome-gpt-image-2/data/cases.json";
+  const imagineCasesTotal = 441;
   const imagineImageBase = "extra/awesome-gpt-image-2/data";
   const imagineRepoUrl = "https://github.com/freestylefly/awesome-gpt-image-2";
   let imagineEntries = [];
@@ -119,6 +120,7 @@
     {
       key: "nano-banana",
       label: "Nano Banana",
+      resourceType: "image-prompt-template",
       url: `${openNanaDataBase}/nano-banana.json`,
       metaUrl: `${openNanaDataBase}/nano-banana/meta.json`,
       pageBaseUrl: `${openNanaDataBase}/nano-banana/pages`,
@@ -128,6 +130,7 @@
     {
       key: "chatgpt",
       label: "ChatGPT",
+      resourceType: "image-prompt-template",
       url: `${openNanaDataBase}/chatgpt.json`,
       metaUrl: `${openNanaDataBase}/chatgpt/meta.json`,
       pageBaseUrl: `${openNanaDataBase}/chatgpt/pages`,
@@ -137,6 +140,7 @@
     {
       key: "grok",
       label: "Grok",
+      resourceType: "image-prompt-template",
       url: `${openNanaDataBase}/grok.json`,
       metaUrl: `${openNanaDataBase}/grok/meta.json`,
       pageBaseUrl: `${openNanaDataBase}/grok/pages`,
@@ -146,6 +150,7 @@
     {
       key: "seedance-2.0",
       label: "Seedance 2.0",
+      resourceType: "prompt-template",
       url: `${openNanaDataBase}/seedance-2.0.json`,
       metaUrl: `${openNanaDataBase}/seedance-2.0/meta.json`,
       pageBaseUrl: `${openNanaDataBase}/seedance-2.0/pages`,
@@ -187,6 +192,19 @@
     return `${tokens[0][0]}${tokens[1][0]}`.toUpperCase();
   }
 
+  function inferSurfaceFromText(...parts) {
+    const text = parts.filter(Boolean).join(" ").toLowerCase();
+    if (/deck|ppt|slide|presentation/.test(text)) return "deck";
+    if (/mobile|iphone|android|onboarding/.test(text)) return "mobile";
+    if (/dashboard|analytics|report|data/.test(text)) return "dashboard";
+    if (/image|poster|avatar|infographic|photo/.test(text)) return "image";
+    if (/video|motion|hyperframes|clip/.test(text)) return "video";
+    if (/audio|music|speech|voice|jingle/.test(text)) return "audio";
+    if (/doc|pdf|resume|invoice|notes|brief|spec/.test(text)) return "document";
+    if (/workflow|scenario|migration|export|pipeline/.test(text)) return "workflow";
+    return "web";
+  }
+
   function buildHotkeysSkills(items) {
     return items.map((item, index) => {
       const tags = Array.isArray(item.tags) ? item.tags : [];
@@ -205,6 +223,10 @@
         name: item.name,
         monogram: buildSkillMonogram(item.name),
         entryType: "skill",
+        resourceType: "agent-skill",
+        surface: inferSurfaceFromText(item.name, item.description, tags.join(" ")),
+        scenario: primaryTag,
+        sourceKind: "hotkeys-skill",
         categoryKey: "skill",
         categoryLabelZh: "技能",
         categoryLabelEn: "Skill Library",
@@ -268,6 +290,10 @@
     return promptModeMap.has(mode);
   }
 
+  function isPromptResourceMode(mode) {
+    return mode === "prompt-template" || mode === "image-prompt-template" || isPromptMode(mode);
+  }
+
   function normalizePromptAssetPath(path) {
     const value = String(path || "").replace(/^\/+/, "");
     if (value.startsWith("assets/")) {
@@ -292,6 +318,14 @@
 
   function getPromptModeLabel(mode) {
     return promptModeMap.get(mode)?.label || "OpenNana";
+  }
+
+  function getSourceFilterLabel(key) {
+    if (key === "awesome-gpt-image-2") {
+      return "GPT-Image2";
+    }
+
+    return promptModeMap.get(key)?.label || key;
   }
 
   function promptPageUrl(source, page) {
@@ -334,6 +368,10 @@
         name: title,
         monogram: buildImagineMonogram(item.category),
         entryType: "imagine",
+        resourceType: "image-prompt-template",
+        surface: "image",
+        scenario: item.category || "image",
+        sourceKind: "awesome-gpt-image-2",
         categoryKey: item.category || "Other Use Cases",
         summary: promptPreview,
         overview: [promptPreview, item.prompt || ""].filter(Boolean),
@@ -414,6 +452,12 @@
         name: title,
         monogram: buildImagineMonogram(item.category || source.label),
         entryType: "imagine",
+        resourceType:
+          source.resourceType ||
+          (mediaType === "image" ? "image-prompt-template" : "prompt-template"),
+        surface: mediaType,
+        scenario: item.category || mediaType,
+        sourceKind: source.key,
         categoryKey: item.category || (mediaType === "video" ? "Video" : "Image"),
         summary: promptPreview,
         overview: [promptPreview, item.prompt || ""].filter(Boolean),
@@ -518,7 +562,7 @@
       statCategoriesImagine: "内容标签",
       searchPlaceholder: "搜索",
       modeSwitcherLabel: "内容类型",
-      modeUi: "UI设计",
+      modeUi: "UI 设计",
       modeSkill: "Skill",
       modeImagine: "image-2",
       modeSkillNote: "skill",
@@ -551,7 +595,7 @@
       palette: "调色板",
       fileAccess: "文件入口",
       homeFooterNote:
-        '基于本地 <code>design-md/*</code>、<code>extra/uiuxskillProMax</code>、<code>hotkeys.design</code> 与 <code>awesome-gpt-image-2</code> 数据构建的索引站。',
+        '基于本地 <code>design-md/*</code>、<code>extra/uiuxskillProMax</code>、<code>hotkeys.design</code>、<code>awesome-gpt-image-2</code> 与 <code>Open Design</code> 数据构建的索引站。',
       detailBack: "← 返回索引站",
       detailKicker: "设计详情",
       originalSite: "原站",
@@ -674,7 +718,7 @@
       palette: "Palette",
       fileAccess: "File Access",
       homeFooterNote:
-        'Built from local <code>design-md/*</code>, <code>extra/uiuxskillProMax</code>, <code>hotkeys.design</code>, and <code>awesome-gpt-image-2</code> data.',
+        'Built from local <code>design-md/*</code>, <code>extra/uiuxskillProMax</code>, <code>hotkeys.design</code>, <code>awesome-gpt-image-2</code>, and <code>Open Design</code> data.',
       detailBack: "← Back to Index",
       detailKicker: "Design Detail",
       originalSite: "Original Site",
@@ -804,6 +848,123 @@
       border: "#dec8f4",
     },
   };
+  const resourceTypeMeta = {
+    "design-system": {
+      labelZh: "设计系统",
+      labelEn: "Design Systems",
+      heroLabelZh: "DESIGN.md 设计图谱",
+      heroLabelEn: "DESIGN.md Atlas",
+      heroTitleZh: "设计系统",
+      heroTitleEn: "Design Systems",
+      descZh: "品牌级 DESIGN.md、调色板和预览页，用于捕捉产品的视觉语言。",
+      descEn:
+        "Brand-grade DESIGN.md entries with palettes and previews for capturing a product's visual language.",
+      statLabelZh: "系统条目",
+      statLabelEn: "Systems",
+    },
+    "style-template": {
+      labelZh: "UI 风格",
+      labelEn: "UI Styles",
+      heroLabelZh: "UI/UX Pro Max",
+      heroLabelEn: "UI/UX Pro Max",
+      heroTitleZh: "UI 风格",
+      heroTitleEn: "UI Styles",
+      descZh: "通用、落地页和仪表板风格模板，用于快速决定界面视觉方向。",
+      descEn:
+        "General, landing-page, and analytics dashboard style templates for picking a clear interface direction.",
+      statLabelZh: "风格模板",
+      statLabelEn: "Styles",
+    },
+    "artifact-template": {
+      labelZh: "产物模板",
+      labelEn: "Artifact Templates",
+      heroLabelZh: "Open Design 模板库",
+      heroLabelEn: "Open Design Templates",
+      heroTitleZh: "产物模板",
+      heroTitleEn: "Artifact Templates",
+      descZh: "Web、Deck、Mobile、报告等可直接生成产物的模板化 Skill。",
+      descEn:
+        "Template-shaped skills for web pages, decks, mobile screens, reports, posters, and other finished artifacts.",
+      statLabelZh: "模板条目",
+      statLabelEn: "Templates",
+    },
+    "prompt-template": {
+      labelZh: "Prompt 模板",
+      labelEn: "Prompt Templates",
+      heroLabelZh: "Prompt 模板库",
+      heroLabelEn: "Prompt Gallery",
+      heroTitleZh: "Prompt 模板",
+      heroTitleEn: "Prompt Templates",
+      descZh: "视频、HyperFrames 与通用生成任务提示词，可按内容标签和来源继续细分。",
+      descEn:
+        "Reusable prompts for video, HyperFrames, and general generation tasks, filterable by content label and source.",
+      statLabelZh: "Prompt",
+      statLabelEn: "Prompts",
+    },
+    "image-prompt-template": {
+      labelZh: "图片 Prompt",
+      labelEn: "Image Prompts",
+      heroLabelZh: "图片 Prompt 图库",
+      heroLabelEn: "Image Prompt Gallery",
+      heroTitleZh: "图片 Prompt 模板",
+      heroTitleEn: "Image Prompt Templates",
+      descZh: "专门收纳图片生成提示词，保留画面案例、风格目标和可复用的描述结构。",
+      descEn:
+        "A focused home for image-generation prompts, preserving visual examples, style goals, and reusable prompt structure.",
+      statLabelZh: "图片 Prompt",
+      statLabelEn: "Image Prompts",
+    },
+    "agent-skill": {
+      labelZh: "Agent 技能",
+      labelEn: "Agent Skills",
+      heroLabelZh: "Agent 能力索引",
+      heroLabelEn: "Agent Capability Index",
+      heroTitleZh: "Agent 技能",
+      heroTitleEn: "Agent Skills",
+      descZh: "Agent 可读可调用的 SKILL.md 能力单元，覆盖设计、媒体、开发和工具流程。",
+      descEn:
+        "SKILL.md capability units that agents can read and invoke across design, media, development, and utility tasks.",
+      statLabelZh: "Skill",
+      statLabelEn: "Skills",
+    },
+    plugin: {
+      labelZh: "插件",
+      labelEn: "Plugins",
+      heroLabelZh: "Open Design 插件库",
+      heroLabelEn: "Open Design Plugins",
+      heroTitleZh: "插件",
+      heroTitleEn: "Plugins",
+      descZh: "带 open-design.json 的一键工作流包，把 Skill、上下文、输入项和预览打包。",
+      descEn:
+        "Marketplace-ready Open Design bundles that package skills, context, inputs, previews, and capabilities.",
+      statLabelZh: "插件",
+      statLabelEn: "Plugins",
+    },
+    workflow: {
+      labelZh: "工作流",
+      labelEn: "Workflows",
+      heroLabelZh: "场景工作流",
+      heroLabelEn: "Scenario Pipelines",
+      heroTitleZh: "工作流",
+      heroTitleEn: "Workflows",
+      descZh: "由 atoms 组成的长任务 pipeline，比如新生成、Figma 迁移、代码迁移和导出。",
+      descEn:
+        "Long-running scenario pipelines composed from atoms, such as new generation, Figma migration, code migration, and export.",
+      statLabelZh: "工作流",
+      statLabelEn: "Workflows",
+    },
+  };
+  const resourceTypeOrder = [
+    "design-system",
+    "style-template",
+    "artifact-template",
+    "image-prompt-template",
+    "prompt-template",
+    "agent-skill",
+    "plugin",
+    "workflow",
+  ];
+  const defaultResourceType = "design-system";
   const uiCategoryKeys = Object.keys(categoryMeta).filter((key) => key !== "skill");
   const skillTagOrder = [
     "Design",
@@ -876,6 +1037,26 @@
 
   function isImagineEntry(design) {
     return design?.entryType === "imagine";
+  }
+
+  function getEntryResourceType(design) {
+    if (design?.resourceType) {
+      return design.resourceType;
+    }
+
+    if (isSkillEntry(design)) {
+      return "agent-skill";
+    }
+
+    if (isImagineEntry(design)) {
+      return "image-prompt-template";
+    }
+
+    if (String(design?.categoryKey || "").startsWith("style")) {
+      return "style-template";
+    }
+
+    return "design-system";
   }
 
   async function loadImagineEntries() {
@@ -984,6 +1165,109 @@
     } catch (error) {
       console.warn(error);
       return loadPromptModeFullData(mode, source);
+    }
+  }
+
+  function getNextPromptPage(mode) {
+    if (!isPromptMode(mode)) {
+      return null;
+    }
+
+    const meta = promptModeMeta.get(mode);
+    const loadedPages = promptModeLoadedPages.get(mode) || new Set();
+    if (!meta?.pages || loadedPages.has("full")) {
+      return null;
+    }
+
+    for (let page = 1; page <= meta.pages; page += 1) {
+      if (!loadedPages.has(page)) {
+        return page;
+      }
+    }
+
+    return null;
+  }
+
+  function getOpenDesignPromptCount() {
+    return designs.filter((design) => getEntryResourceType(design) === "prompt-template").length;
+  }
+
+  function getOpenDesignImagePromptCount() {
+    return designs.filter((design) => getEntryResourceType(design) === "image-prompt-template").length;
+  }
+
+  function getPromptSourceTotal(resourceType) {
+    return promptModeSources
+      .filter((source) => source.resourceType === resourceType)
+      .reduce((total, source) => {
+        const meta = promptModeMeta.get(source.key);
+        return total + (meta?.totalCases || source.total || 0);
+      }, 0);
+  }
+
+  function getPromptAggregateTotal() {
+    return getOpenDesignPromptCount() + getPromptSourceTotal("prompt-template");
+  }
+
+  function getImagePromptAggregateTotal() {
+    return (
+      getOpenDesignImagePromptCount() +
+      (imagineEntries.length || imagineCasesTotal) +
+      getPromptSourceTotal("image-prompt-template")
+    );
+  }
+
+  function getNextPromptSourcePage(resourceType) {
+    for (const source of promptModeSources.filter((item) => item.resourceType === resourceType)) {
+      const nextPage = getNextPromptPage(source.key);
+      if (nextPage) {
+        return {
+          mode: source.key,
+          page: nextPage,
+        };
+      }
+    }
+
+    return null;
+  }
+
+  function isPromptAggregateLoading(resourceType) {
+    return promptModeSources
+      .filter((source) => source.resourceType === resourceType)
+      .some((source) => promptModeLoading.has(source.key));
+  }
+
+  function ensureResourceTypeLoaded(resourceType) {
+    if (resourceType === "image-prompt-template") {
+      loadImagineEntries()
+        .then(() => {
+          renderHomeIfReady();
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+    }
+
+    if (!["prompt-template", "image-prompt-template"].includes(resourceType)) {
+      return;
+    }
+
+    promptModeSources
+      .filter((source) => source.resourceType === resourceType)
+      .forEach((source) => {
+      loadPromptModeEntries(source.key)
+        .then(() => {
+          renderHomeIfReady();
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      });
+  }
+
+  function renderHomeIfReady() {
+    if (typeof window.__vibeuiRenderHome === "function") {
+      window.__vibeuiRenderHome();
     }
   }
 
@@ -1231,6 +1515,24 @@
   function renderCommandPanel(design, options = {}) {
     const { compact = false, buttonClass = "detail-action" } = options;
     if (!design.skillCommand) {
+      if (design.openDesign?.path) {
+        return `
+          <div class="command-panel ${compact ? "command-panel-compact" : ""}">
+            <code class="command-code">${escapeHTML(design.openDesign.path)}</code>
+            ${
+              design.sourceSite?.url
+                ? `<a
+                    class="${escapeHTML(buttonClass)}"
+                    href="${escapeHTML(design.sourceSite.url)}"
+                    target="_blank"
+                    rel="noopener"
+                  >${escapeHTML(t("originalSite"))}</a>`
+                : ""
+            }
+          </div>
+        `;
+      }
+
       return `<p class="command-empty">${escapeHTML(t("commandUnavailable"))}</p>`;
     }
 
@@ -1262,6 +1564,13 @@
     if (design.skillLibraryUrl) {
       links.push({ label: t("skillLibraryLabel"), href: design.skillLibraryUrl });
     }
+    if (design.openDesign?.path) {
+      links.push({
+        label: "Open Design",
+        href: design.sourceSite?.url || "https://github.com/nexu-io/open-design",
+        code: design.openDesign.path,
+      });
+    }
     if (design.sourceSite?.url) {
       links.push({ label: t("originalSite"), href: design.sourceSite.url });
     }
@@ -1274,11 +1583,16 @@
         (item) => `
           <a class="file-link" href="${escapeHTML(item.href)}" target="_blank" rel="noopener">
             <span>${escapeHTML(item.label)}</span>
-            <code>${escapeHTML(item.href)}</code>
+            <code>${escapeHTML(item.code || item.href)}</code>
           </a>
         `
       )
       .join("");
+  }
+
+  function getResourceTypeLabel(design) {
+    const meta = getResourceTypeMeta(getEntryResourceType(design));
+    return getLanguage() === "en" ? meta.labelEn : meta.labelZh;
   }
 
   async function copyCommandValue(value) {
@@ -1457,60 +1771,49 @@
     `;
   }
 
+  function getAllEntries() {
+    return [
+      ...designs,
+      ...imagineEntries,
+      ...promptModeSources.flatMap(
+        (source) => promptModeEntries.get(source.key) || []
+      ),
+    ];
+  }
+
+  function getAggregatePromptSourceKeys(resourceType) {
+    return promptModeSources
+      .filter((source) => source.resourceType === resourceType)
+      .map((source) => source.key);
+  }
+
   function getModePool(mode) {
-    if (mode === "skill") {
-      return designs.filter((design) => isSkillEntry(design));
-    }
+    return getAllEntries().filter((design) => getEntryResourceType(design) === mode);
+  }
 
-    if (mode === "imagine") {
-      return imagineEntries;
-    }
-
-    if (isPromptMode(mode)) {
-      return promptModeEntries.get(mode) || [];
-    }
-
-    return designs.filter((design) => !isSkillEntry(design));
+  function getResourceTypeMeta(mode) {
+    return resourceTypeMeta[mode] || resourceTypeMeta[defaultResourceType];
   }
 
   function getModeStats(mode) {
     const pool = getModePool(mode);
-    if (mode === "skill") {
-      return {
-        totalDesigns: pool.length,
-        totalPreviews: pool.filter((design) => design.skillCommand).length,
-        totalCategories: new Set(
-          pool.flatMap((design) => design.skillTags || [])
-        ).size,
-      };
-    }
-
-    if (mode === "imagine") {
-      return {
-        totalDesigns: pool.length,
-        totalPreviews: pool.filter((design) => design.imagine?.prompt).length,
-        totalCategories: imagineCategoryKeys.length,
-      };
-    }
-
-    if (isPromptMode(mode)) {
-      const source = promptModeMap.get(mode);
-      const meta = promptModeMeta.get(mode);
-      const categories = promptModeCategoryKeys.get(mode) || meta?.categories || source?.categories || [];
-      return {
-        totalDesigns: meta?.totalCases || pool.length || source?.total || 0,
-        totalPreviews: pool.length || meta?.totalCases || source?.total || 0,
-        totalCategories: categories.length,
-      };
-    }
-
+    const totalDesigns =
+      mode === "prompt-template"
+        ? getPromptAggregateTotal()
+        : mode === "image-prompt-template"
+          ? getImagePromptAggregateTotal()
+          : pool.length;
     return {
-      totalDesigns: pool.length,
+      totalDesigns,
       totalPreviews: pool.reduce(
         (sum, design) => sum + (design.stats?.previewCount || 0),
         0
       ),
-      totalCategories: new Set(pool.map((design) => design.categoryKey)).size,
+      totalCategories: new Set(
+        mode === "prompt-template" || mode === "image-prompt-template"
+          ? pool.map((design) => design.categoryKey || design.surface)
+          : pool.map((design) => design.surface || design.categoryKey)
+      ).size,
     };
   }
 
@@ -1519,29 +1822,102 @@
     return skillTagLabels[lang]?.[tag] || tag;
   }
 
+  function getFilterFacet(design) {
+    if (getEntryResourceType(design) === "agent-skill" && (design.skillTags || []).length) {
+      return (design.skillTags || [])[0];
+    }
+
+    if (getEntryResourceType(design) === "prompt-template") {
+      return design.categoryKey || design.surface || "prompt";
+    }
+
+    return design.surface || design.categoryKey || "general";
+  }
+
+  function getSecondaryFacet(design) {
+    return (
+      design.originalCategoryKey ||
+      design.categoryKey ||
+      design.scenario ||
+      design.surface ||
+      "general"
+    );
+  }
+
+  function getTertiaryFacet(design) {
+    if (getEntryResourceType(design) === "agent-skill" && (design.skillTags || []).length) {
+      return (design.skillTags || [])[0];
+    }
+
+    if (isImagineEntry(design)) {
+      return design.sourceKind || design.sourceSite?.name || "prompt-gallery";
+    }
+
+    if (
+      ["prompt-template", "image-prompt-template"].includes(getEntryResourceType(design)) &&
+      design.sourceKind
+    ) {
+      return design.sourceKind;
+    }
+
+    return design.surface || design.scenario || getFilterFacet(design);
+  }
+
+  function getLegacyFacet(design) {
+    return getSecondaryFacet(design);
+  }
+
+  function getFilterLabel(key) {
+    const surfaceLabels = {
+      web: { zh: "Web", en: "Web" },
+      ui: { zh: "UI", en: "UI" },
+      mobile: { zh: "Mobile", en: "Mobile" },
+      deck: { zh: "Deck / PPT", en: "Deck / PPT" },
+      dashboard: { zh: "Dashboard", en: "Dashboard" },
+      image: { zh: "Image", en: "Image" },
+      video: { zh: "Video", en: "Video" },
+      audio: { zh: "Audio", en: "Audio" },
+      document: { zh: "Document", en: "Document" },
+      "design-system": { zh: "Design System", en: "Design System" },
+      workflow: { zh: "Workflow", en: "Workflow" },
+      "prompt-template": { zh: "Prompt", en: "Prompt" },
+      "image-prompt-template": { zh: "图片 Prompt", en: "Image Prompt" },
+      "style-template": { zh: "UI 风格", en: "UI Style" },
+      "agent-skill": { zh: "Agent Skill", en: "Agent Skill" },
+      plugin: { zh: "插件", en: "Plugin" },
+      "awesome-gpt-image-2": { zh: "GPT-Image2", en: "GPT-Image2" },
+      "open-design-prompt-template": { zh: "Open Design", en: "Open Design" },
+      "prompt-gallery": { zh: "Prompt Gallery", en: "Prompt Gallery" },
+      general: { zh: "通用", en: "General" },
+    };
+    const lang = getLanguage();
+    if (surfaceLabels[key]) {
+      return surfaceLabels[key][lang];
+    }
+
+    if (skillTagOrder.includes(key)) {
+      return getSkillTagLabel(key);
+    }
+
+    if (promptModeMap.has(key)) {
+      return getSourceFilterLabel(key);
+    }
+
+    return getCategory(key).label;
+  }
+
   function renderModeSwitcher(mode) {
-    const modeItems = [
-      {
-        key: "ui",
-        label: t("modeUi"),
-        count: getModeStats("ui").totalDesigns,
-      },
-      {
-        key: "skill",
-        label: t("modeSkill"),
-        count: getModeStats("skill").totalDesigns,
-      },
-      {
-        key: "imagine",
-        label: t("modeImagine"),
-        count: getModeStats("imagine").totalDesigns,
-      },
-      ...promptModeSources.map((source) => ({
-        key: source.key,
-        label: source.label,
-        count: getModeStats(source.key).totalDesigns,
-      })),
-    ];
+    const lang = getLanguage();
+    const modeItems = resourceTypeOrder
+      .map((key) => {
+        const meta = getResourceTypeMeta(key);
+        return {
+          key,
+          label: lang === "en" ? meta.labelEn : meta.labelZh,
+          count: getModeStats(key).totalDesigns,
+        };
+      })
+      .filter((item) => item.count > 0 || item.key !== "workflow");
     const activeIndex = Math.max(
       modeItems.findIndex((item) => item.key === mode),
       0
@@ -1674,6 +2050,7 @@
 
     if (isImagineEntry(design)) {
       const pills = [
+        getResourceTypeLabel(design),
         ...(design.imagine?.styles || []).slice(0, 2),
       ];
       return pills
@@ -1682,13 +2059,13 @@
     }
 
     if (isSkillEntry(design)) {
-      const pills = ["SKILL", ...getLocalizedSkillTags(design).slice(0, 2)];
+      const pills = [getResourceTypeLabel(design), ...getLocalizedSkillTags(design).slice(0, 2)];
       return pills
         .map((pill) => `<span class="file-pill">${escapeHTML(pill)}</span>`)
         .join("");
     }
 
-    const pills = ["UI/UX", t("fileLightShort")];
+    const pills = [getResourceTypeLabel(design), design.surface || t("fileLightShort")];
     if (design.files.previewDark) {
       pills.push(t("fileDarkShort"));
     }
@@ -1752,7 +2129,7 @@
         <div class="card-ghost">${escapeHTML(design.monogram)}</div>
         <div class="card-topline">
           <span># ${String(design.id).padStart(2, "0")}</span>
-          <span>${escapeHTML(sourceLabel(design))}</span>
+          <span>${escapeHTML(getResourceTypeLabel(design))}</span>
         </div>
         <div class="card-head">
           <div class="card-name">${escapeHTML(localizedDesignName(design))}</div>
@@ -1790,9 +2167,13 @@
     const colors = (design.colors || []).slice(0, 4);
     const tint = hexToRgba(colors[1] || colors[0] || category.border, 0.2);
     const favorite = isFavorite(design.slug);
+    const hasInlinePreview = !!design.files?.preview;
+    const cardClass = hasInlinePreview ? "card has-preview skill-card" : "card is-standard skill-card";
 
     return `
-      <article class="card is-standard skill-card" data-slug="${escapeHTML(design.slug)}" style="--card-soft:${tint}">
+      <article class="${cardClass}" data-slug="${escapeHTML(design.slug)}" style="--card-soft:${tint}">
+        ${hasInlinePreview ? renderCardPreview(design) : ""}
+        <div class="card-info">
         <button
           class="fav-star ${favorite ? "is-favorite" : ""}"
           type="button"
@@ -1806,7 +2187,7 @@
         <div class="card-ghost">${escapeHTML(design.monogram)}</div>
         <div class="card-topline">
           <span># ${String(design.id).padStart(3, "0")}</span>
-          <span>${escapeHTML(sourceLabel(design))}</span>
+          <span>${escapeHTML(getResourceTypeLabel(design))}</span>
         </div>
         <div class="card-head">
           <div class="card-name">${escapeHTML(localizedDesignName(design))}</div>
@@ -1819,7 +2200,8 @@
         </div>
         <div class="card-desc">${escapeHTML(getLocalizedSummary(design))}</div>
         <div class="card-palette">${renderPaletteDots(colors, 4)}</div>
-        <div class="card-files">${renderFilePills(design)}</div>
+        <div class="card-files">${renderFilePills(design, { includeCardPreview: hasInlinePreview })}</div>
+        </div>
       </article>
     `;
   }
@@ -1928,7 +2310,7 @@
         <div class="card-info">
           <div class="card-topline">
             <span># ${String(design.id).padStart(3, "0")}</span>
-            <span>${escapeHTML(sourceLabel(design))}</span>
+            <span>${escapeHTML(getResourceTypeLabel(design))}</span>
           </div>
           <div class="card-head">
             <div class="card-name">${escapeHTML(localizedDesignName(design))}</div>
@@ -1987,8 +2369,10 @@
     };
 
     const state = {
-      contentMode: "ui",
+      contentMode: defaultResourceType,
       activeFilter: "all",
+      secondaryFilter: "all",
+      tertiaryFilter: "all",
       favoritesOnly: false,
       query: "",
       visibleDesigns: [],
@@ -2309,6 +2693,33 @@
           ? t("statCategoriesSkill")
           : t("statCategories");
       refs.statCategoriesValue.textContent = String(modeStats.totalCategories);
+      {
+        const modeMeta = getResourceTypeMeta(state.contentMode);
+        const lang = getLanguage();
+        const heroLabel = lang === "en" ? modeMeta.heroLabelEn : modeMeta.heroLabelZh;
+        const heroTitle = lang === "en" ? modeMeta.heroTitleEn : modeMeta.heroTitleZh;
+        const heroDesc = lang === "en" ? modeMeta.descEn : modeMeta.descZh;
+        const statLabel = lang === "en" ? modeMeta.statLabelEn : modeMeta.statLabelZh;
+
+        document
+          .querySelector('meta[name="description"]')
+          ?.setAttribute("content", heroDesc || t("homeMetaDescription"));
+        refs.homeHeroLabel.textContent = heroLabel;
+        refs.homeHeroTitle.innerHTML =
+          lang === "zh"
+            ? `<span class="hero-count-inline">${modeStats.totalDesigns}</span> 个<br><em>${escapeHTML(heroTitle)}</em>`
+            : `<span class="hero-count-inline">${modeStats.totalDesigns}</span><br><em>${escapeHTML(heroTitle)}</em>`;
+        refs.homeHeroDesc.textContent = heroDesc;
+        refs.statDesignsLabel.textContent = statLabel;
+        refs.statPreviewsLabel.textContent =
+          ["agent-skill", "prompt-template", "image-prompt-template"].includes(state.contentMode)
+            ? t("statPreviewsSkill")
+            : t("statPreviews");
+        refs.statCategoriesLabel.textContent =
+          ["prompt-template", "image-prompt-template"].includes(state.contentMode)
+            ? t("statCategoriesImagine")
+            : t("statCategories");
+      }
       refs.search.placeholder = t("searchPlaceholder");
       refs.favoritesLabel.textContent = t("favoritesSection");
       refs.homeFooterNote.innerHTML = t("homeFooterNote");
@@ -2324,79 +2735,112 @@
       return pool.filter((design) => {
         const categoryMatch =
           state.activeFilter === "all" ||
-          (state.contentMode === "skill"
-            ? (design.skillTags || []).includes(state.activeFilter)
-            : design.categoryKey === state.activeFilter);
+          getLegacyFacet(design) === state.activeFilter ||
+          getFilterFacet(design) === state.activeFilter ||
+          design.categoryKey === state.activeFilter ||
+          (design.skillTags || []).includes(state.activeFilter);
+        const secondaryMatch =
+          state.secondaryFilter === "all" ||
+          getSecondaryFacet(design) === state.secondaryFilter ||
+          design.categoryKey === state.secondaryFilter;
+        const tertiaryMatch =
+          state.tertiaryFilter === "all" ||
+          getTertiaryFacet(design) === state.tertiaryFilter ||
+          design.surface === state.tertiaryFilter ||
+          design.scenario === state.tertiaryFilter ||
+          (design.skillTags || []).includes(state.tertiaryFilter);
         const favoriteMatch = !state.favoritesOnly || isFavorite(design.slug);
         const queryMatch = !query || searchBlob(design).includes(query);
-        return categoryMatch && favoriteMatch && queryMatch;
+        return categoryMatch && secondaryMatch && tertiaryMatch && favoriteMatch && queryMatch;
       });
     }
 
     function renderFilters() {
       const pool = getModePool(state.contentMode);
       const favoritesCount = pool.filter((design) => isFavorite(design.slug)).length;
-      const allCount = isPromptMode(state.contentMode)
-        ? promptModeMeta.get(state.contentMode)?.totalCases || getModeStats(state.contentMode).totalDesigns
-        : pool.length;
-      const modeItems =
-        state.contentMode === "skill"
-          ? skillTagOrder
-              .map((tag) => {
-                const count = pool.filter((design) =>
-                  (design.skillTags || []).includes(tag)
-                ).length;
-                return {
-                  key: tag,
-                  count,
-                  label: `${getSkillTagLabel(tag)} (${count})`,
-                  active: state.activeFilter === tag && !state.favoritesOnly,
-                  className: "",
-                };
-              })
-              .filter((item) => item.count > 0)
-          : state.contentMode === "imagine"
-            ? imagineCategoryKeys.map((key) => ({
-                key,
-                label: `${getCategory(key).label} (${pool.filter(
-                  (design) => design.categoryKey === key
-                ).length})`,
-                active: state.activeFilter === key && !state.favoritesOnly,
-                className: "",
-              }))
+      const allCount =
+        state.contentMode === "prompt-template"
+          ? getPromptAggregateTotal()
+          : state.contentMode === "image-prompt-template"
+            ? getImagePromptAggregateTotal()
           : isPromptMode(state.contentMode)
-            ? (promptModeCategoryKeys.get(state.contentMode) || [])
-                .map((key) => {
-                  const meta = promptModeMeta.get(state.contentMode);
-                  const count = pool.filter(
-                    (design) => design.categoryKey === key
-                  ).length;
-                  const totalCount = meta?.categoryCounts?.[key] || count;
-                  return {
-                    key,
-                    count,
-                    label: `${getCategory(key).label} (${totalCount})`,
-                    active: state.activeFilter === key && !state.favoritesOnly,
-                    className: "",
-                  };
-                })
-                .filter((item) => item.count > 0 || promptModeMeta.has(state.contentMode))
-          : uiCategoryKeys.map((key) => ({
-              key,
-              label: `${getCategory(key).label} (${pool.filter(
-                (design) => design.categoryKey === key
-              ).length})`,
-              active: state.activeFilter === key && !state.favoritesOnly,
-              className: "",
-            }));
-      const items = [
+            ? promptModeMeta.get(state.contentMode)?.totalCases ||
+              getModeStats(state.contentMode).totalDesigns
+            : pool.length;
+      const secondaryCounts = pool.reduce((accumulator, design) => {
+        const facet = getSecondaryFacet(design);
+        accumulator[facet] = (accumulator[facet] || 0) + 1;
+        return accumulator;
+      }, {});
+      const secondaryPool = pool.filter(
+        (design) =>
+          state.secondaryFilter === "all" ||
+          getSecondaryFacet(design) === state.secondaryFilter ||
+          design.categoryKey === state.secondaryFilter
+      );
+      const tertiaryCounts = secondaryPool.reduce((accumulator, design) => {
+        const facet = getTertiaryFacet(design);
+        accumulator[facet] = (accumulator[facet] || 0) + 1;
+        return accumulator;
+      }, {});
+      const orderedFacetKeys = [
+        ...getAggregatePromptSourceKeys(state.contentMode),
+        "awesome-gpt-image-2",
+        "web",
+        "ui",
+        "mobile",
+        "deck",
+        "dashboard",
+        "image",
+        "video",
+        "audio",
+        "document",
+        "design-system",
+        "workflow",
+        ...skillTagOrder,
+        ...uiCategoryKeys,
+        ...imagineCategoryKeys,
+      ];
+      const secondaryItems = [
+        ...new Set([
+          ...getAggregatePromptSourceKeys(state.contentMode).filter(
+            (key) => secondaryCounts[key]
+          ),
+          ...(secondaryCounts["awesome-gpt-image-2"] ? ["awesome-gpt-image-2"] : []),
+          ...uiCategoryKeys.filter((key) => secondaryCounts[key]),
+          ...Object.keys(secondaryCounts).sort((a, b) =>
+            getFilterLabel(a).localeCompare(getFilterLabel(b))
+          ),
+        ]),
+      ].map((key) => ({
+        key,
+        label: `${getFilterLabel(key)} (${secondaryCounts[key] || 0})`,
+        active: state.secondaryFilter === key && !state.favoritesOnly,
+        className: "",
+      }));
+      const tertiaryItems = [
+        ...new Set([
+          ...orderedFacetKeys.filter((key) => tertiaryCounts[key]),
+          ...Object.keys(tertiaryCounts).sort((a, b) =>
+            getFilterLabel(a).localeCompare(getFilterLabel(b))
+          ),
+        ]),
+      ].map((key) => ({
+        key,
+        label: `${getFilterLabel(key)} (${tertiaryCounts[key] || 0})`,
+        active: state.tertiaryFilter === key && !state.favoritesOnly,
+        className: "",
+      }));
+      const primaryItems = [
         {
           key: "all",
           label: t("filterAll", allCount),
-          active: state.activeFilter === "all" && !state.favoritesOnly,
+          active:
+            state.secondaryFilter === "all" &&
+            state.tertiaryFilter === "all" &&
+            !state.favoritesOnly,
           className: "",
         },
-        ...modeItems,
         {
           key: "favorites",
           label: t("filterFavorites", favoritesCount),
@@ -2405,19 +2849,67 @@
         },
       ];
 
-      refs.filters.innerHTML = items
-        .map(
-          (item) => `
-            <button
-              class="filter-btn ${item.className} ${item.active ? "active" : ""}"
-              type="button"
-              data-filter="${escapeHTML(item.key)}"
-            >
-              ${escapeHTML(item.label)}
-            </button>
-          `
-        )
-        .join("");
+      const renderFilterButtons = (items, attr) =>
+        items
+          .map(
+            (item) => `
+              <button
+                class="filter-btn ${item.className} ${item.active ? "active" : ""}"
+                type="button"
+                ${attr}="${escapeHTML(item.key)}"
+              >
+                ${escapeHTML(item.label)}
+              </button>
+            `
+          )
+          .join("");
+
+      refs.filters.innerHTML = `
+        <div class="filter-tier filter-tier-primary">
+          <span class="filter-tier-label">${escapeHTML(
+            getLanguage() === "en" ? "All" : "全部"
+          )}</span>
+          <div class="filter-tier-buttons">${renderFilterButtons(primaryItems, "data-filter")}</div>
+        </div>
+        <div class="filter-tier">
+          <span class="filter-tier-label">${escapeHTML(
+            getLanguage() === "en" ? "Original Tags" : "原始标签"
+          )}</span>
+          <div class="filter-tier-buttons">
+            ${renderFilterButtons(
+              [
+                {
+                  key: "all",
+                  label: t("filterAll", pool.length),
+                  active: state.secondaryFilter === "all" && !state.favoritesOnly,
+                  className: "",
+                },
+                ...secondaryItems,
+              ],
+              "data-secondary-filter"
+            )}
+          </div>
+        </div>
+        <div class="filter-tier">
+          <span class="filter-tier-label">${escapeHTML(
+            getLanguage() === "en" ? "Supplement" : "补充标签"
+          )}</span>
+          <div class="filter-tier-buttons">
+            ${renderFilterButtons(
+              [
+                {
+                  key: "all",
+                  label: t("filterAll", secondaryPool.length),
+                  active: state.tertiaryFilter === "all" && !state.favoritesOnly,
+                  className: "",
+                },
+                ...tertiaryItems,
+              ],
+              "data-tertiary-filter"
+            )}
+          </div>
+        </div>
+      `;
     }
 
     function renderFavoritesSection() {
@@ -2429,6 +2921,8 @@
       if (
         favorites.length > 0 &&
         state.activeFilter === "all" &&
+        state.secondaryFilter === "all" &&
+        state.tertiaryFilter === "all" &&
         !state.favoritesOnly &&
         !state.query
       ) {
@@ -2443,35 +2937,32 @@
       refs.favoritesGrid.innerHTML = "";
     }
 
-    function getNextPromptPage(mode) {
-      const meta = promptModeMeta.get(mode);
-      const loadedPages = promptModeLoadedPages.get(mode) || new Set();
-      if (!meta?.pages || loadedPages.has("full")) {
-        return null;
-      }
-
-      for (let page = 1; page <= meta.pages; page += 1) {
-        if (!loadedPages.has(page)) {
-          return page;
-        }
-      }
-
-      return null;
-    }
-
     function renderPromptAutoLoadSentinel(totalVisible = 0) {
-      if (!isPromptMode(state.contentMode)) {
+      if (!isPromptResourceMode(state.contentMode)) {
         return "";
       }
 
-      const nextPage = getNextPromptPage(state.contentMode);
+      const nextPage =
+        state.contentMode === "prompt-template"
+          ? getNextPromptSourcePage("prompt-template")
+          : state.contentMode === "image-prompt-template"
+            ? getNextPromptSourcePage("image-prompt-template")
+            : getNextPromptPage(state.contentMode);
       if (!nextPage) {
         return "";
       }
 
       const meta = promptModeMeta.get(state.contentMode);
-      const total = meta?.totalCases || getModeStats(state.contentMode).totalDesigns;
-      const loading = promptModeLoading.has(state.contentMode);
+      const total =
+        state.contentMode === "prompt-template"
+          ? getPromptAggregateTotal()
+          : meta?.totalCases || getModeStats(state.contentMode).totalDesigns;
+      const loading =
+        state.contentMode === "prompt-template"
+          ? isPromptAggregateLoading("prompt-template")
+          : state.contentMode === "image-prompt-template"
+            ? isPromptAggregateLoading("image-prompt-template")
+            : promptModeLoading.has(state.contentMode);
       return `
         <div
           class="grid-auto-load ${loading ? "is-loading" : ""}"
@@ -2486,13 +2977,22 @@
     }
 
     function loadNextPromptPage() {
-      if (!isPromptMode(state.contentMode) || promptModeLoading.has(state.contentMode)) {
+      if (!isPromptResourceMode(state.contentMode)) {
         return;
       }
 
-      const mode = state.contentMode;
-      const nextPage = getNextPromptPage(mode);
+      const nextPrompt =
+        state.contentMode === "prompt-template"
+          ? getNextPromptSourcePage("prompt-template")
+          : state.contentMode === "image-prompt-template"
+            ? getNextPromptSourcePage("image-prompt-template")
+            : { mode: state.contentMode, page: getNextPromptPage(state.contentMode) };
+      const mode = nextPrompt?.mode;
+      const nextPage = nextPrompt?.page;
       if (!nextPage) {
+        return;
+      }
+      if (promptModeLoading.has(mode)) {
         return;
       }
 
@@ -2513,7 +3013,25 @@
     }
 
     function maybeAutoLoadNextPromptPage() {
-      if (!isPromptMode(state.contentMode) || promptModeLoading.has(state.contentMode)) {
+      if (!isPromptResourceMode(state.contentMode)) {
+        return;
+      }
+
+      if (
+        state.contentMode === "prompt-template" &&
+        isPromptAggregateLoading("prompt-template")
+      ) {
+        return;
+      }
+
+      if (
+        state.contentMode === "image-prompt-template" &&
+        isPromptAggregateLoading("image-prompt-template")
+      ) {
+        return;
+      }
+
+      if (isPromptMode(state.contentMode) && promptModeLoading.has(state.contentMode)) {
         return;
       }
 
@@ -2532,7 +3050,14 @@
     function renderGrid() {
       state.visibleDesigns = getFilteredDesigns();
       const canLoadMorePrompts =
-        isPromptMode(state.contentMode) && Boolean(getNextPromptPage(state.contentMode));
+        isPromptResourceMode(state.contentMode) &&
+        Boolean(
+          state.contentMode === "prompt-template"
+            ? getNextPromptSourcePage("prompt-template")
+            : state.contentMode === "image-prompt-template"
+              ? getNextPromptSourcePage("image-prompt-template")
+              : getNextPromptPage(state.contentMode)
+        );
 
       if (state.visibleDesigns.length === 0) {
         refs.grid.innerHTML = `
@@ -2827,6 +3352,18 @@
                         : renderFilePills(design)
                     }</div>
                   </div>
+                  <div class="meta-item">
+                    <span class="meta-label">${escapeHTML(
+                      getLanguage() === "en" ? "Resource Type" : "资源类型"
+                    )}</span>
+                    <span class="meta-value">${escapeHTML(getResourceTypeLabel(design))}</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">${escapeHTML(
+                      getLanguage() === "en" ? "Surface" : "产物形态"
+                    )}</span>
+                    <span class="meta-value">${escapeHTML(design.surface || "general")}</span>
+                  </div>
                 </div>
               </article>
             </aside>
@@ -2885,6 +3422,11 @@
       }
     }
 
+    window.__vibeuiRenderHome = () => {
+      renderStaticChrome();
+      rerender();
+    };
+
     refs.filters.addEventListener("click", (event) => {
       const button = event.target.closest("[data-filter]");
       if (!button) {
@@ -2896,12 +3438,41 @@
         state.favoritesOnly = !state.favoritesOnly;
         if (state.favoritesOnly) {
           state.activeFilter = "all";
+          state.secondaryFilter = "all";
+          state.tertiaryFilter = "all";
         }
       } else {
         state.activeFilter = filter;
+        state.secondaryFilter = "all";
+        state.tertiaryFilter = "all";
         state.favoritesOnly = false;
       }
 
+      rerender();
+    });
+
+    refs.filters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-secondary-filter]");
+      if (!button) {
+        return;
+      }
+
+      state.secondaryFilter = button.dataset.secondaryFilter || "all";
+      state.tertiaryFilter = "all";
+      state.activeFilter = "all";
+      state.favoritesOnly = false;
+      rerender();
+    });
+
+    refs.filters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-tertiary-filter]");
+      if (!button) {
+        return;
+      }
+
+      state.tertiaryFilter = button.dataset.tertiaryFilter || "all";
+      state.activeFilter = "all";
+      state.favoritesOnly = false;
       rerender();
     });
 
@@ -2970,30 +3541,18 @@
       if (modeButton) {
         event.preventDefault();
         const requestedMode = modeButton.dataset.contentMode;
-        const nextMode =
-          requestedMode === "skill"
-            ? "skill"
-            : requestedMode === "imagine"
-              ? "imagine"
-              : isPromptMode(requestedMode)
-                ? requestedMode
-                : "ui";
+        const nextMode = resourceTypeMeta[requestedMode]
+          ? requestedMode
+          : defaultResourceType;
         if (state.contentMode !== nextMode) {
           state.contentMode = nextMode;
           state.activeFilter = "all";
+          state.secondaryFilter = "all";
+          state.tertiaryFilter = "all";
           state.favoritesOnly = false;
           renderStaticChrome();
           rerender();
-          if (isPromptMode(nextMode)) {
-            loadPromptModeEntries(nextMode)
-              .then(() => {
-                renderStaticChrome();
-                rerender();
-              })
-              .catch((error) => {
-                console.warn(error);
-              });
-          }
+          ensureResourceTypeLoaded(nextMode);
         }
         return;
       }
@@ -3161,14 +3720,7 @@
     updateBackToTopButton();
     renderStaticChrome();
     rerender();
-    loadImagineEntries()
-      .then(() => {
-        renderStaticChrome();
-        rerender();
-      })
-      .catch((error) => {
-        console.warn(error);
-      });
+    ensureResourceTypeLoaded(state.contentMode);
   }
 
   function renderRelated(design) {
@@ -3357,6 +3909,9 @@
             </span>
             <span class="detail-chip" style="background:rgba(255,255,255,0.78);color:var(--text-secondary);border-color:var(--border-strong);">
               ${escapeHTML(sourceLabel(design))}
+            </span>
+            <span class="detail-chip" style="background:rgba(255,255,255,0.78);color:var(--text-secondary);border-color:var(--border-strong);">
+              ${escapeHTML(getResourceTypeLabel(design))}
             </span>
           </div>
           <div class="detail-actions">
@@ -3641,6 +4196,18 @@
                   t("metadataCategory")
                 )}</span>
                 <span class="meta-value">${escapeHTML(category.label)}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">${escapeHTML(
+                  getLanguage() === "en" ? "Resource Type" : "资源类型"
+                )}</span>
+                <span class="meta-value">${escapeHTML(getResourceTypeLabel(design))}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">${escapeHTML(
+                  getLanguage() === "en" ? "Surface" : "产物形态"
+                )}</span>
+                <span class="meta-value">${escapeHTML(design.surface || "general")}</span>
               </div>
               <div class="meta-item">
                 <span class="meta-label">${escapeHTML(

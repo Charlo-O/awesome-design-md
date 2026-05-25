@@ -224,7 +224,8 @@ h1 em {
   --mode-count: 3;
   position: relative;
   display: flex;
-  width: min(100%, 940px);
+  width: 100%;
+  max-width: 1180px;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -261,10 +262,10 @@ h1 em {
   border: none;
   background: transparent;
   flex: 0 0 auto;
-  min-width: 108px;
+  min-width: 118px;
   min-height: 40px;
   margin-bottom: -1px;
-  padding: 0 18px 11px 0;
+  padding: 0 20px 11px 0;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
@@ -291,7 +292,7 @@ h1 em {
 .mode-tab-label {
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 650;
   line-height: 1;
 }
@@ -366,9 +367,33 @@ h1 em {
 }
 
 .filters {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.filter-tier {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.filter-tier-label {
+  padding-top: 9px;
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filter-tier-buttons {
   display: flex;
-  gap: 6px;
   flex-wrap: wrap;
+  gap: 6px;
   min-width: 0;
 }
 
@@ -392,9 +417,12 @@ h1 em {
 }
 
 .filter-btn {
-  padding: 8px 14px;
+  min-height: 34px;
+  padding: 7px 12px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12.5px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .filter-btn:hover,
@@ -1873,10 +1901,18 @@ h1 em {
 
   .filters {
     flex: 1 1 100%;
-    display: flex;
+    display: grid;
     gap: 8px;
-    flex-wrap: wrap;
     min-width: 0;
+  }
+
+  .filter-tier {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .filter-tier-label {
+    padding-top: 0;
   }
 
   .controls-right {
