@@ -4,29 +4,53 @@
   const hotkeysSummaryZh = window.HOTKEYS_SUMMARY_ZH || {};
   const skillTagLabels = {
     zh: {
-      Design: "设计",
-      Dev: "开发",
-      Motion: "动效",
-      Accessibility: "无障碍",
-      Marketing: "营销",
-      Video: "视频",
+      "UI Design": "\u754c\u9762\u8bbe\u8ba1",
+      Frontend: "\u524d\u7aef\u5f00\u53d1",
+      Image: "\u56fe\u50cf",
+      Video: "\u89c6\u9891",
+      Audio: "\u97f3\u9891",
+      Motion: "\u52a8\u6548",
+      Decks: "\u6f14\u793a\u6587\u7a3f",
+      Docs: "\u6587\u6863\u62a5\u544a",
+      "Data Viz": "\u6570\u636e\u53ef\u89c6\u5316",
+      Research: "\u7814\u7a76\u5206\u6790",
+      Marketing: "\u8425\u9500\u589e\u957f",
+      Automation: "\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41",
+      Integrations: "\u5e73\u53f0\u96c6\u6210",
+      Accessibility: "\u65e0\u969c\u788d",
     },
     en: {
-      Design: "Design",
-      Dev: "Dev",
-      Motion: "Motion",
-      Accessibility: "Accessibility",
-      Marketing: "Marketing",
+      "UI Design": "UI Design",
+      Frontend: "Frontend",
+      Image: "Image",
       Video: "Video",
+      Audio: "Audio",
+      Motion: "Motion",
+      Decks: "Decks",
+      Docs: "Docs",
+      "Data Viz": "Data Viz",
+      Research: "Research",
+      Marketing: "Marketing",
+      Automation: "Automation",
+      Integrations: "Integrations",
+      Accessibility: "Accessibility",
     },
   };
   const skillPaletteByTag = {
-    Design: ["#02182c", "#ef0d45", "#ffd7e2", "#fff7fa", "#f4f8fc"],
-    Dev: ["#02182c", "#2563eb", "#dbeafe", "#eff6ff", "#f4f8fc"],
-    Motion: ["#02182c", "#0891b2", "#cffafe", "#ecfeff", "#f4f8fc"],
-    Accessibility: ["#02182c", "#059669", "#dcfce7", "#ecfdf5", "#f4f8fc"],
-    Marketing: ["#02182c", "#e11d48", "#ffe4e6", "#fff1f2", "#f4f8fc"],
+    "UI Design": ["#02182c", "#ef0d45", "#ffd7e2", "#fff7fa", "#f4f8fc"],
+    Frontend: ["#02182c", "#2563eb", "#dbeafe", "#eff6ff", "#f4f8fc"],
+    Image: ["#02182c", "#db2777", "#fce7f3", "#fdf2f8", "#f4f8fc"],
     Video: ["#02182c", "#d97706", "#fef3c7", "#fffbeb", "#f4f8fc"],
+    Audio: ["#02182c", "#7c3aed", "#ede9fe", "#f5f3ff", "#f4f8fc"],
+    Motion: ["#02182c", "#0891b2", "#cffafe", "#ecfeff", "#f4f8fc"],
+    Decks: ["#02182c", "#c2410c", "#ffedd5", "#fff7ed", "#f4f8fc"],
+    Docs: ["#02182c", "#475569", "#e2e8f0", "#f8fafc", "#f4f8fc"],
+    "Data Viz": ["#02182c", "#0f766e", "#ccfbf1", "#f0fdfa", "#f4f8fc"],
+    Research: ["#02182c", "#4338ca", "#e0e7ff", "#eef2ff", "#f4f8fc"],
+    Marketing: ["#02182c", "#e11d48", "#ffe4e6", "#fff1f2", "#f4f8fc"],
+    Automation: ["#02182c", "#4b5563", "#e5e7eb", "#f9fafb", "#f4f8fc"],
+    Integrations: ["#02182c", "#16a34a", "#dcfce7", "#f0fdf4", "#f4f8fc"],
+    Accessibility: ["#02182c", "#059669", "#dcfce7", "#ecfdf5", "#f4f8fc"],
   };
   const imagineCasesUrl = "extra/awesome-gpt-image-2/data/cases.json";
   const imagineImageBase = "extra/awesome-gpt-image-2/data";
@@ -189,8 +213,15 @@
 
   function buildHotkeysSkills(items) {
     return items.map((item, index) => {
-      const tags = Array.isArray(item.tags) ? item.tags : [];
-      const primaryTag = tags[0] || "Design";
+      const rawTags = Array.isArray(item.tags) ? item.tags : [];
+      const tags = rawTags.slice(0, 1);
+      const purposeTagsZh = Array.isArray(item.purposeTagsZh)
+        ? item.purposeTagsZh
+        : [];
+      const purposeTagsEn = Array.isArray(item.purposeTagsEn)
+        ? item.purposeTagsEn
+        : [];
+      const primaryTag = tags[0] || "UI Design";
       const colors = skillPaletteByTag[primaryTag] || [
         "#02182c",
         "#475569",
@@ -235,6 +266,8 @@
         searchTerms: [
           ...(tags || []),
           ...tags.map((tag) => skillTagLabels.zh[tag] || tag),
+          ...purposeTagsZh,
+          ...purposeTagsEn,
           item.author,
           item.description,
           hotkeysSummaryZh[item.id] || "",
@@ -246,6 +279,8 @@
         skillCommand: item.npxCommand || null,
         skillTags: tags,
         skillTagsZh: tags.map((tag) => skillTagLabels.zh[tag] || tag),
+        skillPurposeTagsZh: purposeTagsZh,
+        skillPurposeTagsEn: purposeTagsEn,
         skillAuthor: item.author,
         skillAuthorUrl: item.authorUrl || null,
         skillLibraryUrl: "https://hotkeys.design/",
@@ -499,7 +534,7 @@
         "从品牌风格、预览页和设计文档。点击任意框架查看详细UI风格。",
       homeHeroLabelSkill: "Hotkeys 技能库",
       homeHeroTitleSkill: (count) =>
-        `<span class="hero-count-inline">${count}</span> 个<br><em>Skill 命令索引</em>`,
+        `<span class="hero-count-inline">${count}</span> 个<br><em>设计相关 Skill</em>`,
       homeHeroDescSkill:
         "从 hotkeys.design 收录的技能与命令中浏览。点击任意条目查看安装命令、标签与来源链接。",
       homeHeroLabelImagine: "image-2",
@@ -622,7 +657,7 @@
         "Browse brand styles, preview pages, and design documents. Open any item to inspect the detailed UI style.",
       homeHeroLabelSkill: "Hotkeys Skill Library",
       homeHeroTitleSkill: (count) =>
-        `<span class="hero-count-inline">${count}</span><br><em>Skill Command Index</em>`,
+        `<span class="hero-count-inline">${count}</span><br><em>Design Skills</em>`,
       homeHeroDescSkill:
         "Browse skills and install commands collected from hotkeys.design. Open any item to inspect commands, tags, and source links.",
       homeHeroLabelImagine: "image-2",
@@ -806,12 +841,20 @@
   };
   const uiCategoryKeys = Object.keys(categoryMeta).filter((key) => key !== "skill");
   const skillTagOrder = [
-    "Design",
-    "Dev",
-    "Motion",
-    "Accessibility",
-    "Marketing",
+    "UI Design",
+    "Frontend",
+    "Image",
     "Video",
+    "Audio",
+    "Motion",
+    "Decks",
+    "Docs",
+    "Data Viz",
+    "Research",
+    "Marketing",
+    "Automation",
+    "Integrations",
+    "Accessibility",
   ];
 
   const page = document.body.dataset.page;
@@ -999,6 +1042,22 @@
     }
 
     return design.skillTags || [];
+  }
+
+  function getLocalizedSkillPurposeTags(design) {
+    if (!isSkillEntry(design)) {
+      return [];
+    }
+
+    if (getLanguage() === "zh") {
+      return design.skillPurposeTagsZh?.length
+        ? design.skillPurposeTagsZh
+        : design.skillPurposeTagsEn || [];
+    }
+
+    return design.skillPurposeTagsEn?.length
+      ? design.skillPurposeTagsEn
+      : design.skillPurposeTagsZh || [];
   }
 
   function getLocalizedSummary(design) {
@@ -1250,7 +1309,10 @@
   }
 
   function renderSkillTagPills(design) {
-    const tags = getLocalizedSkillTags(design);
+    const tags = [
+      ...getLocalizedSkillTags(design),
+      ...getLocalizedSkillPurposeTags(design),
+    ].filter((tag, index, list) => tag && list.indexOf(tag) === index);
     return tags
       .map((tag) => `<span class="file-pill">${escapeHTML(tag)}</span>`)
       .join("");
@@ -1620,6 +1682,8 @@
       ...translateList(design.searchTerms || []),
       ...(design.skillTags || []),
       ...(design.skillTagsZh || []),
+      ...(design.skillPurposeTagsZh || []),
+      ...(design.skillPurposeTagsEn || []),
       design.skillCommand,
       design.skillAuthor,
       design.imagine?.mediaType,
@@ -1682,7 +1746,10 @@
     }
 
     if (isSkillEntry(design)) {
-      const pills = ["SKILL", ...getLocalizedSkillTags(design).slice(0, 2)];
+      const purposePills = getLocalizedSkillPurposeTags(design);
+      const pills = purposePills.length
+        ? purposePills.slice(0, 3)
+        : getLocalizedSkillTags(design).slice(0, 1);
       return pills
         .map((pill) => `<span class="file-pill">${escapeHTML(pill)}</span>`)
         .join("");
@@ -1787,6 +1854,7 @@
 
   function renderSkillCard(design) {
     const category = getCategory(design.categoryKey);
+    const primarySkillTag = getLocalizedSkillTags(design)[0] || category.label;
     const colors = (design.colors || []).slice(0, 4);
     const tint = hexToRgba(colors[1] || colors[0] || category.border, 0.2);
     const favorite = isFavorite(design.slug);
@@ -1814,7 +1882,7 @@
             class="card-tag"
             style="background:${category.bg};color:${category.text};border-color:${category.border};"
           >
-            ${escapeHTML(category.label)}
+            ${escapeHTML(primarySkillTag)}
           </span>
         </div>
         <div class="card-desc">${escapeHTML(getLocalizedSummary(design))}</div>
